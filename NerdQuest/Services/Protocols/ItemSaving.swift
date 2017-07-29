@@ -10,4 +10,5 @@ import Foundation
 
 protocol ItemSaving {
   func saveItem(nerdItem: NerdItem)
+  func getAnnotatedItems() -> [AnnotatedItem]
 }

@@ -48,6 +48,7 @@ struct UserDefaultsKey {
 
 struct CellIdentifiers {
   static let kMessageCellIdentifier = "MessageCell"
+  static let kItemCellIdentifier = "StupidCell"
 }
 
 enum ItemType: Int {
@@ -56,4 +57,19 @@ enum ItemType: Int {
   case dontUse = 2
   case unknown = 3
   case manual = 4
+  
+  var text: String {
+    switch self {
+    case .buff:
+      return "Buff"
+    case .weapon:
+      return "Weapon"
+    case .dontUse:
+      return "Don't Use"
+    case .unknown:
+      return "???"
+    case .manual:
+      return "Manual"
+    }
+  }
 }
