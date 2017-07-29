@@ -11,7 +11,7 @@ import Cocoa
 class MainViewController: NSViewController, Passable {
   let pointMiningService = LocalPointMiningService()
   let messagesTableDataSource = MessagesTableDataSource()
-  let itemsTableDataSource = ItemsTableDataSource()
+  var itemsTableDataSource: ItemsTableDataSource!
   
   var isMiningEnabled = true
   var isMiningRunning = false
@@ -26,13 +26,16 @@ class MainViewController: NSViewController, Passable {
     messageTableView.dataSource = messagesTableDataSource
     messageTableView.delegate = messagesTableDataSource
     
-    itemsTableView.dataSource = itemsTableDataSource
-    itemsTableView.delegate = itemsTableDataSource
+    itemsTableDataSource = ItemsTableDataSource(tableView: itemsTableView)
     itemsTableView.doubleAction = #selector(doubleClickItemRow)
     
     refreshItemsTable()
     
     startMining()
+  }
+  
+  private func setupItemsTable() {
+    // setup sort descriptor
   }
   
   func refreshItemsTable() {
@@ -70,9 +73,6 @@ class MainViewController: NSViewController, Passable {
     }) else {
       return
     }
-    
-    let alert = NSAlert()
-    
   }
   
   private func startMining() {

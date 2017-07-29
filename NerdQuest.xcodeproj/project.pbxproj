@@ -195,7 +195,7 @@
 		1515C5AE1F2C2D8D008BE426 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				153481891F2C804300C7DB16 /* TableDataSources */,
+				153481891F2C804300C7DB16 /* Table Functionality */,
 				158A0CEE1F2C6BAB004F317B /* MainWindowController.swift */,
 				1515C5AC1F2C2D84008BE426 /* MainViewController.swift */,
 			);
@@ -290,13 +290,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		153481891F2C804300C7DB16 /* TableDataSources */ = {
+		153481891F2C804300C7DB16 /* Table Functionality */ = {
 			isa = PBXGroup;
 			children = (
 				1534818A1F2C806900C7DB16 /* MessagesTableDataSource.swift */,
 				1534818C1F2C825200C7DB16 /* ItemsTableDataSource.swift */,
 			);
-			path = TableDataSources;
+			path = "Table Functionality";
 			sourceTree = "<group>";
 		};
 		1534818E1F2CFF1300C7DB16 /* Extensions */ = {
