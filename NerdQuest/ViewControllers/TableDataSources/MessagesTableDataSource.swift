@@ -8,8 +8,6 @@
 
 import Cocoa
 
-
-
 class MessagesTableDataSource: NSObject {
   var messages = [String]()
 }
@@ -25,7 +23,7 @@ extension MessagesTableDataSource: NSTableViewDelegate {
   
   func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
     return 20.0
-  }
+  }  
 }
 
 extension MessagesTableDataSource: NSTableViewDataSource {

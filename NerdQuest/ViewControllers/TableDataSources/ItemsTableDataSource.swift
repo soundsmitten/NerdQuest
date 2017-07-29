@@ -8,7 +8,6 @@
 
 import Cocoa
 
-
 class ItemsTableDataSource: NSObject {
   var annotatedItems = [AnnotatedItem]()
   
@@ -18,6 +17,7 @@ class ItemsTableDataSource: NSObject {
     case effect = "itemEffect"
     case duration = "itemDuration"
     case rarity = "itemRarity"
+    case id = "itemID"
   }
 }
 
@@ -44,6 +44,8 @@ extension ItemsTableDataSource: NSTableViewDelegate {
       cellText = annotatedItem.annotation?.duration ?? "Unknown"
     case .rarity:
       cellText = "\(annotatedItem.item.rarity)"
+    case .id:
+      cellText = "\(annotatedItem.item.id)"
     }
     cell.textField?.stringValue = cellText
     return cell
