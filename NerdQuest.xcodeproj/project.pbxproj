@@ -1,0 +1,899 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1515C5801F2C2CF2008BE426 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C57F1F2C2CF2008BE426 /* AppDelegate.swift */; };
+		1515C5841F2C2CF2008BE426 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1515C5831F2C2CF2008BE426 /* Assets.xcassets */; };
+		1515C5871F2C2CF2008BE426 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1515C5851F2C2CF2008BE426 /* Main.storyboard */; };
+		1515C5921F2C2CF2008BE426 /* NerdQuestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5911F2C2CF2008BE426 /* NerdQuestTests.swift */; };
+		1515C59D1F2C2CF2008BE426 /* NerdQuestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C59C1F2C2CF2008BE426 /* NerdQuestUITests.swift */; };
+		1515C5AB1F2C2D3D008BE426 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5AA1F2C2D3D008BE426 /* AppConstants.swift */; };
+		1515C5AD1F2C2D84008BE426 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5AC1F2C2D84008BE426 /* MainViewController.swift */; };
+		1515C5B31F2C2DBE008BE426 /* NerdBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5B01F2C2DBE008BE426 /* NerdBadge.swift */; };
+		1515C5B41F2C2DBE008BE426 /* NerdItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5B11F2C2DBE008BE426 /* NerdItem.swift */; };
+		1515C5B51F2C2DBE008BE426 /* NerdPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5B21F2C2DBE008BE426 /* NerdPoint.swift */; };
+		1515C5BD1F2C2E68008BE426 /* NerdNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5B81F2C2E68008BE426 /* NerdNetworkRequest.swift */; };
+		1515C5BE1F2C2E68008BE426 /* NerdPointResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5B91F2C2E68008BE426 /* NerdPointResource.swift */; };
+		1515C5BF1F2C2E68008BE426 /* ApiResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5BB1F2C2E68008BE426 /* ApiResource.swift */; };
+		1515C5C01F2C2E68008BE426 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5BC1F2C2E68008BE426 /* NetworkRequest.swift */; };
+		1515C5C31F2C2E7A008BE426 /* Passable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5C21F2C2E7A008BE426 /* Passable.swift */; };
+		1515C5D01F2C2E80008BE426 /* LocalBattlingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5C61F2C2E80008BE426 /* LocalBattlingService.swift */; };
+		1515C5D11F2C2E80008BE426 /* LocalItemSavingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5C71F2C2E80008BE426 /* LocalItemSavingService.swift */; };
+		1515C5D21F2C2E80008BE426 /* LocalPointMiningService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5C81F2C2E80008BE426 /* LocalPointMiningService.swift */; };
+		1515C5D31F2C2E80008BE426 /* MacOSSanityCheckingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5C91F2C2E80008BE426 /* MacOSSanityCheckingService.swift */; };
+		1515C5D41F2C2E80008BE426 /* NerdService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5CA1F2C2E80008BE426 /* NerdService.swift */; };
+		1515C5D51F2C2E80008BE426 /* Battling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5CC1F2C2E80008BE426 /* Battling.swift */; };
+		1515C5D61F2C2E80008BE426 /* ItemSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5CD1F2C2E80008BE426 /* ItemSaving.swift */; };
+		1515C5D71F2C2E80008BE426 /* PointMining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5CE1F2C2E80008BE426 /* PointMining.swift */; };
+		1515C5D81F2C2E80008BE426 /* SanityChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5CF1F2C2E80008BE426 /* SanityChecking.swift */; };
+		3161C45E6D49C9019978F767 /* Pods_NerdQuestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 793E9065835A09DC47AC7EA7 /* Pods_NerdQuestTests.framework */; };
+		389724FC4F37A6FED7FD8369 /* Pods_NerdQuest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C57399190113E06EB7898CC /* Pods_NerdQuest.framework */; };
+		FC69741CBF876FEC7E3C85AE /* Pods_NerdQuestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4492732AE4749F25AAE02029 /* Pods_NerdQuestUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1515C58E1F2C2CF2008BE426 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1515C5741F2C2CF2008BE426 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1515C57B1F2C2CF2008BE426;
+			remoteInfo = NerdQuest;
+		};
+		1515C5991F2C2CF2008BE426 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1515C5741F2C2CF2008BE426 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1515C57B1F2C2CF2008BE426;
+			remoteInfo = NerdQuest;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1515C57C1F2C2CF2008BE426 /* NerdQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NerdQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1515C57F1F2C2CF2008BE426 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1515C5831F2C2CF2008BE426 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1515C5861F2C2CF2008BE426 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1515C5881F2C2CF2008BE426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1515C58D1F2C2CF2008BE426 /* NerdQuestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NerdQuestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1515C5911F2C2CF2008BE426 /* NerdQuestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NerdQuestTests.swift; sourceTree = "<group>"; };
+		1515C5931F2C2CF2008BE426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1515C5981F2C2CF2008BE426 /* NerdQuestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NerdQuestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1515C59C1F2C2CF2008BE426 /* NerdQuestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NerdQuestUITests.swift; sourceTree = "<group>"; };
+		1515C59E1F2C2CF2008BE426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1515C5AA1F2C2D3D008BE426 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		1515C5AC1F2C2D84008BE426 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		1515C5B01F2C2DBE008BE426 /* NerdBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdBadge.swift; sourceTree = "<group>"; };
+		1515C5B11F2C2DBE008BE426 /* NerdItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdItem.swift; sourceTree = "<group>"; };
+		1515C5B21F2C2DBE008BE426 /* NerdPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdPoint.swift; sourceTree = "<group>"; };
+		1515C5B81F2C2E68008BE426 /* NerdNetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdNetworkRequest.swift; sourceTree = "<group>"; };
+		1515C5B91F2C2E68008BE426 /* NerdPointResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdPointResource.swift; sourceTree = "<group>"; };
+		1515C5BB1F2C2E68008BE426 /* ApiResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResource.swift; sourceTree = "<group>"; };
+		1515C5BC1F2C2E68008BE426 /* NetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		1515C5C21F2C2E7A008BE426 /* Passable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Passable.swift; sourceTree = "<group>"; };
+		1515C5C61F2C2E80008BE426 /* LocalBattlingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalBattlingService.swift; sourceTree = "<group>"; };
+		1515C5C71F2C2E80008BE426 /* LocalItemSavingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalItemSavingService.swift; sourceTree = "<group>"; };
+		1515C5C81F2C2E80008BE426 /* LocalPointMiningService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalPointMiningService.swift; sourceTree = "<group>"; };
+		1515C5C91F2C2E80008BE426 /* MacOSSanityCheckingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacOSSanityCheckingService.swift; sourceTree = "<group>"; };
+		1515C5CA1F2C2E80008BE426 /* NerdService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdService.swift; sourceTree = "<group>"; };
+		1515C5CC1F2C2E80008BE426 /* Battling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battling.swift; sourceTree = "<group>"; };
+		1515C5CD1F2C2E80008BE426 /* ItemSaving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSaving.swift; sourceTree = "<group>"; };
+		1515C5CE1F2C2E80008BE426 /* PointMining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointMining.swift; sourceTree = "<group>"; };
+		1515C5CF1F2C2E80008BE426 /* SanityChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SanityChecking.swift; sourceTree = "<group>"; };
+		2C57399190113E06EB7898CC /* Pods_NerdQuest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NerdQuest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4492732AE4749F25AAE02029 /* Pods_NerdQuestUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NerdQuestUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FA5A708E4FA93C9E41BB1B3 /* Pods-NerdQuest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NerdQuest.release.xcconfig"; path = "Pods/Target Support Files/Pods-NerdQuest/Pods-NerdQuest.release.xcconfig"; sourceTree = "<group>"; };
+		70064910F853722D3D8D6B54 /* Pods-NerdQuestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NerdQuestTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NerdQuestTests/Pods-NerdQuestTests.release.xcconfig"; sourceTree = "<group>"; };
+		793E9065835A09DC47AC7EA7 /* Pods_NerdQuestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NerdQuestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88F2DA5574C6C758B6E1056A /* Pods-NerdQuestUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NerdQuestUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NerdQuestUITests/Pods-NerdQuestUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C39F42F14BD9FFBA104B9D66 /* Pods-NerdQuestUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NerdQuestUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NerdQuestUITests/Pods-NerdQuestUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		EF31B509384A83AF32B42091 /* Pods-NerdQuestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NerdQuestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NerdQuestTests/Pods-NerdQuestTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F039AA4762CC1AA5C7DB7A21 /* Pods-NerdQuest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NerdQuest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NerdQuest/Pods-NerdQuest.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1515C5791F2C2CF2008BE426 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				389724FC4F37A6FED7FD8369 /* Pods_NerdQuest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1515C58A1F2C2CF2008BE426 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3161C45E6D49C9019978F767 /* Pods_NerdQuestTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1515C5951F2C2CF2008BE426 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC69741CBF876FEC7E3C85AE /* Pods_NerdQuestUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1515C5731F2C2CF2008BE426 = {
+			isa = PBXGroup;
+			children = (
+				1515C57E1F2C2CF2008BE426 /* NerdQuest */,
+				1515C5901F2C2CF2008BE426 /* NerdQuestTests */,
+				1515C59B1F2C2CF2008BE426 /* NerdQuestUITests */,
+				1515C57D1F2C2CF2008BE426 /* Products */,
+				8335BD5021F8CB30A3DD2531 /* Pods */,
+				4C350AD9CC7D7961588BB9DD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1515C57D1F2C2CF2008BE426 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1515C57C1F2C2CF2008BE426 /* NerdQuest.app */,
+				1515C58D1F2C2CF2008BE426 /* NerdQuestTests.xctest */,
+				1515C5981F2C2CF2008BE426 /* NerdQuestUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1515C57E1F2C2CF2008BE426 /* NerdQuest */ = {
+			isa = PBXGroup;
+			children = (
+				1515C5AA1F2C2D3D008BE426 /* AppConstants.swift */,
+				1515C57F1F2C2CF2008BE426 /* AppDelegate.swift */,
+				1515C5C11F2C2E7A008BE426 /* Root */,
+				1515C5C41F2C2E80008BE426 /* Services */,
+				1515C5B61F2C2E68008BE426 /* Network */,
+				1515C5AF1F2C2DB8008BE426 /* Models */,
+				1515C5AE1F2C2D8D008BE426 /* ViewControllers */,
+				152A2DBE1F2C30EB00A0F1E3 /* Resources */,
+			);
+			path = NerdQuest;
+			sourceTree = "<group>";
+		};
+		1515C5901F2C2CF2008BE426 /* NerdQuestTests */ = {
+			isa = PBXGroup;
+			children = (
+				1515C5911F2C2CF2008BE426 /* NerdQuestTests.swift */,
+				1515C5931F2C2CF2008BE426 /* Info.plist */,
+			);
+			path = NerdQuestTests;
+			sourceTree = "<group>";
+		};
+		1515C59B1F2C2CF2008BE426 /* NerdQuestUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1515C59C1F2C2CF2008BE426 /* NerdQuestUITests.swift */,
+				1515C59E1F2C2CF2008BE426 /* Info.plist */,
+			);
+			path = NerdQuestUITests;
+			sourceTree = "<group>";
+		};
+		1515C5AE1F2C2D8D008BE426 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1515C5AC1F2C2D84008BE426 /* MainViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1515C5AF1F2C2DB8008BE426 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1515C5B01F2C2DBE008BE426 /* NerdBadge.swift */,
+				1515C5B11F2C2DBE008BE426 /* NerdItem.swift */,
+				1515C5B21F2C2DBE008BE426 /* NerdPoint.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		1515C5B61F2C2E68008BE426 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1515C5B71F2C2E68008BE426 /* Implementations */,
+				1515C5BA1F2C2E68008BE426 /* Protocols */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		1515C5B71F2C2E68008BE426 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				1515C5B81F2C2E68008BE426 /* NerdNetworkRequest.swift */,
+				1515C5B91F2C2E68008BE426 /* NerdPointResource.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
+		1515C5BA1F2C2E68008BE426 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1515C5BB1F2C2E68008BE426 /* ApiResource.swift */,
+				1515C5BC1F2C2E68008BE426 /* NetworkRequest.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		1515C5C11F2C2E7A008BE426 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				1515C5C21F2C2E7A008BE426 /* Passable.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		1515C5C41F2C2E80008BE426 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1515C5C51F2C2E80008BE426 /* Implementation */,
+				1515C5CA1F2C2E80008BE426 /* NerdService.swift */,
+				1515C5CB1F2C2E80008BE426 /* Protocols */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1515C5C51F2C2E80008BE426 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				1515C5C61F2C2E80008BE426 /* LocalBattlingService.swift */,
+				1515C5C71F2C2E80008BE426 /* LocalItemSavingService.swift */,
+				1515C5C81F2C2E80008BE426 /* LocalPointMiningService.swift */,
+				1515C5C91F2C2E80008BE426 /* MacOSSanityCheckingService.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
+		1515C5CB1F2C2E80008BE426 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1515C5CC1F2C2E80008BE426 /* Battling.swift */,
+				1515C5CD1F2C2E80008BE426 /* ItemSaving.swift */,
+				1515C5CE1F2C2E80008BE426 /* PointMining.swift */,
+				1515C5CF1F2C2E80008BE426 /* SanityChecking.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		152A2DBE1F2C30EB00A0F1E3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1515C5831F2C2CF2008BE426 /* Assets.xcassets */,
+				1515C5851F2C2CF2008BE426 /* Main.storyboard */,
+				1515C5881F2C2CF2008BE426 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4C350AD9CC7D7961588BB9DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C57399190113E06EB7898CC /* Pods_NerdQuest.framework */,
+				793E9065835A09DC47AC7EA7 /* Pods_NerdQuestTests.framework */,
+				4492732AE4749F25AAE02029 /* Pods_NerdQuestUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8335BD5021F8CB30A3DD2531 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F039AA4762CC1AA5C7DB7A21 /* Pods-NerdQuest.debug.xcconfig */,
+				5FA5A708E4FA93C9E41BB1B3 /* Pods-NerdQuest.release.xcconfig */,
+				EF31B509384A83AF32B42091 /* Pods-NerdQuestTests.debug.xcconfig */,
+				70064910F853722D3D8D6B54 /* Pods-NerdQuestTests.release.xcconfig */,
+				C39F42F14BD9FFBA104B9D66 /* Pods-NerdQuestUITests.debug.xcconfig */,
+				88F2DA5574C6C758B6E1056A /* Pods-NerdQuestUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1515C57B1F2C2CF2008BE426 /* NerdQuest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1515C5A11F2C2CF2008BE426 /* Build configuration list for PBXNativeTarget "NerdQuest" */;
+			buildPhases = (
+				78FBBB6E4AFF0931D1B0D87F /* [CP] Check Pods Manifest.lock */,
+				1515C5781F2C2CF2008BE426 /* Sources */,
+				1515C5791F2C2CF2008BE426 /* Frameworks */,
+				1515C57A1F2C2CF2008BE426 /* Resources */,
+				385383AE1A292CDE02DBD7D9 /* [CP] Embed Pods Frameworks */,
+				33E3888F11E2C5F34F859DB7 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NerdQuest;
+			productName = NerdQuest;
+			productReference = 1515C57C1F2C2CF2008BE426 /* NerdQuest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1515C58C1F2C2CF2008BE426 /* NerdQuestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1515C5A41F2C2CF2008BE426 /* Build configuration list for PBXNativeTarget "NerdQuestTests" */;
+			buildPhases = (
+				6ABD360AB268A3F4E70FCEA1 /* [CP] Check Pods Manifest.lock */,
+				1515C5891F2C2CF2008BE426 /* Sources */,
+				1515C58A1F2C2CF2008BE426 /* Frameworks */,
+				1515C58B1F2C2CF2008BE426 /* Resources */,
+				0718ABF599C33C9EAF3B5FBF /* [CP] Embed Pods Frameworks */,
+				61067E63684D9F827AA6651C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1515C58F1F2C2CF2008BE426 /* PBXTargetDependency */,
+			);
+			name = NerdQuestTests;
+			productName = NerdQuestTests;
+			productReference = 1515C58D1F2C2CF2008BE426 /* NerdQuestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1515C5971F2C2CF2008BE426 /* NerdQuestUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1515C5A71F2C2CF2008BE426 /* Build configuration list for PBXNativeTarget "NerdQuestUITests" */;
+			buildPhases = (
+				D9DE390FA5B4F59F8A194AFB /* [CP] Check Pods Manifest.lock */,
+				1515C5941F2C2CF2008BE426 /* Sources */,
+				1515C5951F2C2CF2008BE426 /* Frameworks */,
+				1515C5961F2C2CF2008BE426 /* Resources */,
+				A04D1E3F0B8993E249316D93 /* [CP] Embed Pods Frameworks */,
+				2ED140B8DBC70BED80065192 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1515C59A1F2C2CF2008BE426 /* PBXTargetDependency */,
+			);
+			name = NerdQuestUITests;
+			productName = NerdQuestUITests;
+			productReference = 1515C5981F2C2CF2008BE426 /* NerdQuestUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1515C5741F2C2CF2008BE426 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Nicholas Lash";
+				TargetAttributes = {
+					1515C57B1F2C2CF2008BE426 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 837K2FL575;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+					};
+					1515C58C1F2C2CF2008BE426 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 837K2FL575;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 1515C57B1F2C2CF2008BE426;
+					};
+					1515C5971F2C2CF2008BE426 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 837K2FL575;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 1515C57B1F2C2CF2008BE426;
+					};
+				};
+			};
+			buildConfigurationList = 1515C5771F2C2CF2008BE426 /* Build configuration list for PBXProject "NerdQuest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1515C5731F2C2CF2008BE426;
+			productRefGroup = 1515C57D1F2C2CF2008BE426 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1515C57B1F2C2CF2008BE426 /* NerdQuest */,
+				1515C58C1F2C2CF2008BE426 /* NerdQuestTests */,
+				1515C5971F2C2CF2008BE426 /* NerdQuestUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1515C57A1F2C2CF2008BE426 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1515C5841F2C2CF2008BE426 /* Assets.xcassets in Resources */,
+				1515C5871F2C2CF2008BE426 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1515C58B1F2C2CF2008BE426 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1515C5961F2C2CF2008BE426 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0718ABF599C33C9EAF3B5FBF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NerdQuestTests/Pods-NerdQuestTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2ED140B8DBC70BED80065192 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NerdQuestUITests/Pods-NerdQuestUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		33E3888F11E2C5F34F859DB7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NerdQuest/Pods-NerdQuest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		385383AE1A292CDE02DBD7D9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NerdQuest/Pods-NerdQuest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		61067E63684D9F827AA6651C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NerdQuestTests/Pods-NerdQuestTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6ABD360AB268A3F4E70FCEA1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		78FBBB6E4AFF0931D1B0D87F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A04D1E3F0B8993E249316D93 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NerdQuestUITests/Pods-NerdQuestUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D9DE390FA5B4F59F8A194AFB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1515C5781F2C2CF2008BE426 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1515C5D51F2C2E80008BE426 /* Battling.swift in Sources */,
+				1515C5D21F2C2E80008BE426 /* LocalPointMiningService.swift in Sources */,
+				1515C5D61F2C2E80008BE426 /* ItemSaving.swift in Sources */,
+				1515C5D81F2C2E80008BE426 /* SanityChecking.swift in Sources */,
+				1515C5AB1F2C2D3D008BE426 /* AppConstants.swift in Sources */,
+				1515C5D71F2C2E80008BE426 /* PointMining.swift in Sources */,
+				1515C5801F2C2CF2008BE426 /* AppDelegate.swift in Sources */,
+				1515C5BF1F2C2E68008BE426 /* ApiResource.swift in Sources */,
+				1515C5B41F2C2DBE008BE426 /* NerdItem.swift in Sources */,
+				1515C5C01F2C2E68008BE426 /* NetworkRequest.swift in Sources */,
+				1515C5D41F2C2E80008BE426 /* NerdService.swift in Sources */,
+				1515C5BD1F2C2E68008BE426 /* NerdNetworkRequest.swift in Sources */,
+				1515C5B31F2C2DBE008BE426 /* NerdBadge.swift in Sources */,
+				1515C5BE1F2C2E68008BE426 /* NerdPointResource.swift in Sources */,
+				1515C5AD1F2C2D84008BE426 /* MainViewController.swift in Sources */,
+				1515C5B51F2C2DBE008BE426 /* NerdPoint.swift in Sources */,
+				1515C5D01F2C2E80008BE426 /* LocalBattlingService.swift in Sources */,
+				1515C5D31F2C2E80008BE426 /* MacOSSanityCheckingService.swift in Sources */,
+				1515C5D11F2C2E80008BE426 /* LocalItemSavingService.swift in Sources */,
+				1515C5C31F2C2E7A008BE426 /* Passable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1515C5891F2C2CF2008BE426 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1515C5921F2C2CF2008BE426 /* NerdQuestTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1515C5941F2C2CF2008BE426 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1515C59D1F2C2CF2008BE426 /* NerdQuestUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1515C58F1F2C2CF2008BE426 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1515C57B1F2C2CF2008BE426 /* NerdQuest */;
+			targetProxy = 1515C58E1F2C2CF2008BE426 /* PBXContainerItemProxy */;
+		};
+		1515C59A1F2C2CF2008BE426 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1515C57B1F2C2CF2008BE426 /* NerdQuest */;
+			targetProxy = 1515C5991F2C2CF2008BE426 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1515C5851F2C2CF2008BE426 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1515C5861F2C2CF2008BE426 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1515C59F1F2C2CF2008BE426 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1515C5A01F2C2CF2008BE426 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		1515C5A21F2C2CF2008BE426 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F039AA4762CC1AA5C7DB7A21 /* Pods-NerdQuest.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 837K2FL575;
+				INFOPLIST_FILE = NerdQuest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = soundsmitten.NerdQuest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		1515C5A31F2C2CF2008BE426 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FA5A708E4FA93C9E41BB1B3 /* Pods-NerdQuest.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 837K2FL575;
+				INFOPLIST_FILE = NerdQuest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = soundsmitten.NerdQuest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		1515C5A51F2C2CF2008BE426 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF31B509384A83AF32B42091 /* Pods-NerdQuestTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 837K2FL575;
+				INFOPLIST_FILE = NerdQuestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = soundsmitten.NerdQuestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NerdQuest.app/Contents/MacOS/NerdQuest";
+			};
+			name = Debug;
+		};
+		1515C5A61F2C2CF2008BE426 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70064910F853722D3D8D6B54 /* Pods-NerdQuestTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 837K2FL575;
+				INFOPLIST_FILE = NerdQuestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = soundsmitten.NerdQuestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NerdQuest.app/Contents/MacOS/NerdQuest";
+			};
+			name = Release;
+		};
+		1515C5A81F2C2CF2008BE426 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C39F42F14BD9FFBA104B9D66 /* Pods-NerdQuestUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 837K2FL575;
+				INFOPLIST_FILE = NerdQuestUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = soundsmitten.NerdQuestUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = NerdQuest;
+			};
+			name = Debug;
+		};
+		1515C5A91F2C2CF2008BE426 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88F2DA5574C6C758B6E1056A /* Pods-NerdQuestUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 837K2FL575;
+				INFOPLIST_FILE = NerdQuestUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = soundsmitten.NerdQuestUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = NerdQuest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1515C5771F2C2CF2008BE426 /* Build configuration list for PBXProject "NerdQuest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1515C59F1F2C2CF2008BE426 /* Debug */,
+				1515C5A01F2C2CF2008BE426 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1515C5A11F2C2CF2008BE426 /* Build configuration list for PBXNativeTarget "NerdQuest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1515C5A21F2C2CF2008BE426 /* Debug */,
+				1515C5A31F2C2CF2008BE426 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1515C5A41F2C2CF2008BE426 /* Build configuration list for PBXNativeTarget "NerdQuestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1515C5A51F2C2CF2008BE426 /* Debug */,
+				1515C5A61F2C2CF2008BE426 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1515C5A71F2C2CF2008BE426 /* Build configuration list for PBXNativeTarget "NerdQuestUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1515C5A81F2C2CF2008BE426 /* Debug */,
+				1515C5A91F2C2CF2008BE426 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1515C5741F2C2CF2008BE426 /* Project object */;
+}

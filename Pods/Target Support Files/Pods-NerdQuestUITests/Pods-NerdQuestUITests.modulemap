@@ -1,0 +1,6 @@
+framework module Pods_NerdQuestUITests {
+  umbrella header "Pods-NerdQuestUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
