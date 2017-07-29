@@ -30,7 +30,7 @@ class MainViewController: NSViewController, Passable {
   
   private func loadPointMiningTable() {
     nerdService.sanityCheckingService.checkAPIKey(completion: { [weak self] in
-      nerdService.pointMiningService.startMining(completion: { [weak self] nerdPoint in
+      nerdService.pointMiningService.setupMining(completion: { [weak self] nerdPoint in
         guard let nerdPoint = nerdPoint,
           let this = self else {
             return
@@ -42,6 +42,7 @@ class MainViewController: NSViewController, Passable {
           this.nerdService.itemSavingService.saveItem(nerdItem: item)
         }
       })
+      nerdService.pointMiningService.startMining()
     })
   }
 }

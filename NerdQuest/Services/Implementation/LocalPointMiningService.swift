@@ -10,9 +10,9 @@ import Foundation
 
 class LocalPointMiningService: PointMining {
   var isMining = false
-  var isMiningRunning = false
+  private var isMiningRunning = false
   
-  func startMining(completion: @escaping (NerdPoint?) -> Void) {
+  func setupMining(completion: @escaping (NerdPoint?) -> Void) {
     isMining = true
     
     Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] (timer) in
@@ -24,9 +24,15 @@ class LocalPointMiningService: PointMining {
       }
     }.fire()
   }
+  
+  func startMining() {
+    isMining = true
+  }
+  
   func stopMining() {
     isMining = false
   }
+  
   private func mine(completion: @escaping (NerdPoint?) -> Void) {
     isMiningRunning = true
     let resource = NerdPointResource()

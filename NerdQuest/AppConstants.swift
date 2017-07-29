@@ -23,6 +23,10 @@ enum NerdHTTPMethod: String {
   case post = "POST"
 }
 
+enum NerdBool: Int {
+  case no = 0
+  case yes = 1
+}
 struct StoryboardNames {
   static let kMain = "Main"
 }
@@ -35,6 +39,7 @@ struct ViewControllerIdentifiers {
 struct AppConstants {
   static let kMiningInterval = 1.0
   static let hasDatabase = false
+  static let kDatabasePath = "/Users/nlash/Code/Data/nerdQuest.db"
 }
 
 struct UserDefaultsKey {
@@ -43,4 +48,12 @@ struct UserDefaultsKey {
 
 struct CellIdentifiers {
   static let kMessageCellIdentifier = "MessageCell"
+}
+
+enum ItemType: Int {
+  case buff = 0
+  case weapon = 1
+  case dontUse = 2
+  case unknown = 3
+  case manual = 4
 }

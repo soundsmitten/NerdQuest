@@ -14,9 +14,6 @@
 		1515C59D1F2C2CF2008BE426 /* NerdQuestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C59C1F2C2CF2008BE426 /* NerdQuestUITests.swift */; };
 		1515C5AB1F2C2D3D008BE426 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5AA1F2C2D3D008BE426 /* AppConstants.swift */; };
 		1515C5AD1F2C2D84008BE426 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5AC1F2C2D84008BE426 /* MainViewController.swift */; };
-		1515C5B31F2C2DBE008BE426 /* NerdBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5B01F2C2DBE008BE426 /* NerdBadge.swift */; };
-		1515C5B41F2C2DBE008BE426 /* NerdItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5B11F2C2DBE008BE426 /* NerdItem.swift */; };
-		1515C5B51F2C2DBE008BE426 /* NerdPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5B21F2C2DBE008BE426 /* NerdPoint.swift */; };
 		1515C5BD1F2C2E68008BE426 /* NerdNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5B81F2C2E68008BE426 /* NerdNetworkRequest.swift */; };
 		1515C5BE1F2C2E68008BE426 /* NerdPointResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5B91F2C2E68008BE426 /* NerdPointResource.swift */; };
 		1515C5BF1F2C2E68008BE426 /* ApiResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5BB1F2C2E68008BE426 /* ApiResource.swift */; };
@@ -31,6 +28,12 @@
 		1515C5D61F2C2E80008BE426 /* ItemSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5CD1F2C2E80008BE426 /* ItemSaving.swift */; };
 		1515C5D71F2C2E80008BE426 /* PointMining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5CE1F2C2E80008BE426 /* PointMining.swift */; };
 		1515C5D81F2C2E80008BE426 /* SanityChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5CF1F2C2E80008BE426 /* SanityChecking.swift */; };
+		158A0CE91F2C6B67004F317B /* NerdItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE41F2C6B67004F317B /* NerdItem.swift */; };
+		158A0CEA1F2C6B67004F317B /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE51F2C6B67004F317B /* Annotation.swift */; };
+		158A0CEB1F2C6B67004F317B /* NerdBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE61F2C6B67004F317B /* NerdBadge.swift */; };
+		158A0CEC1F2C6B67004F317B /* NerdPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE71F2C6B67004F317B /* NerdPoint.swift */; };
+		158A0CED1F2C6B67004F317B /* AnnotatedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE81F2C6B67004F317B /* AnnotatedItem.swift */; };
+		158A0CEF1F2C6BAB004F317B /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CEE1F2C6BAB004F317B /* MainWindowController.swift */; };
 		3161C45E6D49C9019978F767 /* Pods_NerdQuestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 793E9065835A09DC47AC7EA7 /* Pods_NerdQuestTests.framework */; };
 		389724FC4F37A6FED7FD8369 /* Pods_NerdQuest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C57399190113E06EB7898CC /* Pods_NerdQuest.framework */; };
 		FC69741CBF876FEC7E3C85AE /* Pods_NerdQuestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4492732AE4749F25AAE02029 /* Pods_NerdQuestUITests.framework */; };
@@ -67,9 +70,6 @@
 		1515C59E1F2C2CF2008BE426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1515C5AA1F2C2D3D008BE426 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		1515C5AC1F2C2D84008BE426 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		1515C5B01F2C2DBE008BE426 /* NerdBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdBadge.swift; sourceTree = "<group>"; };
-		1515C5B11F2C2DBE008BE426 /* NerdItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdItem.swift; sourceTree = "<group>"; };
-		1515C5B21F2C2DBE008BE426 /* NerdPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdPoint.swift; sourceTree = "<group>"; };
 		1515C5B81F2C2E68008BE426 /* NerdNetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdNetworkRequest.swift; sourceTree = "<group>"; };
 		1515C5B91F2C2E68008BE426 /* NerdPointResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdPointResource.swift; sourceTree = "<group>"; };
 		1515C5BB1F2C2E68008BE426 /* ApiResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResource.swift; sourceTree = "<group>"; };
@@ -84,6 +84,12 @@
 		1515C5CD1F2C2E80008BE426 /* ItemSaving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSaving.swift; sourceTree = "<group>"; };
 		1515C5CE1F2C2E80008BE426 /* PointMining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointMining.swift; sourceTree = "<group>"; };
 		1515C5CF1F2C2E80008BE426 /* SanityChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SanityChecking.swift; sourceTree = "<group>"; };
+		158A0CE41F2C6B67004F317B /* NerdItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdItem.swift; sourceTree = "<group>"; };
+		158A0CE51F2C6B67004F317B /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		158A0CE61F2C6B67004F317B /* NerdBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdBadge.swift; sourceTree = "<group>"; };
+		158A0CE71F2C6B67004F317B /* NerdPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdPoint.swift; sourceTree = "<group>"; };
+		158A0CE81F2C6B67004F317B /* AnnotatedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotatedItem.swift; sourceTree = "<group>"; };
+		158A0CEE1F2C6BAB004F317B /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		2C57399190113E06EB7898CC /* Pods_NerdQuest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NerdQuest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4492732AE4749F25AAE02029 /* Pods_NerdQuestUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NerdQuestUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FA5A708E4FA93C9E41BB1B3 /* Pods-NerdQuest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NerdQuest.release.xcconfig"; path = "Pods/Target Support Files/Pods-NerdQuest/Pods-NerdQuest.release.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +154,7 @@
 		1515C57E1F2C2CF2008BE426 /* NerdQuest */ = {
 			isa = PBXGroup;
 			children = (
+				1515C5881F2C2CF2008BE426 /* Info.plist */,
 				1515C5AA1F2C2D3D008BE426 /* AppConstants.swift */,
 				1515C57F1F2C2CF2008BE426 /* AppDelegate.swift */,
 				1515C5C11F2C2E7A008BE426 /* Root */,
@@ -181,19 +188,22 @@
 		1515C5AE1F2C2D8D008BE426 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				158A0CEE1F2C6BAB004F317B /* MainWindowController.swift */,
 				1515C5AC1F2C2D84008BE426 /* MainViewController.swift */,
 			);
-			name = ViewControllers;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		1515C5AF1F2C2DB8008BE426 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1515C5B01F2C2DBE008BE426 /* NerdBadge.swift */,
-				1515C5B11F2C2DBE008BE426 /* NerdItem.swift */,
-				1515C5B21F2C2DBE008BE426 /* NerdPoint.swift */,
+				158A0CE81F2C6B67004F317B /* AnnotatedItem.swift */,
+				158A0CE51F2C6B67004F317B /* Annotation.swift */,
+				158A0CE61F2C6B67004F317B /* NerdBadge.swift */,
+				158A0CE41F2C6B67004F317B /* NerdItem.swift */,
+				158A0CE71F2C6B67004F317B /* NerdPoint.swift */,
 			);
-			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		1515C5B61F2C2E68008BE426 /* Network */ = {
@@ -268,7 +278,6 @@
 			children = (
 				1515C5831F2C2CF2008BE426 /* Assets.xcassets */,
 				1515C5851F2C2CF2008BE426 /* Main.storyboard */,
-				1515C5881F2C2CF2008BE426 /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -583,21 +592,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				1515C5D51F2C2E80008BE426 /* Battling.swift in Sources */,
+				158A0CEF1F2C6BAB004F317B /* MainWindowController.swift in Sources */,
 				1515C5D21F2C2E80008BE426 /* LocalPointMiningService.swift in Sources */,
+				158A0CE91F2C6B67004F317B /* NerdItem.swift in Sources */,
+				158A0CED1F2C6B67004F317B /* AnnotatedItem.swift in Sources */,
 				1515C5D61F2C2E80008BE426 /* ItemSaving.swift in Sources */,
 				1515C5D81F2C2E80008BE426 /* SanityChecking.swift in Sources */,
+				158A0CEA1F2C6B67004F317B /* Annotation.swift in Sources */,
 				1515C5AB1F2C2D3D008BE426 /* AppConstants.swift in Sources */,
 				1515C5D71F2C2E80008BE426 /* PointMining.swift in Sources */,
 				1515C5801F2C2CF2008BE426 /* AppDelegate.swift in Sources */,
 				1515C5BF1F2C2E68008BE426 /* ApiResource.swift in Sources */,
-				1515C5B41F2C2DBE008BE426 /* NerdItem.swift in Sources */,
 				1515C5C01F2C2E68008BE426 /* NetworkRequest.swift in Sources */,
 				1515C5D41F2C2E80008BE426 /* NerdService.swift in Sources */,
+				158A0CEB1F2C6B67004F317B /* NerdBadge.swift in Sources */,
 				1515C5BD1F2C2E68008BE426 /* NerdNetworkRequest.swift in Sources */,
-				1515C5B31F2C2DBE008BE426 /* NerdBadge.swift in Sources */,
 				1515C5BE1F2C2E68008BE426 /* NerdPointResource.swift in Sources */,
 				1515C5AD1F2C2D84008BE426 /* MainViewController.swift in Sources */,
-				1515C5B51F2C2DBE008BE426 /* NerdPoint.swift in Sources */,
+				158A0CEC1F2C6B67004F317B /* NerdPoint.swift in Sources */,
 				1515C5D01F2C2E80008BE426 /* LocalBattlingService.swift in Sources */,
 				1515C5D31F2C2E80008BE426 /* MacOSSanityCheckingService.swift in Sources */,
 				1515C5D11F2C2E80008BE426 /* LocalItemSavingService.swift in Sources */,

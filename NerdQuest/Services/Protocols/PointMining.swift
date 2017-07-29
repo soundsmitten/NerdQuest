@@ -9,6 +9,8 @@
 import Foundation
 
 protocol PointMining {
-  func startMining(completion: @escaping (NerdPoint?) -> Void)
+  var isMining: Bool {get set}
+  func setupMining(completion: @escaping (NerdPoint?) -> Void)
+  func startMining()
   func stopMining()
 }

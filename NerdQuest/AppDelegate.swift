@@ -14,14 +14,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var window: NSWindow!
   
   func applicationDidFinishLaunching(_ aNotification: Notification) {
-//    UserDefaults.standard.set(nil, forKey: "apikey")
+//    UserDefaults.standard.set(nil, forKey: "apikey") // uncomment reset the api key if you fucked up putting it in
     let nerdService = NerdService(sanityCheckingService: MacOSSanityCheckingService(),
                                   pointMiningService: LocalPointMiningService(),
                                   itemSavingService: LocalItemSavingService())
     
     let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: StoryboardNames.kMain), bundle: nil)
     guard
-      let mainWindowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: ViewControllerIdentifiers.kMainWindowController)) as? NSWindowController,
+      let mainWindowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: ViewControllerIdentifiers.kMainWindowController)) as? MainWindowController,
       let mainViewController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: ViewControllerIdentifiers.kMainViewController)) as? MainViewController else {
         return
     }

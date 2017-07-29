@@ -15,6 +15,10 @@ struct NerdItem: Codable {
   let id: String
   let rarity: Int
   
+  // client-added properties
+  var dateAdded: Int = Int(Date().timeIntervalSince1970)
+  var isUsed: Bool = false
+
   enum CodingKeys: String, CodingKey {
     case name = "Name"
     case description = "Description"
