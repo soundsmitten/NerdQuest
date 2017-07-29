@@ -29,6 +29,7 @@ class MainViewController: NSViewController, Passable {
     loadPointMiningTable()
   }
   
+  @IBOutlet weak var pointsLabel: NSTextField!
   
   @IBAction func toggleMining(_ sender: Any) {
     guard let button = sender as? NSButton else {
@@ -51,9 +52,13 @@ class MainViewController: NSViewController, Passable {
           let this = self else {
             return
         }
+        this.pointsLabel.stringValue = "Points: \(nerdPoint.points)"
+        
+        if nerdPoint.messages.count > 1 {
         let message = nerdPoint.messages.joined()
-        this.messages = [message] + this.messages
-        this.messageTableView.reloadData()
+          this.messages = [message] + this.messages
+          this.messageTableView.reloadData()
+        }
         if let item = nerdPoint.item {
           this.nerdService.itemSavingService.saveItem(nerdItem: item)
         }
