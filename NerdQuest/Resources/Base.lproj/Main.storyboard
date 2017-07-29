@@ -431,17 +431,20 @@
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="0qg-iF-ZlQ"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="6A9-n6-hjN"/>
-                                <toolbarItem implicitItemIdentifier="7E01DFAD-1E33-40FB-B0FF-61C959908507" label="Custom View" paletteLabel="Custom View" id="bgg-sU-kbR">
+                                <toolbarItem implicitItemIdentifier="7E01DFAD-1E33-40FB-B0FF-61C959908507" label="" paletteLabel="" id="bgg-sU-kbR">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="127" height="25"/>
                                     <size key="maxSize" width="127" height="25"/>
                                     <button key="view" verticalHuggingPriority="750" id="WhF-TY-zEX">
                                         <rect key="frame" x="0.0" y="14" width="127" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" title="Mining..." bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J1H-aa-LgW">
+                                        <buttonCell key="cell" type="roundTextured" title="Mining On" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J1H-aa-LgW">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="toggleMining:" target="Oky-zY-oP4" id="Z68-Ai-7uP"/>
+                                        </connections>
                                     </button>
                                 </toolbarItem>
                             </allowedToolbarItems>

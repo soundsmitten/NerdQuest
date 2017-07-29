@@ -17,6 +17,7 @@ class MainViewController: NSViewController, Passable {
   var isMiningRunning = false
   var nerdService: NerdService!
   
+  
   @IBOutlet weak var messageTableView: NSTableView!
   
   override func viewDidLoad() {
@@ -28,7 +29,22 @@ class MainViewController: NSViewController, Passable {
     loadPointMiningTable()
   }
   
+  
+  @IBAction func toggleMining(_ sender: Any) {
+    guard let button = sender as? NSButton else {
+      return
+    }
+    if button.state == .on {
+      nerdService.pointMiningService.startMining()
+      button.cell?.title = NSLocalizedString("Mining On", comment: "")
+    } else {
+      nerdService.pointMiningService.stopMining()
+      button.cell?.title = NSLocalizedString("Mining Off", comment: "")
+    }
+  }
+  
   private func loadPointMiningTable() {
+    nerdService.pointMiningService.startMining()
     nerdService.sanityCheckingService.checkAPIKey(completion: { [weak self] in
       nerdService.pointMiningService.setupMining(completion: { [weak self] nerdPoint in
         guard let nerdPoint = nerdPoint,
@@ -42,7 +58,6 @@ class MainViewController: NSViewController, Passable {
           this.nerdService.itemSavingService.saveItem(nerdItem: item)
         }
       })
-      nerdService.pointMiningService.startMining()
     })
   }
 }

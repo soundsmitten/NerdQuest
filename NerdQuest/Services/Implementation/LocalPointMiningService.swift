@@ -12,9 +12,7 @@ class LocalPointMiningService: PointMining {
   var isMining = false
   private var isMiningRunning = false
   
-  func setupMining(completion: @escaping (NerdPoint?) -> Void) {
-    isMining = true
-    
+  func setupMining(completion: @escaping (NerdPoint?) -> Void) {    
     Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] (timer) in
       guard let this = self else {
         return
@@ -26,7 +24,10 @@ class LocalPointMiningService: PointMining {
   }
   
   func startMining() {
-    isMining = true
+    let when = DispatchTime.now() + AppConstants.kMiningInterval
+    DispatchQueue.main.asyncAfter(deadline: when, execute: { [weak self] in
+      self?.isMining = true
+    })
   }
   
   func stopMining() {
