@@ -9,24 +9,34 @@
 import Cocoa
 
 class MainViewController: NSViewController, Passable {
-  var messages = [String]()
-  
   let pointMiningService = LocalPointMiningService()
+  let messagesTableDataSource = MessagesTableDataSource()
+  let itemsTableDataSource = ItemsTableDataSource()
   
   var isMiningEnabled = true
   var isMiningRunning = false
   var nerdService: NerdService!
   
-  
   @IBOutlet weak var messageTableView: NSTableView!
+  @IBOutlet weak var itemsTableView: NSTableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    messageTableView.dataSource = self
-    messageTableView.delegate = self
+    messageTableView.dataSource = messagesTableDataSource
+    messageTableView.delegate = messagesTableDataSource
     
-    loadPointMiningTable()
+    itemsTableView.dataSource = itemsTableDataSource
+    itemsTableView.delegate = itemsTableDataSource
+    
+    refreshItemsTable()
+    
+    startMining()
+  }
+  
+  func refreshItemsTable() {
+    itemsTableDataSource.annotatedItems = nerdService.itemSavingService.getAnnotatedItems()
+    itemsTableView.reloadData()
   }
   
   @IBOutlet weak var pointsLabel: NSTextField!
@@ -44,7 +54,7 @@ class MainViewController: NSViewController, Passable {
     }
   }
   
-  private func loadPointMiningTable() {
+  private func startMining() {
     nerdService.pointMiningService.startMining()
     nerdService.sanityCheckingService.checkAPIKey(completion: { [weak self] in
       nerdService.pointMiningService.setupMining(completion: { [weak self] nerdPoint in
@@ -56,33 +66,14 @@ class MainViewController: NSViewController, Passable {
         
         if nerdPoint.messages.count > 1 {
         let message = nerdPoint.messages.joined()
-          this.messages = [message] + this.messages
+          this.messagesTableDataSource.messages = [message] + this.messagesTableDataSource.messages
           this.messageTableView.reloadData()
         }
         if let item = nerdPoint.item {
           this.nerdService.itemSavingService.saveItem(nerdItem: item)
+          this.refreshItemsTable()
         }
       })
     })
-  }
-}
-
-extension MainViewController: NSTableViewDelegate {
-  func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-    guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: CellIdentifiers.kMessageCellIdentifier), owner: nil) as? NSTableCellView else {
-      return nil
-    }
-    cell.textField?.stringValue = messages[row]
-    return cell
-  }
-  
-  func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-    return 20.0
-  }
-}
-
-extension MainViewController: NSTableViewDataSource {
-  func numberOfRows(in tableView: NSTableView) -> Int {
-    return messages.count
   }
 }

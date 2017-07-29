@@ -28,6 +28,8 @@
 		1515C5D61F2C2E80008BE426 /* ItemSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5CD1F2C2E80008BE426 /* ItemSaving.swift */; };
 		1515C5D71F2C2E80008BE426 /* PointMining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5CE1F2C2E80008BE426 /* PointMining.swift */; };
 		1515C5D81F2C2E80008BE426 /* SanityChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5CF1F2C2E80008BE426 /* SanityChecking.swift */; };
+		1534818B1F2C806900C7DB16 /* MessagesTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1534818A1F2C806900C7DB16 /* MessagesTableDataSource.swift */; };
+		1534818D1F2C825200C7DB16 /* ItemsTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1534818C1F2C825200C7DB16 /* ItemsTableDataSource.swift */; };
 		158A0CE91F2C6B67004F317B /* NerdItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE41F2C6B67004F317B /* NerdItem.swift */; };
 		158A0CEA1F2C6B67004F317B /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE51F2C6B67004F317B /* Annotation.swift */; };
 		158A0CEB1F2C6B67004F317B /* NerdBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE61F2C6B67004F317B /* NerdBadge.swift */; };
@@ -84,6 +86,8 @@
 		1515C5CD1F2C2E80008BE426 /* ItemSaving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSaving.swift; sourceTree = "<group>"; };
 		1515C5CE1F2C2E80008BE426 /* PointMining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointMining.swift; sourceTree = "<group>"; };
 		1515C5CF1F2C2E80008BE426 /* SanityChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SanityChecking.swift; sourceTree = "<group>"; };
+		1534818A1F2C806900C7DB16 /* MessagesTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableDataSource.swift; sourceTree = "<group>"; };
+		1534818C1F2C825200C7DB16 /* ItemsTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableDataSource.swift; sourceTree = "<group>"; };
 		158A0CE41F2C6B67004F317B /* NerdItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdItem.swift; sourceTree = "<group>"; };
 		158A0CE51F2C6B67004F317B /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		158A0CE61F2C6B67004F317B /* NerdBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdBadge.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 		1515C5AE1F2C2D8D008BE426 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				153481891F2C804300C7DB16 /* TableDataSources */,
 				158A0CEE1F2C6BAB004F317B /* MainWindowController.swift */,
 				1515C5AC1F2C2D84008BE426 /* MainViewController.swift */,
 			);
@@ -280,6 +285,15 @@
 				1515C5851F2C2CF2008BE426 /* Main.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		153481891F2C804300C7DB16 /* TableDataSources */ = {
+			isa = PBXGroup;
+			children = (
+				1534818A1F2C806900C7DB16 /* MessagesTableDataSource.swift */,
+				1534818C1F2C825200C7DB16 /* ItemsTableDataSource.swift */,
+			);
+			path = TableDataSources;
 			sourceTree = "<group>";
 		};
 		4C350AD9CC7D7961588BB9DD /* Frameworks */ = {
@@ -594,6 +608,7 @@
 				1515C5D51F2C2E80008BE426 /* Battling.swift in Sources */,
 				158A0CEF1F2C6BAB004F317B /* MainWindowController.swift in Sources */,
 				1515C5D21F2C2E80008BE426 /* LocalPointMiningService.swift in Sources */,
+				1534818B1F2C806900C7DB16 /* MessagesTableDataSource.swift in Sources */,
 				158A0CE91F2C6B67004F317B /* NerdItem.swift in Sources */,
 				158A0CED1F2C6B67004F317B /* AnnotatedItem.swift in Sources */,
 				1515C5D61F2C2E80008BE426 /* ItemSaving.swift in Sources */,
@@ -608,6 +623,7 @@
 				158A0CEB1F2C6B67004F317B /* NerdBadge.swift in Sources */,
 				1515C5BD1F2C2E68008BE426 /* NerdNetworkRequest.swift in Sources */,
 				1515C5BE1F2C2E68008BE426 /* NerdPointResource.swift in Sources */,
+				1534818D1F2C825200C7DB16 /* ItemsTableDataSource.swift in Sources */,
 				1515C5AD1F2C2D84008BE426 /* MainViewController.swift in Sources */,
 				158A0CEC1F2C6B67004F317B /* NerdPoint.swift in Sources */,
 				1515C5D01F2C2E80008BE426 /* LocalBattlingService.swift in Sources */,
