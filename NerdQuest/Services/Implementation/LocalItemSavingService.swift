@@ -52,7 +52,7 @@ class LocalItemSavingService: ItemSaving {
         return []
     }
     
-    let selectQuery = "select id, name, rarity, description, isUsed, dateAdded from Item order by dateAdded desc"
+    let selectQuery = "select id, name, rarity, description, isUsed, dateAdded from Item where isUsed = 0 order by dateAdded desc"
     do {
       let resultSet = try database.executeQuery(selectQuery, values: [])
       while resultSet.next() {
