@@ -613,11 +613,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="afz-NL-Lqb">
-                                                            <rect key="frame" x="299" y="1" width="342.5" height="17"/>
+                                                            <rect key="frame" x="299" y="1" width="342" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p14-uR-MKx">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="342.5" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="342" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="eHh-h7-JHd">
                                                                         <font key="font" metaFont="system"/>
@@ -646,11 +646,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="LWy-Tf-toj">
-                                                            <rect key="frame" x="644.5" y="1" width="83.5" height="17"/>
+                                                            <rect key="frame" x="644.5" y="1" width="83" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n9T-iY-TFp">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="83.5" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="83" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="hSy-M4-K63">
                                                                         <font key="font" metaFont="system"/>
