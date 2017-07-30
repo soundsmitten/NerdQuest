@@ -42,6 +42,7 @@ struct AppConstants {
   static let kBattlingInterval = 60.0
   static let hasDatabase = false
   static let kDatabasePath = "/Users/nlash/Code/Data/nerdQuest.db"
+  static let kBuffPercentage = 80
 }
 
 struct UserDefaultsKey {
@@ -58,6 +59,7 @@ struct CellIdentifiers {
   static let kItemCellIdentifier = "ItemCell"
   static let kPlayerCellIdentifier = "PlayerCell"
   static let kBattlingMessageCellIdentifier = "BattlingMessageCell"
+  static let kQueueCellIdentifier = "QueueCell"
 }
 
 enum ItemType: Int {
@@ -81,4 +83,8 @@ enum ItemType: Int {
       return "Manual"
     }
   }
+}
+
+struct SegueIdentifiers {
+  static let kMainToManualSegue = "MainToManualSegue"
 }

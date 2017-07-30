@@ -10,10 +10,15 @@ import Foundation
 
 typealias NameAndIDWithTarget = (String, String, String)
 
+protocol BattlingActionDidOccurDelegate {
+  func battlingActionDidOccur()
+}
 
 protocol Battling {
   var counter: Int { get set }
   var buffPercentage: Int! {get set}
+  var itemBuffer: [NameAndIDWithTarget] { get set }
+  var delegate: BattlingActionDidOccurDelegate? {get set}
   
   init(nerdService: NerdService)
   func setupBattling(completion: @escaping (NerdBattlingResponse?) -> Void)

@@ -15,8 +15,9 @@ class LocalBattlingService: Battling {
   private var nerdService: NerdService!
   private var isBattling: Bool = false
   private var isBattlingRunning: Bool = false
-  private var itemBuffer = [NameAndIDWithTarget]()
+  var itemBuffer = [NameAndIDWithTarget]()
   private var timer: Timer?
+  var delegate: BattlingActionDidOccurDelegate?
 
   required init(nerdService: NerdService) {
     self.nerdService = nerdService
@@ -102,9 +103,13 @@ class LocalBattlingService: Battling {
       completion(nerdBattlingResponse)
     })
   }
-
+  
   func getTarget(itemTypeToUse: ItemType) -> String? {
-    guard itemTypeToUse == .weapon else {
+    guard canUse(itemType: itemTypeToUse) else {
+      return nil
+    }
+    
+    guard itemTypeToUse == ItemType.weapon else  {
       return Nerds.kMe
     }
     
@@ -121,14 +126,24 @@ class LocalBattlingService: Battling {
     return enemies[index].name
   }
   
+  private func canUse(itemType: ItemType) -> Bool {
+    return itemType == .weapon || itemType == .buff
+  }
+  
   func useItem(nameAndIDWithTarget: NameAndIDWithTarget, completion: @escaping (NerdBattlingResponse?) -> Void) {
-    let resource = NerdBattlingResource()
-    let request = NerdNetworkRequest(resource: resource)
-    let name = nameAndIDWithTarget.0
+    //let name = nameAndIDWithTarget.0
     let itemID = nameAndIDWithTarget.1
     let target = nameAndIDWithTarget.2
-    let url = resource.url.appendingPathComponent(itemID)
     
+    guard !nerdService.itemSavingService.isItemUsed(itemID: itemID) else {
+      print("Item already used")
+      completion(nil)
+      return
+    }
+    
+    let resource = NerdBattlingResource()
+    let request = NerdNetworkRequest(resource: resource)
+    let url = resource.url.appendingPathComponent(itemID)
     var urlRequest = URLRequest(url: url)
     urlRequest.httpMethod = resource.httpMethod.rawValue
     urlRequest.addValue(UserDefaults.standard.string(forKey: UserDefaultsKey.kAPIKey)!, forHTTPHeaderField: HTTPHeaderKey.kAPIKey)
@@ -144,6 +159,7 @@ class LocalBattlingService: Battling {
         this.isBattlingRunning = false
         if let nerdBattlingResponse = nerdBattlingResponse {
           this.nerdService.itemSavingService.useItem(itemID: itemID)
+          this.delegate?.battlingActionDidOccur()
           completion(nerdBattlingResponse)
         } else {
           completion(nil)

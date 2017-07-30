@@ -8,8 +8,10 @@
 
 import Cocoa
 
+typealias NameAndID = (String, String)
+
 protocol ItemTappedDelegate {
-  func addToItemBuffer()
+  func addToItemBuffer(nameAndID: NameAndID)
 }
 
 @objc
@@ -43,6 +45,7 @@ class ItemsTableDataSource: NSObject {
   }
   var wrappedItems = [ItemTableWrapper]()
   weak var tableView: NSTableView!
+  var delegate: ItemTappedDelegate?
   
   enum ColumnInfo: String {
     case name = "itemName"
@@ -100,6 +103,13 @@ class ItemsTableDataSource: NSObject {
     self.tableView = tableView
     self.tableView.dataSource = self
     self.tableView.delegate = self
+    self.tableView.doubleAction = #selector(tableTapped(sender:))
+    self.tableView.target = self
+  }
+  
+  @objc func tableTapped(sender: AnyObject) {
+    let annotatedItem = annotatedItems[sender.clickedRow]
+    delegate?.addToItemBuffer(nameAndID: (annotatedItem.item.name, annotatedItem.item.id))
   }
 }
 

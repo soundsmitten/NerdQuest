@@ -13,4 +13,5 @@ protocol ItemSaving {
   func getAnnotatedItems() -> [AnnotatedItem]
   func getRandomItem(itemType: ItemType) -> AnnotatedItem?
   func useItem(itemID: String)
+  func isItemUsed(itemID: String) -> Bool
 }

@@ -14,6 +14,7 @@ class MainViewController: NSViewController, Passable {
   let battlingMessagesTableDataSource = BattlingMessagesTableDataSource()
   var itemsTableDataSource: ItemsTableDataSource!
   var leaderboardTableDataSource: LeaderboardTableDataSource!
+  var queueItemsTableDataSource: ItemQueueTableDataSource!
   
   var isMiningEnabled = true
   var isMiningRunning = false
@@ -24,6 +25,8 @@ class MainViewController: NSViewController, Passable {
   @IBOutlet weak var itemsTableView: NSTableView!
   @IBOutlet weak var leaderboardTableView: NSTableView!
   @IBOutlet weak var battlingMessageTableView: NSTableView!
+  @IBOutlet weak var queueItemsTableView: NSTableView!
+  
   @IBOutlet weak var itemCountdownLabel: NSTextField!
   @IBOutlet weak var pointsLabel: NSTextField!
 
@@ -32,12 +35,18 @@ class MainViewController: NSViewController, Passable {
 
     messageTableView.dataSource = messagesTableDataSource
     messageTableView.delegate = messagesTableDataSource
+    
     battlingMessageTableView.dataSource = battlingMessagesTableDataSource
     battlingMessageTableView.delegate = battlingMessagesTableDataSource
     
     itemsTableDataSource = ItemsTableDataSource(tableView: itemsTableView)
     leaderboardTableDataSource = LeaderboardTableDataSource(tableView: leaderboardTableView)
-    itemsTableView.doubleAction = #selector(doubleClickItemRow)
+    itemsTableDataSource.delegate = self
+
+    queueItemsTableDataSource = ItemQueueTableDataSource(tableView: queueItemsTableView)
+    queueItemsTableDataSource.delegate = self
+    
+    battlingService.delegate = self
     
     refreshItemsTable()
     
@@ -55,7 +64,6 @@ class MainViewController: NSViewController, Passable {
     itemsTableView.reloadData()
   }
   
-  
   @IBAction func toggleMining(_ sender: Any) {
     guard let button = sender as? NSButton else {
       return
@@ -69,22 +77,17 @@ class MainViewController: NSViewController, Passable {
     }
   }
   
-  @objc func doubleClickItemRow() {
-    let rowView = itemsTableView.rowView(atRow: itemsTableView.clickedRow, makeIfNecessary: false)
-    guard
-      let idCell = rowView?.view(atColumn: itemsTableView.numberOfColumns - 1) as? NSTableCellView,
-      let id = idCell.textField?.stringValue
-      else {
-        print("Can't get table text field value")
-        return
-    }
-   
-    guard let clickedItem = itemsTableDataSource.annotatedItems.find(predicate: {
-      $0.item.id == id
-    }) else {
+  @IBAction func toggleBattling(_ sender: Any) {
+    guard let button = sender as? NSButton else {
       return
     }
-    print(clickedItem)
+    if button.state == .on {
+      battlingService.startBattling()
+      button.cell?.title = NSLocalizedString("Battling On", comment: "")
+    } else {
+      battlingService.stopBattling()
+      button.cell?.title = NSLocalizedString("Battling Off", comment: "")
+    }
   }
   
   private func startMining() {
@@ -122,7 +125,7 @@ class MainViewController: NSViewController, Passable {
   }
   
   private func startBattling() {
-    battlingService.buffPercentage = 100
+    battlingService.buffPercentage = AppConstants.kBuffPercentage
     battlingService.startBattling()
     battlingService.setupBattling { [weak self] nerdBattlingResponse in
       guard
@@ -139,7 +142,74 @@ class MainViewController: NSViewController, Passable {
       guard let this = self else {
         return
       }
-      this.itemCountdownLabel.stringValue = "Item Timer: \(this.battlingService.counter)"
+      this.itemCountdownLabel.stringValue = "You're a great person." //"Item Timer: \(this.battlingService.counter)"
     }.fire()
+  }
+  
+  override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+    guard let identifier = segue.identifier else {
+      return
+    }
+    switch identifier {
+    case NSStoryboardSegue.Identifier(rawValue: SegueIdentifiers.kMainToManualSegue):
+      guard
+        let destination = segue.destinationController as? NSWindowController,
+        let manualLaunchViewController = destination.contentViewController as? ManualLaunchViewController else {
+          return
+      }
+      manualLaunchViewController.delegate = self
+      return
+    default:
+      return
+    }
+  }
+}
+
+extension MainViewController: ItemTappedDelegate {
+  func addToItemBuffer(nameAndID: NameAndID) {
+    let name = nameAndID.0
+    let itemID = nameAndID.1
+    
+    let alert = NSAlert()
+    let textField = NSTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 24))
+    textField.placeholderString = NSLocalizedString("Target", comment: "")
+    alert.accessoryView = textField
+    alert.window.initialFirstResponder = textField
+    alert.addButton(withTitle: NSLocalizedString("OK", comment: ""))
+    alert.addButton(withTitle: NSLocalizedString("Cancel", comment: ""))
+    alert.messageText = NSLocalizedString("Please enter your target.", comment: "")
+    alert.informativeText = NSLocalizedString("Be careful.", comment: "")
+    alert.alertStyle = .critical
+    let responseTag = alert.runModal()
+    if responseTag == .alertFirstButtonReturn {
+      let nameAndIDWithTarget = (name, itemID, textField.stringValue)
+      battlingService.enqueue(nameAndIDWithTarget)
+      queueItemsTableDataSource.queueItems = battlingService.itemBuffer
+      queueItemsTableView.reloadData()
+    }
+  }
+}
+
+extension MainViewController: QueueItemTappedDelegate {
+  func removeFromItemBuffer(queueItem: NameAndIDWithTarget) {
+    battlingService.remove(queueItem.1)
+    queueItemsTableDataSource.queueItems = battlingService.itemBuffer
+    queueItemsTableView.reloadData()
+  }
+}
+
+extension MainViewController: BattlingActionDidOccurDelegate {
+  func battlingActionDidOccur() {
+    queueItemsTableDataSource.queueItems = battlingService.itemBuffer
+    queueItemsTableView.reloadData()
+    refreshItemsTable()
+  }
+}
+
+extension MainViewController: ManualLaunchAddedToQueue {
+  func manualLaunchAddedToQueue() {
+    queueItemsTableDataSource.queueItems = battlingService.itemBuffer
+    queueItemsTableView.reloadData()
+    refreshItemsTable()
   }
 }
