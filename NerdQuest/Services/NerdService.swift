@@ -12,10 +12,12 @@ class NerdService {
   var sanityCheckingService: SanityChecking!
   var pointMiningService: PointMining!
   var itemSavingService: ItemSaving!
+  var leaderboardingService: Leaderboarding!
 
-  init(sanityCheckingService: SanityChecking, pointMiningService: PointMining, itemSavingService: ItemSaving) {
+  init(sanityCheckingService: SanityChecking, pointMiningService: PointMining, itemSavingService: ItemSaving, leaderboardingService: Leaderboarding) {
     self.sanityCheckingService = sanityCheckingService
     self.pointMiningService = pointMiningService
     self.itemSavingService = itemSavingService
+    self.leaderboardingService = leaderboardingService
   }
 }

@@ -30,7 +30,7 @@ class LocalItemSavingService: ItemSaving {
       try database.executeUpdate(insertQuery, values: [nerdItem.id,
                                                  nerdItem.name,
                                                  nerdItem.rarity,
-                                                 nerdItem.description,
+                                                 nerdItem.itemDescription,
                                                  0,
                                                  nerdItem.dateAdded])
     } catch {
@@ -52,7 +52,7 @@ class LocalItemSavingService: ItemSaving {
         return []
     }
     
-    let selectQuery = "select id, name, rarity, description, isUsed, dateAdded from Item where isUsed = 0 order by dateAdded desc"
+    let selectQuery = "select id, name, rarity, description, isUsed, dateAdded from Item where isUsed = 0 order by name asc"
     do {
       let resultSet = try database.executeQuery(selectQuery, values: [])
       while resultSet.next() {
@@ -66,7 +66,7 @@ class LocalItemSavingService: ItemSaving {
         let isUsed = resultSet.bool(forColumn: "isUsed")
         let dateAdded = Int(resultSet.int(forColumn: "dateAdded"))
         
-        let nerdItem = NerdItem(name: name, description: description, id: id, rarity: rarity, dateAdded: dateAdded, isUsed: isUsed)
+        let nerdItem = NerdItem(name: name, itemDescription: description, id: id, rarity: rarity, dateAdded: dateAdded, isUsed: isUsed)
         nerdItems.append(nerdItem)
       }
     } catch {
@@ -77,7 +77,7 @@ class LocalItemSavingService: ItemSaving {
     do {
       for nerdItem in nerdItems {
         var annotation: Annotation?
-        let selectQuery = "select itemType, duration, effect from Library join Item on Library.name = ?"
+        let selectQuery = "select itemType, duration, effect from Library join Item on Library.name = ? order by itemType asc"
         let resultSet = try database.executeQuery(selectQuery, values: [nerdItem.name])
         while resultSet.next() {
           let itemType = ItemType(rawValue: Int(resultSet.int(forColumn: "itemType")))

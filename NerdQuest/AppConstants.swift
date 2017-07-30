@@ -9,7 +9,7 @@
 import Foundation
 
 struct Nerds {
-  let whiteList = ["portal", "ajones",  "aolarte", "banderso", "bbowles", "bbueltma", "bhughes", "bkent", "bliset",  "bmoore",
+  static let kWhiteList = ["portal", "ajones",  "aolarte", "banderso", "bbowles", "bbueltma", "bhughes", "bkent", "bliset",  "bmoore",
   "bnichols", "cdavis",  "cdoyle",  "clipskey", "dappiah", "darmbrus", "ddurbin", "dgerber", "dschmitz", "efilimon", "etrio",
   "eweiss",  "gwalrod", "iheraty", "iraja", "jberube", "jblack",  "jbutts",  "jdadamo", "jdevolde", "jgardner", "jjohnsto",
   "jjones",  "jkaplan", "jkinney", "jnagar",  "jng", "jpetit",  "jpollard", "jreed", "jstetler", "jtaboada", "kasykora",
@@ -48,7 +48,8 @@ struct UserDefaultsKey {
 
 struct CellIdentifiers {
   static let kMessageCellIdentifier = "MessageCell"
-  static let kItemCellIdentifier = "StupidCell"
+  static let kItemCellIdentifier = "ItemCell"
+  static let kPlayerCellIdentifier = "PlayerCell"
 }
 
 enum ItemType: Int {

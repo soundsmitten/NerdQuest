@@ -8,10 +8,36 @@
 
 import Cocoa
 
-class ItemsTableDataSource: NSObject {
-  var annotatedItems = [AnnotatedItem]()
-  var sortDescriptors = [NSSortDescriptor]()
+@objc
+class ItemTableWrapper: NSObject {
+  let name: String!
+  let itemType: NSNumber!
+  let itemEffect: String!
+  let duration: String!
+  let rarity: NSNumber!
+  let id: String!
   
+  init(name: String, itemType: Int, itemEffect: String, duration: String, rarity: Int, id: String) {
+    self.name = name
+    self.itemType = itemType as NSNumber
+    self.itemEffect = itemEffect
+    self.duration = duration
+    self.rarity = rarity as NSNumber
+    self.id = id
+  }
+}
+
+class ItemsTableDataSource: NSObject {
+  var annotatedItems = [AnnotatedItem]() {
+    didSet {
+      wrappedItems = []
+      for item in annotatedItems {
+        let wrappedItem = wrap(annotatedItem: item)
+        wrappedItems.append(wrappedItem)
+      }
+    }
+  }
+  var wrappedItems = [ItemTableWrapper]()
   weak var tableView: NSTableView!
   
   enum ColumnInfo: String {
@@ -42,19 +68,25 @@ class ItemsTableDataSource: NSObject {
     var key: String {
       switch self {
       case .name:
-        return "item.name"
+        return "name"
       case .itemType:
-        return "annotation.itemType"
+        return "itemType"
       case .effect:
-        return "annotation.effect"
+        return "effect"
       case .duration:
-        return "annotation.duration"
+        return "duration"
       case .rarity:
-        return "item.rarity"
+        return "rarity"
       case .id:
-        return "item.id"
+        return "id"
       }
     }
+  }
+  
+  enum ColumnState: Int {
+    case nothing = -1
+    case descending = 0
+    case ascending = 1
   }
   
   let columnsInfo: [ColumnInfo] = [.name, .itemType, .effect, .duration, .rarity, .id]
@@ -64,18 +96,6 @@ class ItemsTableDataSource: NSObject {
     self.tableView = tableView
     self.tableView.dataSource = self
     self.tableView.delegate = self
-    setupSortDescriptors()
-  }
-  
-  private func setupSortDescriptors() {
-    for columnInfo in columnsInfo {
-      guard let column = tableView.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: columnInfo.rawValue)) else {
-        continue
-      }
-      let sortDescriptor = NSSortDescriptor.init(key: columnInfo.rawValue, ascending: true)
-      column.sortDescriptorPrototype = sortDescriptor
-      sortDescriptors.append(sortDescriptor)
-     }
   }
 }
 
@@ -88,22 +108,22 @@ extension ItemsTableDataSource: NSTableViewDelegate {
         return nil
     }
     
-    let annotatedItem = annotatedItems[row]
+    let wrappedItem = wrappedItems[row]
     var cellText = ""
     
     switch columnIdentifier {
     case .name:
-      cellText = annotatedItem.item.name
+      cellText = wrappedItem.name
     case .itemType:
-      cellText = annotatedItem.annotation?.itemType.text ?? "Unknown"
+      cellText = ItemType(rawValue: wrappedItem.itemType as! Int)!.text
     case .effect:
-      cellText = annotatedItem.annotation?.effect ?? "Unknown"
+      cellText = wrappedItem.itemEffect
     case .duration:
-      cellText = annotatedItem.annotation?.duration ?? "Unknown"
+      cellText = wrappedItem.duration
     case .rarity:
-      cellText = "\(annotatedItem.item.rarity)"
+      cellText = "\(wrappedItem.rarity ?? -1)"
     case .id:
-      cellText = "\(annotatedItem.item.id)"
+      cellText = "\(wrappedItem.id!)"
     }
     cell.textField?.stringValue = cellText
     return cell
@@ -113,9 +133,13 @@ extension ItemsTableDataSource: NSTableViewDelegate {
     return 20.0
   }
   
-  func tableView(_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
-    annotatedItems = (annotatedItems as NSArray).sortedArray(using: sortDescriptors) as! [AnnotatedItem]
-    tableView.reloadData()
+  func wrap(annotatedItem: AnnotatedItem) -> ItemTableWrapper {
+    return ItemTableWrapper(name: annotatedItem.item.name,
+                            itemType: annotatedItem.annotation?.itemType.rawValue ?? 3,
+                            itemEffect: annotatedItem.annotation?.effect ?? "Unknown",
+                            duration: annotatedItem.annotation?.duration ?? "Unknown",
+                            rarity: annotatedItem.item.rarity,
+                            id: annotatedItem.item.id)
   }
 }
 

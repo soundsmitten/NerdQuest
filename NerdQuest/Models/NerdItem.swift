@@ -11,7 +11,7 @@ import Foundation
 
 struct NerdItem: Codable {
   let name: String
-  let description: String
+  let itemDescription: String
   let id: String
   let rarity: Int
   
@@ -19,9 +19,10 @@ struct NerdItem: Codable {
   var dateAdded: Int = Int(Date().timeIntervalSince1970)
   var isUsed: Bool = false
 
+
   enum CodingKeys: String, CodingKey {
     case name = "Name"
-    case description = "Description"
+    case itemDescription = "Description"
     case id = "Id"
     case rarity = "Rarity"
   }

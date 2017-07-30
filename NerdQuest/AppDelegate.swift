@@ -17,7 +17,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //    UserDefaults.standard.set(nil, forKey: "apikey") // uncomment reset the api key if you fucked up putting it in
     let nerdService = NerdService(sanityCheckingService: MacOSSanityCheckingService(),
                                   pointMiningService: LocalPointMiningService(),
-                                  itemSavingService: LocalItemSavingService())
+                                  itemSavingService: LocalItemSavingService(),
+                                  leaderboardingService: LocalLeaderboardingService())
     
     let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: StoryboardNames.kMain), bundle: nil)
     guard

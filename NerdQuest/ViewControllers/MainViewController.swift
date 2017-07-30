@@ -12,6 +12,7 @@ class MainViewController: NSViewController, Passable {
   let pointMiningService = LocalPointMiningService()
   let messagesTableDataSource = MessagesTableDataSource()
   var itemsTableDataSource: ItemsTableDataSource!
+  var leaderboardTableDataSource: LeaderboardTableDataSource!
   
   var isMiningEnabled = true
   var isMiningRunning = false
@@ -19,6 +20,7 @@ class MainViewController: NSViewController, Passable {
   
   @IBOutlet weak var messageTableView: NSTableView!
   @IBOutlet weak var itemsTableView: NSTableView!
+  @IBOutlet weak var leaderboardTableView: NSTableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,11 +29,13 @@ class MainViewController: NSViewController, Passable {
     messageTableView.delegate = messagesTableDataSource
     
     itemsTableDataSource = ItemsTableDataSource(tableView: itemsTableView)
+    leaderboardTableDataSource = LeaderboardTableDataSource(tableView: leaderboardTableView)
     itemsTableView.doubleAction = #selector(doubleClickItemRow)
     
     refreshItemsTable()
     
     startMining()
+    startLeaderboard()
   }
   
   private func setupItemsTable() {
@@ -73,6 +77,7 @@ class MainViewController: NSViewController, Passable {
     }) else {
       return
     }
+    print(clickedItem)
   }
   
   private func startMining() {
@@ -95,6 +100,17 @@ class MainViewController: NSViewController, Passable {
           this.refreshItemsTable()
         }
       })
+    })
+  }
+  
+  private func startLeaderboard() {
+    nerdService.leaderboardingService.setupLeaderboard(completion: { [weak self] players in
+      guard let players = players,
+        let this = self else {
+        return
+      }
+      this.leaderboardTableDataSource.players = players
+      this.leaderboardTableView.reloadData()
     })
   }
 }
