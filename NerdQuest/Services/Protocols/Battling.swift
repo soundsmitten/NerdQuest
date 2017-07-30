@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias IDWithTarget = (String, String)
+typealias NameAndIDWithTarget = (String, String, String)
 
 
 protocol Battling {
@@ -19,6 +19,11 @@ protocol Battling {
   func setupBattling(completion: @escaping (NerdBattlingResponse?) -> Void)
   func startBattling()
   func stopBattling()
+  
+  // itemBuffer actions
+  func enqueue(_ nameAndIDWithTarget: NameAndIDWithTarget)
+  func dequeue() -> NameAndIDWithTarget?
+  func remove(_ itemID: String)
 }
 
 extension Battling {

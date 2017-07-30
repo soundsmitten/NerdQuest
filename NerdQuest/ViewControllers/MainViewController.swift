@@ -133,6 +133,7 @@ class MainViewController: NSViewController, Passable {
       let message = nerdBattlingResponse.messages.joined()
       this.battlingMessagesTableDataSource.messages = [message] + this.battlingMessagesTableDataSource.messages
       this.battlingMessageTableView.reloadData()
+      this.refreshItemsTable()
     }
     Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] timer in
       guard let this = self else {

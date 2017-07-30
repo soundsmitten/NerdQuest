@@ -15,7 +15,7 @@ class LocalBattlingService: Battling {
   private var nerdService: NerdService!
   private var isBattling: Bool = false
   private var isBattlingRunning: Bool = false
-  private var itemBuffer = [IDWithTarget]()
+  private var itemBuffer = [NameAndIDWithTarget]()
   private var timer: Timer?
 
   required init(nerdService: NerdService) {
@@ -40,7 +40,7 @@ class LocalBattlingService: Battling {
     isBattlingRunning = true
     
     if let queuedItem = dequeue() {
-      useItem(idWithTarget: queuedItem, completion: completion)
+      useItem(nameAndIDWithTarget: queuedItem, completion: completion)
     } else {
       useRandomItem(completion: completion)
     }
@@ -54,17 +54,23 @@ class LocalBattlingService: Battling {
     isBattling = false
   }
   
-  func enqueue(_ idWithTarget: IDWithTarget) {
-    itemBuffer.append(idWithTarget)
+  func enqueue(_ nameAndIDWithTarget: NameAndIDWithTarget) {
+    itemBuffer.append(nameAndIDWithTarget)
   }
   
-  func dequeue() -> IDWithTarget? {
+  func dequeue() -> NameAndIDWithTarget? {
     guard !bufferIsEmpty() else {
       return nil
     }
-    let lastItem = itemBuffer.last
-    itemBuffer = Array<IDWithTarget>(itemBuffer.dropLast())
-    return lastItem
+    let firstItem = itemBuffer.first
+    itemBuffer = Array<NameAndIDWithTarget>(itemBuffer.dropFirst())
+    return firstItem
+  }
+  
+  func remove(_ itemID: String) {
+    itemBuffer = itemBuffer.filter {
+      $0.1 != itemID
+    }
   }
   
   func bufferIsEmpty() -> Bool {
@@ -91,9 +97,8 @@ class LocalBattlingService: Battling {
       return
     }
     
-    let idWithTarget: IDWithTarget = (unwrappedRandomItem.item.id, target)
-    useItem(idWithTarget: idWithTarget, completion: { (nerdBattlingResponse) in
-      print("used item \(unwrappedRandomItem.item.name) on \(target)")
+    let idWithTarget: NameAndIDWithTarget = (unwrappedRandomItem.item.name, unwrappedRandomItem.item.id, target)
+    useItem(nameAndIDWithTarget: idWithTarget, completion: { (nerdBattlingResponse) in
       completion(nerdBattlingResponse)
     })
   }
@@ -116,11 +121,12 @@ class LocalBattlingService: Battling {
     return enemies[index].name
   }
   
-  func useItem(idWithTarget: IDWithTarget, completion: @escaping (NerdBattlingResponse?) -> Void) {
+  func useItem(nameAndIDWithTarget: NameAndIDWithTarget, completion: @escaping (NerdBattlingResponse?) -> Void) {
     let resource = NerdBattlingResource()
     let request = NerdNetworkRequest(resource: resource)
-    let itemID = idWithTarget.0
-    let target = idWithTarget.1
+    let name = nameAndIDWithTarget.0
+    let itemID = nameAndIDWithTarget.1
+    let target = nameAndIDWithTarget.2
     let url = resource.url.appendingPathComponent(itemID)
     
     var urlRequest = URLRequest(url: url)

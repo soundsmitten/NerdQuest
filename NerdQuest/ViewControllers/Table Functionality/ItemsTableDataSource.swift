@@ -8,6 +8,10 @@
 
 import Cocoa
 
+protocol ItemTappedDelegate {
+  func addToItemBuffer()
+}
+
 @objc
 class ItemTableWrapper: NSObject {
   let name: String!

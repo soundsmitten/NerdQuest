@@ -93,6 +93,31 @@ class LocalItemSavingService: ItemSaving {
     return annotatedItems
   }
   
+  func isItemUsed(itemID: String) -> Bool {
+    guard
+      let database = database,
+      database.open() else {
+        print("Cannot open database to check item use")
+        return false
+    }
+    
+    var isUsed = false
+    let selectQuery = "select isUsed from Item where id = ?"
+    do {
+      let resultSet = try database.executeQuery(selectQuery, values: [itemID])
+      while resultSet.next() {
+        isUsed = resultSet.bool(forColumn: "isUsed")
+      }
+    } catch {
+      print("error \(error.localizedDescription)")
+      database.close()
+      return false
+    }
+    
+    database.close()
+    return isUsed
+  }
+  
   func getRandomItem(itemType: ItemType) -> AnnotatedItem? {
     let annotatedItems = getAnnotatedItems()
     let filteredItems = annotatedItems.filter {
