@@ -106,4 +106,23 @@ class LocalItemSavingService: ItemSaving {
     let index = Int(arc4random_uniform(UInt32(filteredItems.count)))
     return filteredItems[index]
   }
+  
+  func useItem(itemID: String) {
+    guard
+      let database = database,
+      database.open() else {
+        print("Cannot open database to use item")
+        return
+    }
+    let updateQuery = "update Item set isUsed = 1 where id = ?"
+    do {
+      try database.executeUpdate(updateQuery, values: [itemID])
+    } catch {
+      print("error \(error.localizedDescription)")
+      database.close()
+      return
+    }
+    
+    database.close()
+  }
 }

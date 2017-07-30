@@ -127,12 +127,17 @@ class LocalBattlingService: Battling {
     urlRequest.httpMethod = resource.httpMethod.rawValue
     urlRequest.addValue(UserDefaults.standard.string(forKey: UserDefaultsKey.kAPIKey)!, forHTTPHeaderField: HTTPHeaderKey.kAPIKey)
     urlRequest.addValue(target, forHTTPHeaderField: HTTPHeaderKey.kTarget)
-    request.makeRequest(urlRequest: urlRequest, completion: { nerdBattlingResponse in
-      self.startItemTimer()
+    request.makeRequest(urlRequest: urlRequest, completion: { [weak self] nerdBattlingResponse in
+      guard let this = self else {
+        completion(nil)
+        return
+      }
+      this.startItemTimer()
       let when = DispatchTime.now() + AppConstants.kBattlingInterval
       DispatchQueue.main.asyncAfter(deadline: when, execute: {
-        self.isBattlingRunning = false
+        this.isBattlingRunning = false
         if let nerdBattlingResponse = nerdBattlingResponse {
+          this.nerdService.itemSavingService.useItem(itemID: itemID)
           completion(nerdBattlingResponse)
         } else {
           completion(nil)
