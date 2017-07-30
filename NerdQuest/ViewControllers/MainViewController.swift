@@ -11,22 +11,29 @@ import Cocoa
 class MainViewController: NSViewController, Passable {
   let pointMiningService = LocalPointMiningService()
   let messagesTableDataSource = MessagesTableDataSource()
+  let battlingMessagesTableDataSource = BattlingMessagesTableDataSource()
   var itemsTableDataSource: ItemsTableDataSource!
   var leaderboardTableDataSource: LeaderboardTableDataSource!
   
   var isMiningEnabled = true
   var isMiningRunning = false
   var nerdService: NerdService!
+  var battlingService: Battling!
   
   @IBOutlet weak var messageTableView: NSTableView!
   @IBOutlet weak var itemsTableView: NSTableView!
   @IBOutlet weak var leaderboardTableView: NSTableView!
-  
+  @IBOutlet weak var battlingMessageTableView: NSTableView!
+  @IBOutlet weak var itemCountdownLabel: NSTextField!
+  @IBOutlet weak var pointsLabel: NSTextField!
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
     messageTableView.dataSource = messagesTableDataSource
     messageTableView.delegate = messagesTableDataSource
+    battlingMessageTableView.dataSource = battlingMessagesTableDataSource
+    battlingMessageTableView.delegate = battlingMessagesTableDataSource
     
     itemsTableDataSource = ItemsTableDataSource(tableView: itemsTableView)
     leaderboardTableDataSource = LeaderboardTableDataSource(tableView: leaderboardTableView)
@@ -36,6 +43,7 @@ class MainViewController: NSViewController, Passable {
     
     startMining()
     startLeaderboard()
+    startBattling()
   }
   
   private func setupItemsTable() {
@@ -47,7 +55,6 @@ class MainViewController: NSViewController, Passable {
     itemsTableView.reloadData()
   }
   
-  @IBOutlet weak var pointsLabel: NSTextField!
   
   @IBAction func toggleMining(_ sender: Any) {
     guard let button = sender as? NSButton else {
@@ -112,5 +119,26 @@ class MainViewController: NSViewController, Passable {
       this.leaderboardTableDataSource.players = players
       this.leaderboardTableView.reloadData()
     })
+  }
+  
+  private func startBattling() {
+    battlingService.buffPercentage = 100
+    battlingService.startBattling()
+    battlingService.setupBattling { [weak self] nerdBattlingResponse in
+      guard
+        let this = self,
+        let nerdBattlingResponse = nerdBattlingResponse else {
+          return
+      }
+      let message = nerdBattlingResponse.messages.joined()
+      this.battlingMessagesTableDataSource.messages = [message] + this.battlingMessagesTableDataSource.messages
+      this.battlingMessageTableView.reloadData()
+    }
+    Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] timer in
+      guard let this = self else {
+        return
+      }
+      this.itemCountdownLabel.stringValue = "Item Timer: \(this.battlingService.counter)"
+    }.fire()
   }
 }

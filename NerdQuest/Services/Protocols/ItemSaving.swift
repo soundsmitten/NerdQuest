@@ -11,4 +11,5 @@ import Foundation
 protocol ItemSaving {
   func saveItem(nerdItem: NerdItem)
   func getAnnotatedItems() -> [AnnotatedItem]
+  func getRandomItem(itemType: ItemType) -> AnnotatedItem?
 }

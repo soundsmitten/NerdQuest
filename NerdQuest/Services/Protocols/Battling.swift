@@ -8,7 +8,21 @@
 
 import Foundation
 
+typealias IDWithTarget = (String, String)
+
+
 protocol Battling {
+  var counter: Int { get set }
+  var buffPercentage: Int! {get set}
+  
+  init(nerdService: NerdService)
+  func setupBattling(completion: @escaping (NerdBattlingResponse?) -> Void)
   func startBattling()
   func stopBattling()
+}
+
+extension Battling {
+  func isEnemy(player: String) -> Bool {
+    return !Nerds.kWhiteList.contains(player)
+  }
 }

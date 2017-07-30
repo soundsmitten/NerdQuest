@@ -19,6 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                   pointMiningService: LocalPointMiningService(),
                                   itemSavingService: LocalItemSavingService(),
                                   leaderboardingService: LocalLeaderboardingService())
+    let battlingService = LocalBattlingService(nerdService: nerdService)
     
     let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: StoryboardNames.kMain), bundle: nil)
     guard
@@ -29,6 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     window = mainWindowController.window
     mainViewController.nerdService = nerdService
+    mainViewController.battlingService = battlingService
     mainWindowController.contentViewController = mainViewController
     window.makeKeyAndOrderFront(nil)
     

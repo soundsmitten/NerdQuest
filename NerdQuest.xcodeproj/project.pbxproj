@@ -31,11 +31,14 @@
 		1534818B1F2C806900C7DB16 /* MessagesTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1534818A1F2C806900C7DB16 /* MessagesTableDataSource.swift */; };
 		1534818D1F2C825200C7DB16 /* ItemsTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1534818C1F2C825200C7DB16 /* ItemsTableDataSource.swift */; };
 		153481901F2CFF2C00C7DB16 /* Sequence+Find.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1534818F1F2CFF2C00C7DB16 /* Sequence+Find.swift */; };
+		153B43B81F2E4FDE003A333A /* NerdBattlingResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B43B71F2E4FDE003A333A /* NerdBattlingResource.swift */; };
+		153B43BA1F2E5079003A333A /* NerdBattlingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B43B91F2E5079003A333A /* NerdBattlingResponse.swift */; };
 		1549EA6B1F2DA5F80041795C /* Leaderboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1549EA6A1F2DA5F80041795C /* Leaderboarding.swift */; };
 		1549EA6D1F2DA64D0041795C /* LocalLeaderboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1549EA6C1F2DA64D0041795C /* LocalLeaderboardingService.swift */; };
 		1549EA731F2DA9080041795C /* LeaderboardTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1549EA721F2DA9080041795C /* LeaderboardTableDataSource.swift */; };
 		1558242C1F2D750800C19846 /* NerdLeaderboardResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558242B1F2D750800C19846 /* NerdLeaderboardResource.swift */; };
 		1558242E1F2D75B600C19846 /* NerdPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558242D1F2D75B600C19846 /* NerdPlayer.swift */; };
+		157569961F2E6FE100E288D1 /* BattlingMessagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157569951F2E6FE100E288D1 /* BattlingMessagesDataSource.swift */; };
 		158A0CE91F2C6B67004F317B /* NerdItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE41F2C6B67004F317B /* NerdItem.swift */; };
 		158A0CEA1F2C6B67004F317B /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE51F2C6B67004F317B /* Annotation.swift */; };
 		158A0CEB1F2C6B67004F317B /* NerdBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE61F2C6B67004F317B /* NerdBadge.swift */; };
@@ -95,11 +98,14 @@
 		1534818A1F2C806900C7DB16 /* MessagesTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableDataSource.swift; sourceTree = "<group>"; };
 		1534818C1F2C825200C7DB16 /* ItemsTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableDataSource.swift; sourceTree = "<group>"; };
 		1534818F1F2CFF2C00C7DB16 /* Sequence+Find.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Find.swift"; sourceTree = "<group>"; };
+		153B43B71F2E4FDE003A333A /* NerdBattlingResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NerdBattlingResource.swift; sourceTree = "<group>"; };
+		153B43B91F2E5079003A333A /* NerdBattlingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NerdBattlingResponse.swift; sourceTree = "<group>"; };
 		1549EA6A1F2DA5F80041795C /* Leaderboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboarding.swift; sourceTree = "<group>"; };
 		1549EA6C1F2DA64D0041795C /* LocalLeaderboardingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLeaderboardingService.swift; sourceTree = "<group>"; };
 		1549EA721F2DA9080041795C /* LeaderboardTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableDataSource.swift; sourceTree = "<group>"; };
 		1558242B1F2D750800C19846 /* NerdLeaderboardResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NerdLeaderboardResource.swift; sourceTree = "<group>"; };
 		1558242D1F2D75B600C19846 /* NerdPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NerdPlayer.swift; sourceTree = "<group>"; };
+		157569951F2E6FE100E288D1 /* BattlingMessagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlingMessagesDataSource.swift; sourceTree = "<group>"; };
 		158A0CE41F2C6B67004F317B /* NerdItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdItem.swift; sourceTree = "<group>"; };
 		158A0CE51F2C6B67004F317B /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		158A0CE61F2C6B67004F317B /* NerdBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdBadge.swift; sourceTree = "<group>"; };
@@ -221,6 +227,7 @@
 				158A0CE41F2C6B67004F317B /* NerdItem.swift */,
 				158A0CE71F2C6B67004F317B /* NerdPoint.swift */,
 				1558242D1F2D75B600C19846 /* NerdPlayer.swift */,
+				153B43B91F2E5079003A333A /* NerdBattlingResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -240,6 +247,7 @@
 				1515C5B81F2C2E68008BE426 /* NerdNetworkRequest.swift */,
 				1515C5B91F2C2E68008BE426 /* NerdPointResource.swift */,
 				1558242B1F2D750800C19846 /* NerdLeaderboardResource.swift */,
+				153B43B71F2E4FDE003A333A /* NerdBattlingResource.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -310,6 +318,7 @@
 				1534818A1F2C806900C7DB16 /* MessagesTableDataSource.swift */,
 				1534818C1F2C825200C7DB16 /* ItemsTableDataSource.swift */,
 				1549EA721F2DA9080041795C /* LeaderboardTableDataSource.swift */,
+				157569951F2E6FE100E288D1 /* BattlingMessagesDataSource.swift */,
 			);
 			path = "Table Functionality";
 			sourceTree = "<group>";
@@ -631,7 +640,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				153B43B81F2E4FDE003A333A /* NerdBattlingResource.swift in Sources */,
 				1549EA6D1F2DA64D0041795C /* LocalLeaderboardingService.swift in Sources */,
+				153B43BA1F2E5079003A333A /* NerdBattlingResponse.swift in Sources */,
 				1515C5D51F2C2E80008BE426 /* Battling.swift in Sources */,
 				158A0CEF1F2C6BAB004F317B /* MainWindowController.swift in Sources */,
 				1515C5D21F2C2E80008BE426 /* LocalPointMiningService.swift in Sources */,
@@ -659,6 +670,7 @@
 				1515C5D01F2C2E80008BE426 /* LocalBattlingService.swift in Sources */,
 				1549EA731F2DA9080041795C /* LeaderboardTableDataSource.swift in Sources */,
 				1515C5D31F2C2E80008BE426 /* MacOSSanityCheckingService.swift in Sources */,
+				157569961F2E6FE100E288D1 /* BattlingMessagesDataSource.swift in Sources */,
 				1558242C1F2D750800C19846 /* NerdLeaderboardResource.swift in Sources */,
 				1515C5D11F2C2E80008BE426 /* LocalItemSavingService.swift in Sources */,
 				1515C5C31F2C2E7A008BE426 /* Passable.swift in Sources */,

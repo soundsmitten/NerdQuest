@@ -13,7 +13,7 @@ class LocalPointMiningService: PointMining {
   private var isMiningRunning = false
   
   func setupMining(completion: @escaping (NerdPoint?) -> Void) {    
-    Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] (timer) in
+    Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] timer in
       guard let this = self else {
         return
       }
@@ -38,9 +38,11 @@ class LocalPointMiningService: PointMining {
     isMiningRunning = true
     let resource = NerdPointResource()
     let request = NerdNetworkRequest(resource: resource)
+    
     var urlRequest = URLRequest(url: resource.url)
     urlRequest.httpMethod = resource.httpMethod.rawValue
-    urlRequest.addValue(UserDefaults.standard.string(forKey: "apikey")!, forHTTPHeaderField: "apikey") // cardiac
+    urlRequest.addValue(UserDefaults.standard.string(forKey: UserDefaultsKey.kAPIKey)!, forHTTPHeaderField: HTTPHeaderKey.kAPIKey)
+    
     request.makeRequest(urlRequest: urlRequest, completion: { nerdPoint in
       let when = DispatchTime.now() + AppConstants.kMiningInterval
       DispatchQueue.main.asyncAfter(deadline: when, execute: {

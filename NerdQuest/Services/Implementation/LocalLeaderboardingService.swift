@@ -9,6 +9,7 @@
 import Foundation
 
 class LocalLeaderboardingService: Leaderboarding {
+  var leaderboard: [NerdPlayer]! = [NerdPlayer]()
   private var isLeaderboardRunning = false
   
   func setupLeaderboard(completion: @escaping ([NerdPlayer]?) -> Void) {
@@ -35,6 +36,7 @@ class LocalLeaderboardingService: Leaderboarding {
       DispatchQueue.main.asyncAfter(deadline: when, execute: {
         self.isLeaderboardRunning = false
         if let players = players {
+          self.leaderboard = players
           completion(players)
         } else {
           completion(nil)

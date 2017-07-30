@@ -10,4 +10,5 @@ import Foundation
 
 protocol Passable {
   var nerdService: NerdService! { get set }
+  var battlingService: Battling! { get set }
 }

@@ -12,11 +12,6 @@ class LocalItemSavingService: ItemSaving {
   let database = FMDatabase(path: AppConstants.kDatabasePath)
   
   func saveItem(nerdItem: NerdItem) {
-    //guard AppConstants.hasDatabase else {
-      writeToItemsFile(item: nerdItem)
-    //  return
-    //}
-    
     guard
       let database = database,
       database.open() else {
@@ -98,16 +93,17 @@ class LocalItemSavingService: ItemSaving {
     return annotatedItems
   }
   
-  func writeToItemsFile(item: NerdItem) {
-    let path = "/Users/nlash/Desktop/items.csv"
-    let file = try FileHandle(forUpdatingAtPath: path)
-    let dataToWrite = "\(item.name), \(item.id)\n".data(using: .utf8)!
-    if file == nil {
-      print("Opening the file failed")
-    } else {
-      file?.seekToEndOfFile()
-      file?.write(dataToWrite)
-      file?.closeFile()
+  func getRandomItem(itemType: ItemType) -> AnnotatedItem? {
+    let annotatedItems = getAnnotatedItems()
+    let filteredItems = annotatedItems.filter {
+      $0.annotation?.itemType == itemType
     }
+    
+    guard filteredItems.count > 0 else {
+      return nil
+    }
+    
+    let index = Int(arc4random_uniform(UInt32(filteredItems.count)))
+    return filteredItems[index]
   }
 }

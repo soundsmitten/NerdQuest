@@ -875,6 +875,69 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7a-5r-2gH">
+                                <rect key="frame" x="20" y="512" width="300" height="136"/>
+                                <clipView key="contentView" id="qda-c3-0my">
+                                    <rect key="frame" x="1" y="0.0" width="298" height="135"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="OQd-nj-iEm" viewBased="YES" id="kOq-gl-vqR">
+                                            <rect key="frame" x="0.0" y="0.0" width="298" height="112"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn identifier="battlingMessages" width="293" minWidth="40" maxWidth="1000" id="yk5-dC-eLc" userLabel="Battling Messages">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Battling Messages">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="V3r-5n-8rK">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView identifier="BattlingMessageCell" id="CTc-6Z-0Dd">
+                                                            <rect key="frame" x="1" y="1" width="293" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pWj-A0-LuM">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="293" height="17"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="x5r-5f-qpB">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                            </subviews>
+                                                            <connections>
+                                                                <outlet property="textField" destination="pWj-A0-LuM" id="lDj-tk-suI"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
+                                                </tableColumn>
+                                            </tableColumns>
+                                        </tableView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="h3W-ac-Y9v">
+                                    <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="PJg-FT-MG3">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <tableHeaderView key="headerView" id="OQd-nj-iEm">
+                                    <rect key="frame" x="0.0" y="0.0" width="298" height="23"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableHeaderView>
+                            </scrollView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="fA7-UV-Equ" secondAttribute="trailing" constant="20" symbolic="YES" id="2Z4-ci-V52"/>
@@ -882,14 +945,18 @@
                             <constraint firstItem="BXE-Zm-Qng" firstAttribute="top" secondItem="Ohi-pK-AqY" secondAttribute="bottom" constant="8" symbolic="YES" id="5vq-Od-hHh"/>
                             <constraint firstItem="fA7-UV-Equ" firstAttribute="leading" secondItem="BXE-Zm-Qng" secondAttribute="trailing" constant="8" symbolic="YES" id="9jG-Rt-eo9"/>
                             <constraint firstItem="BXE-Zm-Qng" firstAttribute="leading" secondItem="Pby-Ao-nC0" secondAttribute="leading" constant="20" symbolic="YES" id="Jod-X0-9Zd"/>
+                            <constraint firstItem="J7a-5r-2gH" firstAttribute="top" secondItem="Pby-Ao-nC0" secondAttribute="top" constant="20" symbolic="YES" id="LJ4-De-Ftd"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BhQ-P3-81h" secondAttribute="trailing" constant="20" symbolic="YES" id="LY8-QB-MuC"/>
+                            <constraint firstItem="fA7-UV-Equ" firstAttribute="leading" secondItem="J7a-5r-2gH" secondAttribute="trailing" constant="8" symbolic="YES" id="PGj-Ai-Xb2"/>
                             <constraint firstItem="Ohi-pK-AqY" firstAttribute="leading" secondItem="Pby-Ao-nC0" secondAttribute="leading" constant="20" symbolic="YES" id="RGh-Zw-1Wn"/>
                             <constraint firstAttribute="bottom" secondItem="ox2-rY-ZMm" secondAttribute="bottom" constant="10" id="Z5g-oH-iCf"/>
                             <constraint firstItem="BhQ-P3-81h" firstAttribute="leading" secondItem="ox2-rY-ZMm" secondAttribute="trailing" constant="135" id="Zfl-gx-McA"/>
+                            <constraint firstItem="J7a-5r-2gH" firstAttribute="leading" secondItem="Pby-Ao-nC0" secondAttribute="leading" constant="20" symbolic="YES" id="d02-CJ-uCC"/>
                             <constraint firstItem="R2r-yZ-LG1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Pby-Ao-nC0" secondAttribute="leading" constant="20" symbolic="YES" id="gfN-bb-Bla"/>
                             <constraint firstItem="fA7-UV-Equ" firstAttribute="leading" secondItem="Ohi-pK-AqY" secondAttribute="trailing" constant="8" symbolic="YES" id="ias-eX-CeN"/>
                             <constraint firstItem="fA7-UV-Equ" firstAttribute="top" secondItem="Pby-Ao-nC0" secondAttribute="top" constant="20" symbolic="YES" id="pob-0q-Equ"/>
                             <constraint firstAttribute="trailing" secondItem="R2r-yZ-LG1" secondAttribute="trailing" constant="20" id="qwN-7k-T70"/>
+                            <constraint firstItem="Ohi-pK-AqY" firstAttribute="top" secondItem="J7a-5r-2gH" secondAttribute="bottom" constant="8" symbolic="YES" id="s25-PE-tKk"/>
                             <constraint firstAttribute="bottom" secondItem="BXE-Zm-Qng" secondAttribute="bottom" constant="48" id="sgg-VE-0IG"/>
                             <constraint firstAttribute="bottom" secondItem="R2r-yZ-LG1" secondAttribute="bottom" constant="8" id="wGS-eL-M9A"/>
                             <constraint firstAttribute="bottom" secondItem="fA7-UV-Equ" secondAttribute="bottom" constant="48" id="xA2-Ha-inE"/>
@@ -897,6 +964,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="battlingMessageTableView" destination="kOq-gl-vqR" id="0yk-WM-FrP"/>
+                        <outlet property="itemCountdownLabel" destination="BhQ-P3-81h" id="5LE-7Y-qmc"/>
                         <outlet property="itemsTableView" destination="RPw-j0-hL2" id="9nz-P0-bYf"/>
                         <outlet property="leaderboardTableView" destination="7Df-6L-mJN" id="rAM-jB-dkp"/>
                         <outlet property="messageTableView" destination="saS-tB-fP3" id="RiN-zn-Oeq"/>

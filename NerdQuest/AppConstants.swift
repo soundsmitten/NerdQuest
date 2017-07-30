@@ -9,6 +9,7 @@
 import Foundation
 
 struct Nerds {
+  static let kMe = "nlash"
   static let kWhiteList = ["portal", "ajones",  "aolarte", "banderso", "bbowles", "bbueltma", "bhughes", "bkent", "bliset",  "bmoore",
   "bnichols", "cdavis",  "cdoyle",  "clipskey", "dappiah", "darmbrus", "ddurbin", "dgerber", "dschmitz", "efilimon", "etrio",
   "eweiss",  "gwalrod", "iheraty", "iraja", "jberube", "jblack",  "jbutts",  "jdadamo", "jdevolde", "jgardner", "jjohnsto",
@@ -38,6 +39,7 @@ struct ViewControllerIdentifiers {
 
 struct AppConstants {
   static let kMiningInterval = 1.0
+  static let kBattlingInterval = 60.0
   static let hasDatabase = false
   static let kDatabasePath = "/Users/nlash/Code/Data/nerdQuest.db"
 }
@@ -46,10 +48,16 @@ struct UserDefaultsKey {
   static let kAPIKey = "apikey"
 }
 
+struct HTTPHeaderKey {
+  static let kAPIKey = "apikey"
+  static let kTarget = "target"
+}
+
 struct CellIdentifiers {
   static let kMessageCellIdentifier = "MessageCell"
   static let kItemCellIdentifier = "ItemCell"
   static let kPlayerCellIdentifier = "PlayerCell"
+  static let kBattlingMessageCellIdentifier = "BattlingMessageCell"
 }
 
 enum ItemType: Int {
