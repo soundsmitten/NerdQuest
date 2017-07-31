@@ -47,6 +47,7 @@
 		158A0CEC1F2C6B67004F317B /* NerdPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE71F2C6B67004F317B /* NerdPoint.swift */; };
 		158A0CED1F2C6B67004F317B /* AnnotatedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE81F2C6B67004F317B /* AnnotatedItem.swift */; };
 		158A0CEF1F2C6BAB004F317B /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CEE1F2C6BAB004F317B /* MainWindowController.swift */; };
+		15B8A3701F2FA4A6004C557B /* FriendOrFoeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B8A36F1F2FA4A6004C557B /* FriendOrFoeViewController.swift */; };
 		3161C45E6D49C9019978F767 /* Pods_NerdQuestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 793E9065835A09DC47AC7EA7 /* Pods_NerdQuestTests.framework */; };
 		389724FC4F37A6FED7FD8369 /* Pods_NerdQuest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C57399190113E06EB7898CC /* Pods_NerdQuest.framework */; };
 		FC69741CBF876FEC7E3C85AE /* Pods_NerdQuestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4492732AE4749F25AAE02029 /* Pods_NerdQuestUITests.framework */; };
@@ -116,6 +117,7 @@
 		158A0CE71F2C6B67004F317B /* NerdPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdPoint.swift; sourceTree = "<group>"; };
 		158A0CE81F2C6B67004F317B /* AnnotatedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotatedItem.swift; sourceTree = "<group>"; };
 		158A0CEE1F2C6BAB004F317B /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		15B8A36F1F2FA4A6004C557B /* FriendOrFoeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendOrFoeViewController.swift; sourceTree = "<group>"; };
 		2C57399190113E06EB7898CC /* Pods_NerdQuest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NerdQuest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4492732AE4749F25AAE02029 /* Pods_NerdQuestUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NerdQuestUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FA5A708E4FA93C9E41BB1B3 /* Pods-NerdQuest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NerdQuest.release.xcconfig"; path = "Pods/Target Support Files/Pods-NerdQuest/Pods-NerdQuest.release.xcconfig"; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				158A0CEE1F2C6BAB004F317B /* MainWindowController.swift */,
 				1515C5AC1F2C2D84008BE426 /* MainViewController.swift */,
 				156FDC561F2EA248007CF3AD /* ManualLaunchViewController.swift */,
+				15B8A36F1F2FA4A6004C557B /* FriendOrFoeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -437,7 +440,7 @@
 				TargetAttributes = {
 					1515C57B1F2C2CF2008BE426 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 837K2FL575;
+						DevelopmentTeam = 7Q2ZL6T85L;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -680,6 +683,7 @@
 				1515C5D31F2C2E80008BE426 /* MacOSSanityCheckingService.swift in Sources */,
 				157569961F2E6FE100E288D1 /* BattlingMessagesDataSource.swift in Sources */,
 				1558242C1F2D750800C19846 /* NerdLeaderboardResource.swift in Sources */,
+				15B8A3701F2FA4A6004C557B /* FriendOrFoeViewController.swift in Sources */,
 				1515C5D11F2C2E80008BE426 /* LocalItemSavingService.swift in Sources */,
 				1515C5C31F2C2E7A008BE426 /* Passable.swift in Sources */,
 			);
@@ -840,7 +844,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 837K2FL575;
+				DEVELOPMENT_TEAM = 7Q2ZL6T85L;
 				INFOPLIST_FILE = NerdQuest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = soundsmitten.NerdQuest;
@@ -859,7 +863,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 837K2FL575;
+				DEVELOPMENT_TEAM = 7Q2ZL6T85L;
 				INFOPLIST_FILE = NerdQuest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = soundsmitten.NerdQuest;

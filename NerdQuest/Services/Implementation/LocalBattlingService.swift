@@ -30,9 +30,6 @@ class LocalBattlingService: Battling {
       if this.isBattling && !this.isBattlingRunning {
         this.battle(completion: completion)
       }
-      if !this.isBattling && this.counter == 0 {
-        timer.invalidate()
-      }
     }.fire()
   }
   
@@ -181,11 +178,5 @@ class LocalBattlingService: Battling {
       this.counter = this.counter == 0 ? 60 : this.counter - 1
     }
     timer?.fire()
-  }
-  
-  private func stopItemTimer() {
-    counter = 0
-    timer?.invalidate()
-    timer = nil
   }
 }

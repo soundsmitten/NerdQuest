@@ -31,6 +31,9 @@ class ManualLaunchViewController: NSViewController {
         return
     }
     battlingService.enqueue((AppConstants.kManualLaunchName, itemIDField.stringValue, targetField.stringValue))
+    print("target \(targetField.stringValue)")
+    print("id: \(itemIDField.stringValue)")
+      
     itemIDField.stringValue = ""
     targetField.stringValue = ""
     delegate?.manualLaunchAddedToQueue()

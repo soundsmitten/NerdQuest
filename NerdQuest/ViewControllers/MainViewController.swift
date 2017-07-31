@@ -66,7 +66,7 @@ class MainViewController: NSViewController, Passable {
     itemsTableView.reloadData()
   }
   
-  @IBAction func toggleMining(_ sender: Any) {
+  @IBAction func toggleMining(_ sender: NSButton) {
     guard let button = sender as? NSButton else {
       return
     }
