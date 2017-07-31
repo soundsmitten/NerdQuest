@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class LocalBattlingService: Battling {
   var counter: Int = 0
   var buffPercentage: Int!
@@ -79,7 +78,7 @@ class LocalBattlingService: Battling {
   }
   
   func useRandomItem(completion: @escaping (NerdBattlingResponse?) -> Void) {
-    let randomNumber = arc4random_uniform(UInt32(100)) + 1
+    let randomNumber = arc4random_uniform(UInt32(100))
     var itemTypeToUse: ItemType = randomNumber <= buffPercentage ? .buff : .weapon
     var randomItem = nerdService.itemSavingService.getRandomItem(itemType: itemTypeToUse)
     
@@ -109,13 +108,14 @@ class LocalBattlingService: Battling {
       return nil
     }
     
-    guard itemTypeToUse == ItemType.weapon else  {
+    guard itemTypeToUse == ItemType.weapon else {
       return Nerds.kMe
     }
     
     guard nerdService.leaderboardingService.leaderboard.count > 0 else {
       return nil
     }
+    
     let enemies = nerdService.leaderboardingService.leaderboard.filter({ player in
       return self.isEnemy(player: player.name)
     })
@@ -131,11 +131,11 @@ class LocalBattlingService: Battling {
   }
   
   func useItem(nameAndIDWithTarget: NameAndIDWithTarget, completion: @escaping (NerdBattlingResponse?) -> Void) {
-    //let name = nameAndIDWithTarget.0
+    let itemName = nameAndIDWithTarget.0
     let itemID = nameAndIDWithTarget.1
     let target = nameAndIDWithTarget.2
     
-    guard !nerdService.itemSavingService.isItemUsed(itemID: itemID) else {
+    guard !nerdService.itemSavingService.isItemUsed(itemID: itemID) || itemName == AppConstants.kManualLaunchName else {
       print("Item already used")
       completion(nil)
       return
@@ -143,7 +143,10 @@ class LocalBattlingService: Battling {
     
     let resource = NerdBattlingResource()
     let request = NerdNetworkRequest(resource: resource)
-    let url = resource.url.appendingPathComponent(itemID)
+    var url = resource.url.appendingPathComponent(itemID)
+    let urlString = url.absoluteString + "?target=\(target)"
+    url = URL(string: urlString)!
+    
     var urlRequest = URLRequest(url: url)
     urlRequest.httpMethod = resource.httpMethod.rawValue
     urlRequest.addValue(UserDefaults.standard.string(forKey: UserDefaultsKey.kAPIKey)!, forHTTPHeaderField: HTTPHeaderKey.kAPIKey)
@@ -153,17 +156,15 @@ class LocalBattlingService: Battling {
         completion(nil)
         return
       }
+      if let nerdBattlingResponse = nerdBattlingResponse {
+        this.nerdService.itemSavingService.useItem(itemID: itemID)
+        completion(nerdBattlingResponse)
+      }
       this.startItemTimer()
       let when = DispatchTime.now() + AppConstants.kBattlingInterval
       DispatchQueue.main.asyncAfter(deadline: when, execute: {
         this.isBattlingRunning = false
-        if let nerdBattlingResponse = nerdBattlingResponse {
-          this.nerdService.itemSavingService.useItem(itemID: itemID)
-          this.delegate?.battlingActionDidOccur()
-          completion(nerdBattlingResponse)
-        } else {
-          completion(nil)
-        }
+        this.counter = 60
       })
     })
   }

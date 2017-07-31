@@ -30,7 +30,9 @@ class ManualLaunchViewController: NSViewController {
       validateFields() else {
         return
     }
-    battlingService.enqueue(("Manual Launch", itemIDField.stringValue, targetField.stringValue))
+    battlingService.enqueue((AppConstants.kManualLaunchName, itemIDField.stringValue, targetField.stringValue))
+    itemIDField.stringValue = ""
+    targetField.stringValue = ""
     delegate?.manualLaunchAddedToQueue()
   }
   

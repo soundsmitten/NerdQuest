@@ -444,7 +444,7 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-15" y="280"/>
+            <point key="canvasLocation" x="248" y="0.0"/>
         </scene>
         <!--Message Test-->
         <scene sceneID="Xf4-cR-ECm">
@@ -536,7 +536,7 @@
                                     <font key="font" metaFont="systemBold" size="12"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="toggleBattling:" target="XBq-O7-8RR" id="NBu-k2-hGK"/>
+                                    <action selector="toggleMining:" target="XBq-O7-8RR" id="Mdb-QR-Xe9"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BhQ-P3-81h">
@@ -1070,17 +1070,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VLb-XB-U62">
-                                <rect key="frame" x="945" y="7" width="82" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="recessed" title="Battling On" bezelStyle="recessed" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="osn-M0-Fxo">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                    <font key="font" metaFont="systemBold" size="12"/>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ayj-KF-vbk">
-                                <rect key="frame" x="812" y="6" width="125" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ayj-KF-vbk">
+                                <rect key="frame" x="847" y="6" width="92" height="19"/>
                                 <buttonCell key="cell" type="roundTextured" title="Manual Launch" bezelStyle="texturedRounded" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fsr-bT-XN2">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
@@ -1089,6 +1080,23 @@
                                     <segue destination="w87-RR-Q3k" kind="show" identifier="MainToManualSegue" id="8cU-0l-dlZ"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VLb-XB-U62">
+                                <rect key="frame" x="947" y="7" width="82" height="17"/>
+                                <buttonCell key="cell" type="recessed" title="Battling On" bezelStyle="recessed" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="osn-M0-Fxo">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                    <font key="font" metaFont="systemBold" size="12"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="toggleBattling:" target="XBq-O7-8RR" id="gEd-UJ-Pg9"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DnE-3g-bVw">
+                                <rect key="frame" x="742" y="1" width="102" height="28"/>
+                                <buttonCell key="cell" type="push" title="Friend or Foe?" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VJe-oQ-2ua">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="smallSystem"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ox2-rY-ZMm" firstAttribute="leading" secondItem="Pby-Ao-nC0" secondAttribute="leading" constant="20" id="2f8-T3-LAI"/>
@@ -1096,22 +1104,30 @@
                             <constraint firstItem="f13-ny-KdM" firstAttribute="top" secondItem="Pby-Ao-nC0" secondAttribute="top" constant="20" symbolic="YES" id="836-vd-9nT"/>
                             <constraint firstAttribute="trailing" secondItem="f13-ny-KdM" secondAttribute="trailing" constant="20" symbolic="YES" id="9DC-Gz-j7k"/>
                             <constraint firstItem="fA7-UV-Equ" firstAttribute="leading" secondItem="BXE-Zm-Qng" secondAttribute="trailing" constant="8" symbolic="YES" id="9jG-Rt-eo9"/>
+                            <constraint firstAttribute="bottom" secondItem="VLb-XB-U62" secondAttribute="bottom" constant="8" id="FfM-Sc-Ihg"/>
                             <constraint firstItem="BXE-Zm-Qng" firstAttribute="leading" secondItem="Pby-Ao-nC0" secondAttribute="leading" constant="20" symbolic="YES" id="Jod-X0-9Zd"/>
                             <constraint firstItem="J7a-5r-2gH" firstAttribute="top" secondItem="Pby-Ao-nC0" secondAttribute="top" constant="20" symbolic="YES" id="LJ4-De-Ftd"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BhQ-P3-81h" secondAttribute="trailing" constant="20" symbolic="YES" id="LY8-QB-MuC"/>
+                            <constraint firstAttribute="bottom" secondItem="DnE-3g-bVw" secondAttribute="bottom" constant="7" id="MSK-MJ-Tnu"/>
                             <constraint firstItem="fA7-UV-Equ" firstAttribute="leading" secondItem="J7a-5r-2gH" secondAttribute="trailing" constant="8" symbolic="YES" id="PGj-Ai-Xb2"/>
+                            <constraint firstItem="ayj-KF-vbk" firstAttribute="leading" secondItem="DnE-3g-bVw" secondAttribute="trailing" constant="8" symbolic="YES" id="PSI-KW-RXi"/>
                             <constraint firstItem="Ohi-pK-AqY" firstAttribute="leading" secondItem="Pby-Ao-nC0" secondAttribute="leading" constant="20" symbolic="YES" id="RGh-Zw-1Wn"/>
+                            <constraint firstAttribute="bottom" secondItem="ayj-KF-vbk" secondAttribute="bottom" constant="7" id="WBY-1H-IHR"/>
                             <constraint firstAttribute="bottom" secondItem="ox2-rY-ZMm" secondAttribute="bottom" constant="10" id="Z5g-oH-iCf"/>
-                            <constraint firstItem="BhQ-P3-81h" firstAttribute="leading" secondItem="ox2-rY-ZMm" secondAttribute="trailing" constant="135" id="Zfl-gx-McA"/>
+                            <constraint firstItem="ayj-KF-vbk" firstAttribute="top" secondItem="f13-ny-KdM" secondAttribute="bottom" constant="23" id="aUL-2f-ltJ"/>
+                            <constraint firstItem="R2r-yZ-LG1" firstAttribute="leading" secondItem="VLb-XB-U62" secondAttribute="trailing" constant="8" symbolic="YES" id="cOd-KS-YSc"/>
                             <constraint firstItem="J7a-5r-2gH" firstAttribute="leading" secondItem="Pby-Ao-nC0" secondAttribute="leading" constant="20" symbolic="YES" id="d02-CJ-uCC"/>
+                            <constraint firstItem="VLb-XB-U62" firstAttribute="leading" secondItem="ayj-KF-vbk" secondAttribute="trailing" constant="8" symbolic="YES" id="ee3-Al-hhv"/>
                             <constraint firstItem="R2r-yZ-LG1" firstAttribute="top" secondItem="f13-ny-KdM" secondAttribute="bottom" constant="24" id="f86-xA-h0v"/>
+                            <constraint firstItem="VLb-XB-U62" firstAttribute="leading" secondItem="ayj-KF-vbk" secondAttribute="trailing" constant="8" symbolic="YES" id="g3n-mq-Zsb"/>
                             <constraint firstItem="R2r-yZ-LG1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Pby-Ao-nC0" secondAttribute="leading" constant="20" symbolic="YES" id="gfN-bb-Bla"/>
                             <constraint firstItem="fA7-UV-Equ" firstAttribute="leading" secondItem="Ohi-pK-AqY" secondAttribute="trailing" constant="8" symbolic="YES" id="ias-eX-CeN"/>
                             <constraint firstItem="fA7-UV-Equ" firstAttribute="top" secondItem="Pby-Ao-nC0" secondAttribute="top" constant="20" symbolic="YES" id="pob-0q-Equ"/>
+                            <constraint firstItem="VLb-XB-U62" firstAttribute="top" secondItem="f13-ny-KdM" secondAttribute="bottom" constant="24" id="qrd-XF-eXc"/>
                             <constraint firstAttribute="trailing" secondItem="R2r-yZ-LG1" secondAttribute="trailing" constant="20" id="qwN-7k-T70"/>
                             <constraint firstItem="Ohi-pK-AqY" firstAttribute="top" secondItem="J7a-5r-2gH" secondAttribute="bottom" constant="8" symbolic="YES" id="s25-PE-tKk"/>
                             <constraint firstAttribute="bottom" secondItem="BXE-Zm-Qng" secondAttribute="bottom" constant="48" id="sgg-VE-0IG"/>
                             <constraint firstItem="f13-ny-KdM" firstAttribute="leading" secondItem="fA7-UV-Equ" secondAttribute="trailing" constant="8" symbolic="YES" id="tfV-4j-JZ0"/>
+                            <constraint firstItem="BhQ-P3-81h" firstAttribute="leading" secondItem="Pby-Ao-nC0" secondAttribute="leading" constant="243" id="txB-Yk-fZw"/>
                             <constraint firstAttribute="bottom" secondItem="R2r-yZ-LG1" secondAttribute="bottom" constant="8" id="wGS-eL-M9A"/>
                             <constraint firstAttribute="bottom" secondItem="fA7-UV-Equ" secondAttribute="bottom" constant="48" id="xA2-Ha-inE"/>
                             <constraint firstAttribute="bottom" secondItem="BhQ-P3-81h" secondAttribute="bottom" constant="10" id="zUo-5D-rVb"/>
@@ -1130,7 +1146,7 @@
                 <customObject id="Hj1-ib-7Li" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="CYR-lV-VWc"/>
             </objects>
-            <point key="canvasLocation" x="422" y="547"/>
+            <point key="canvasLocation" x="419" y="752"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="F55-ng-gg6">
@@ -1154,10 +1170,10 @@
             </objects>
             <point key="canvasLocation" x="689" y="1316"/>
         </scene>
-        <!--View Controller-->
+        <!--Manual Launch View Controller-->
         <scene sceneID="Ajj-Jr-uYB">
             <objects>
-                <viewController id="3tb-6r-9Ht" sceneMemberID="viewController">
+                <viewController id="3tb-6r-9Ht" customClass="ManualLaunchViewController" customModule="NerdQuest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="DIw-9x-Seo">
                         <rect key="frame" x="0.0" y="0.0" width="248" height="123"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1187,6 +1203,9 @@
 DQ
 </string>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="launchButtonTappedWithSender:" target="3tb-6r-9Ht" id="6fs-jG-pmO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -1201,6 +1220,10 @@ DQ
                             <constraint firstAttribute="bottom" secondItem="Vc0-IM-ymc" secondAttribute="bottom" constant="20" symbolic="YES" id="omk-8J-buD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="itemIDField" destination="FP2-vF-3RC" id="dQI-u1-7tS"/>
+                        <outlet property="targetField" destination="Vb1-Wp-WEb" id="Gcg-nz-Tuk"/>
+                    </connections>
                 </viewController>
                 <customObject id="qEG-bm-SV4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

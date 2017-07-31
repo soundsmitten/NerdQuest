@@ -36,9 +36,10 @@ class LocalLeaderboardingService: Leaderboarding {
       DispatchQueue.main.asyncAfter(deadline: when, execute: {
         self.isLeaderboardRunning = false
         if let players = players {
-          self.leaderboard = players
+          self.leaderboard = players ?? []
           completion(players)
         } else {
+          self.leaderboard = []
           completion(nil)
         }
       })

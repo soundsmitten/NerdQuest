@@ -9,9 +9,15 @@
 import Cocoa
 
 class MainWindowController: NSWindowController {
-    override func windowDidLoad() {
-        super.windowDidLoad()
-      
-        // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+  var battlingService: Battling!
+  var nerdService: NerdService!
+  override func windowDidLoad() {
+    super.windowDidLoad()
+    guard let mainViewController = contentViewController as? MainViewController else {
+      return
     }
+    mainViewController.nerdService = nerdService
+    mainViewController.battlingService = battlingService
+  }
+
 }

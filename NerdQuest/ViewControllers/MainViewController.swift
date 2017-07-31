@@ -20,6 +20,7 @@ class MainViewController: NSViewController, Passable {
   var isMiningRunning = false
   var nerdService: NerdService!
   var battlingService: Battling!
+  var isFirstLaunch = true
   
   @IBOutlet weak var messageTableView: NSTableView!
   @IBOutlet weak var itemsTableView: NSTableView!
@@ -50,9 +51,10 @@ class MainViewController: NSViewController, Passable {
     
     refreshItemsTable()
     
-    startMining()
-    startLeaderboard()
-    startBattling()
+    setupMining()
+    setupLeaderboard() {
+      self.setupBattling()
+    }
   }
   
   private func setupItemsTable() {
@@ -90,7 +92,7 @@ class MainViewController: NSViewController, Passable {
     }
   }
   
-  private func startMining() {
+  private func setupMining() {
     nerdService.pointMiningService.startMining()
     nerdService.sanityCheckingService.checkAPIKey(completion: { [weak self] in
       nerdService.pointMiningService.setupMining(completion: { [weak self] nerdPoint in
@@ -113,7 +115,7 @@ class MainViewController: NSViewController, Passable {
     })
   }
   
-  private func startLeaderboard() {
+  private func setupLeaderboard(completion: @escaping ()->()) {
     nerdService.leaderboardingService.setupLeaderboard(completion: { [weak self] players in
       guard let players = players,
         let this = self else {
@@ -121,12 +123,17 @@ class MainViewController: NSViewController, Passable {
       }
       this.leaderboardTableDataSource.players = players
       this.leaderboardTableView.reloadData()
+      
+      if this.isFirstLaunch {
+        this.isFirstLaunch = false
+        completion()
+      }
     })
   }
   
-  private func startBattling() {
-    battlingService.buffPercentage = AppConstants.kBuffPercentage
+  private func setupBattling() {
     battlingService.startBattling()
+    battlingService.buffPercentage = AppConstants.kBuffPercentage
     battlingService.setupBattling { [weak self] nerdBattlingResponse in
       guard
         let this = self,
@@ -142,7 +149,9 @@ class MainViewController: NSViewController, Passable {
       guard let this = self else {
         return
       }
-      this.itemCountdownLabel.stringValue = "You're a great person." //"Item Timer: \(this.battlingService.counter)"
+      this.itemCountdownLabel.stringValue = "Item Timer: \(this.battlingService.counter)"
+      this.queueItemsTableDataSource.queueItems = this.battlingService.itemBuffer
+      this.queueItemsTableView.reloadData()
     }.fire()
   }
   
@@ -152,11 +161,13 @@ class MainViewController: NSViewController, Passable {
     }
     switch identifier {
     case NSStoryboardSegue.Identifier(rawValue: SegueIdentifiers.kMainToManualSegue):
+
       guard
         let destination = segue.destinationController as? NSWindowController,
         let manualLaunchViewController = destination.contentViewController as? ManualLaunchViewController else {
           return
       }
+      manualLaunchViewController.battlingService = battlingService
       manualLaunchViewController.delegate = self
       return
     default:
