@@ -55,6 +55,7 @@ class LocalBattlingService: Battling {
     itemBuffer.append(nameAndIDWithTarget)
   }
   
+  @discardableResult
   func dequeue() -> NameAndIDWithTarget? {
     guard !bufferIsEmpty() else {
       return nil
@@ -139,6 +140,9 @@ class LocalBattlingService: Battling {
     guard !nerdService.itemSavingService.isItemUsed(itemID: itemID) || itemName == AppConstants.kManualLaunchName else {
       print("Item already used")
       completion(nil)
+      if inBuffer {
+        dequeue()
+      }
       isBattlingRunning = false
       return
     }
@@ -162,7 +166,7 @@ class LocalBattlingService: Battling {
       if let nerdBattlingResponse = nerdBattlingResponse {
         this.nerdService.itemSavingService.useItem(itemID: itemID)
         if inBuffer {
-          let _ = this.dequeue()
+          this.dequeue()
         }
         completion(nerdBattlingResponse)
       } else {
