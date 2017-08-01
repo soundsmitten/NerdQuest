@@ -41,6 +41,7 @@
 		156FDC571F2EA248007CF3AD /* ManualLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156FDC561F2EA248007CF3AD /* ManualLaunchViewController.swift */; };
 		157569961F2E6FE100E288D1 /* BattlingMessagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157569951F2E6FE100E288D1 /* BattlingMessagesDataSource.swift */; };
 		1583161D1F2E84A1006024D0 /* ItemQueueTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1583161C1F2E84A1006024D0 /* ItemQueueTableDataSource.swift */; };
+		158604A71F30CAAD0060DDB8 /* NSTableView+Bounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158604A61F30CAAD0060DDB8 /* NSTableView+Bounds.swift */; };
 		158A0CE91F2C6B67004F317B /* NerdItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE41F2C6B67004F317B /* NerdItem.swift */; };
 		158A0CEA1F2C6B67004F317B /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE51F2C6B67004F317B /* Annotation.swift */; };
 		158A0CEB1F2C6B67004F317B /* NerdBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE61F2C6B67004F317B /* NerdBadge.swift */; };
@@ -112,6 +113,7 @@
 		156FDC561F2EA248007CF3AD /* ManualLaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualLaunchViewController.swift; sourceTree = "<group>"; };
 		157569951F2E6FE100E288D1 /* BattlingMessagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlingMessagesDataSource.swift; sourceTree = "<group>"; };
 		1583161C1F2E84A1006024D0 /* ItemQueueTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemQueueTableDataSource.swift; sourceTree = "<group>"; };
+		158604A61F30CAAD0060DDB8 /* NSTableView+Bounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Bounds.swift"; sourceTree = "<group>"; };
 		158A0CE41F2C6B67004F317B /* NerdItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdItem.swift; sourceTree = "<group>"; };
 		158A0CE51F2C6B67004F317B /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		158A0CE61F2C6B67004F317B /* NerdBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdBadge.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 			children = (
 				1534818F1F2CFF2C00C7DB16 /* Sequence+Find.swift */,
 				15A84AEF1F2FFB7400849363 /* String+RangesAndRegex.swift */,
+				158604A61F30CAAD0060DDB8 /* NSTableView+Bounds.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -670,6 +673,7 @@
 				1549EA6B1F2DA5F80041795C /* Leaderboarding.swift in Sources */,
 				1515C5801F2C2CF2008BE426 /* AppDelegate.swift in Sources */,
 				1515C5BF1F2C2E68008BE426 /* ApiResource.swift in Sources */,
+				158604A71F30CAAD0060DDB8 /* NSTableView+Bounds.swift in Sources */,
 				153481901F2CFF2C00C7DB16 /* Sequence+Find.swift in Sources */,
 				1515C5C01F2C2E68008BE426 /* NetworkRequest.swift in Sources */,
 				1583161D1F2E84A1006024D0 /* ItemQueueTableDataSource.swift in Sources */,

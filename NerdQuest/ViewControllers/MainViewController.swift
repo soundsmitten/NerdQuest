@@ -86,6 +86,9 @@ class MainViewController: NSViewController, Passable {
   }
   
   @IBAction func addToQueueMenuItemChosen(sender: Any) {
+    guard itemsTableView.indexWithinBounds(index: itemsTableView.selectedRow) else {
+      return
+    }
     let itemToUse = itemsTableDataSource.annotatedItems[itemsTableView.selectedRow]
     addToItemBuffer(nameAndID: (itemToUse.item.name, itemToUse.item.id))
   }
@@ -217,6 +220,12 @@ extension MainViewController: ItemTappedDelegate {
 
 extension MainViewController: QueueItemTappedDelegate {
   func removeFromItemBuffer(queueItem: NameAndIDWithTarget) {
+    guard let index = queueItemsTableDataSource.queueItems.index( where: {
+      return  $0 == queueItem
+    }), queueItemsTableView.indexWithinBounds(index: index) else {
+      print("Protect from fucking the indices!")
+      return
+    }
     battlingService.remove(queueItem.1)
     queueItemsTableDataSource.queueItems = battlingService.itemBuffer
     queueItemsTableView.reloadData()
