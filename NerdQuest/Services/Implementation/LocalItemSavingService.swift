@@ -47,7 +47,7 @@ class LocalItemSavingService: ItemSaving {
         return []
     }
     
-    let selectQuery = "select id, name, rarity, description, isUsed, dateAdded from Item where isUsed = 0 order by name asc"
+    let selectQuery = "select Item.id, Item.name, Item.rarity, Item.description, Item.isUsed, Item.dateAdded, Library.itemType, Library.duration, Library.effect from Item left join Library on Item.name = Library.name  where Item.isUsed = 0 order by Item.name asc"
     do {
       let resultSet = try database.executeQuery(selectQuery, values: [])
       while resultSet.next() {
@@ -61,36 +61,22 @@ class LocalItemSavingService: ItemSaving {
         let isUsed = resultSet.bool(forColumn: "isUsed")
         let dateAdded = Int(resultSet.int(forColumn: "dateAdded"))
         
+        let itemType = ItemType(rawValue: Int(resultSet.int(forColumn: "itemType"))) ?? .unknown
+        let duration = resultSet.string(forColumn: "duration") ?? "??"
+        let effect = resultSet.string(forColumn: "effect") ?? "??"
+        
         let nerdItem = NerdItem(name: name, itemDescription: description, id: id, rarity: rarity, dateAdded: dateAdded, isUsed: isUsed)
-        nerdItems.append(nerdItem)
+        let annotation = Annotation(itemType: itemType, duration: duration, effect: effect)
+
+        annotatedItems.append(AnnotatedItem(item: nerdItem, annotation: annotation))
       }
+      database.close()
+      return annotatedItems
     } catch {
       print("error \(error.localizedDescription)")
       database.close()
       return []
     }
-    do {
-      for nerdItem in nerdItems {
-        var annotation: Annotation?
-        let selectQuery = "select itemType, duration, effect from Library join Item on Library.name = ? order by itemType asc"
-        let resultSet = try database.executeQuery(selectQuery, values: [nerdItem.name])
-        while resultSet.next() {
-          let itemType = ItemType(rawValue: Int(resultSet.int(forColumn: "itemType")))
-          let duration = resultSet.string(forColumn: "duration")
-          let effect = resultSet.string(forColumn: "effect")
-          annotation = Annotation(itemType: itemType, duration: duration, effect: effect)
-        }
-        let annotatedItem = AnnotatedItem(item: nerdItem, annotation: annotation)
-        annotatedItems.append(annotatedItem)
-      }
-    } catch {
-      print("error \(error.localizedDescription)")
-      database.close()
-      return []
-    }
-    
-    database.close()
-    return annotatedItems
   }
   
   func isItemUsed(itemID: String) -> Bool {
@@ -116,6 +102,10 @@ class LocalItemSavingService: ItemSaving {
     
     database.close()
     return isUsed
+  }
+  
+  func getItems(byType itemType: ItemType) -> AnnotatedItem? {
+    return nil
   }
   
   func getRandomItem(itemType: ItemType) -> AnnotatedItem? {

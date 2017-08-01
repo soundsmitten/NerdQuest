@@ -27,6 +27,9 @@ class ItemQueueTableDataSource: NSObject {
   }
 
   @objc func tableTapped(sender: AnyObject) {
+    guard tableView.indexWithinBounds(index: sender.clickedRow) else {
+      return
+    }
     let queueItem = queueItems[sender.clickedRow]
     delegate?.removeFromItemBuffer(queueItem: queueItem)
   }
