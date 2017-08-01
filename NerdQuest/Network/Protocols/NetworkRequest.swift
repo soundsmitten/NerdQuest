@@ -20,11 +20,11 @@ extension NetworkRequest {
     let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
     let task = session.dataTask(with: urlRequest, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
       guard let data = data else {
-        print("\(error) urlRequest.url")
+        print("\(String(describing: error)) urlRequest.url")
         completion(nil)
         return
       }
-      print(urlRequest.url)
+      print(urlRequest.url ?? "unknown url")
       completion(self.decode(data))
     })
     task.resume()
