@@ -48,6 +48,7 @@ class LocalPointMiningService: PointMining {
       DispatchQueue.main.asyncAfter(deadline: when, execute: {
         self.isMiningRunning = false
         if let nerdPoint = nerdPoint {
+          print("pointsMessage = \(String(describing: nerdPoint?.messages.joined()))")
           completion(nerdPoint)
         } else {
           completion(nil)

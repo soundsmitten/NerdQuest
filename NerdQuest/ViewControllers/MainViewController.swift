@@ -57,25 +57,18 @@ class MainViewController: NSViewController, Passable {
     }
   }
   
-  private func setupItemsTable() {
-    // setup sort descriptor
-  }
-  
   func refreshItemsTable() {
     itemsTableDataSource.annotatedItems = nerdService.itemSavingService.getAnnotatedItems()
     itemsTableView.reloadData()
   }
   
   @IBAction func toggleMining(_ sender: NSButton) {
-    guard let button = sender as? NSButton else {
-      return
-    }
-    if button.state == .on {
+    if sender.state == .on {
       nerdService.pointMiningService.startMining()
-      button.cell?.title = NSLocalizedString("Mining On", comment: "")
+      sender.cell?.title = NSLocalizedString("Mining On", comment: "")
     } else {
       nerdService.pointMiningService.stopMining()
-      button.cell?.title = NSLocalizedString("Mining Off", comment: "")
+      sender.cell?.title = NSLocalizedString("Mining Off", comment: "")
     }
   }
   
@@ -92,6 +85,11 @@ class MainViewController: NSViewController, Passable {
     }
   }
   
+  @IBAction func addToQueueMenuItemChosen(sender: Any) {
+    let itemToUse = itemsTableDataSource.annotatedItems[itemsTableView.selectedRow]
+    addToItemBuffer(nameAndID: (itemToUse.item.name, itemToUse.item.id))
+  }
+  
   private func setupMining() {
     nerdService.pointMiningService.startMining()
     nerdService.sanityCheckingService.checkAPIKey(completion: { [weak self] in
@@ -102,17 +100,27 @@ class MainViewController: NSViewController, Passable {
         }
         this.pointsLabel.stringValue = "Points: \(nerdPoint.points)"
         
-        if nerdPoint.messages.count > 1 {
-        let message = nerdPoint.messages.joined()
-          this.messagesTableDataSource.messages = [message] + this.messagesTableDataSource.messages
-          this.messageTableView.reloadData()
+        for message in nerdPoint.messages {
+          this.saveItemFromMessage(message: message)
         }
+        
+        let messages = nerdPoint.messages
+        this.messagesTableDataSource.messages = messages + this.messagesTableDataSource.messages
+        this.messageTableView.reloadData()
+        
         if let item = nerdPoint.item {
           this.nerdService.itemSavingService.saveItem(nerdItem: item)
           this.refreshItemsTable()
         }
       })
     })
+  }
+  
+  private func saveItemFromMessage(message: String) {
+    let idAndName = getIDAndName(text: message, pattern: AppConstants.kMessageParsingRegex)
+    if idAndName.count == 2 {
+      nerdService.itemSavingService.saveItem(nerdItem: NerdItem(name: idAndName.last!, itemDescription: "Bonus Item", id: idAndName.first!, rarity: -1, dateAdded: Int(Date().timeIntervalSince1970), isUsed: false))
+    }
   }
   
   private func setupLeaderboard(completion: @escaping ()->()) {
@@ -140,8 +148,13 @@ class MainViewController: NSViewController, Passable {
         let nerdBattlingResponse = nerdBattlingResponse else {
           return
       }
-      let message = nerdBattlingResponse.messages.joined()
-      this.battlingMessagesTableDataSource.messages = [message] + this.battlingMessagesTableDataSource.messages
+      
+      let messages = nerdBattlingResponse.messages
+      for message in messages {
+        this.saveItemFromMessage(message: message)
+      }
+      
+      this.battlingMessagesTableDataSource.messages = messages + this.battlingMessagesTableDataSource.messages
       this.battlingMessageTableView.reloadData()
       this.refreshItemsTable()
     }
@@ -168,6 +181,7 @@ class MainViewController: NSViewController, Passable {
           return
       }
       manualLaunchViewController.battlingService = battlingService
+      manualLaunchViewController.nerdService = nerdService
       manualLaunchViewController.delegate = self
       return
     default:

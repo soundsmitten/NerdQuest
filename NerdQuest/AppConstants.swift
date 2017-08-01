@@ -44,6 +44,7 @@ struct AppConstants {
   static let kDatabasePath = "/Users/nlash/Code/Data/nerdQuest.db"
   static let kBuffPercentage = 80
   static let kManualLaunchName = "Manual Launch"
+  static let kMessageParsingRegex = ".*<(.*)> \\| <(.*)>.*"
 }
 
 struct UserDefaultsKey {

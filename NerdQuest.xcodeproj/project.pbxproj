@@ -47,6 +47,7 @@
 		158A0CEC1F2C6B67004F317B /* NerdPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE71F2C6B67004F317B /* NerdPoint.swift */; };
 		158A0CED1F2C6B67004F317B /* AnnotatedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE81F2C6B67004F317B /* AnnotatedItem.swift */; };
 		158A0CEF1F2C6BAB004F317B /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CEE1F2C6BAB004F317B /* MainWindowController.swift */; };
+		15A84AF01F2FFB7400849363 /* String+RangesAndRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A84AEF1F2FFB7400849363 /* String+RangesAndRegex.swift */; };
 		15B8A3701F2FA4A6004C557B /* FriendOrFoeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B8A36F1F2FA4A6004C557B /* FriendOrFoeViewController.swift */; };
 		3161C45E6D49C9019978F767 /* Pods_NerdQuestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 793E9065835A09DC47AC7EA7 /* Pods_NerdQuestTests.framework */; };
 		389724FC4F37A6FED7FD8369 /* Pods_NerdQuest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C57399190113E06EB7898CC /* Pods_NerdQuest.framework */; };
@@ -117,6 +118,7 @@
 		158A0CE71F2C6B67004F317B /* NerdPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdPoint.swift; sourceTree = "<group>"; };
 		158A0CE81F2C6B67004F317B /* AnnotatedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotatedItem.swift; sourceTree = "<group>"; };
 		158A0CEE1F2C6BAB004F317B /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		15A84AEF1F2FFB7400849363 /* String+RangesAndRegex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RangesAndRegex.swift"; sourceTree = "<group>"; };
 		15B8A36F1F2FA4A6004C557B /* FriendOrFoeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendOrFoeViewController.swift; sourceTree = "<group>"; };
 		2C57399190113E06EB7898CC /* Pods_NerdQuest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NerdQuest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4492732AE4749F25AAE02029 /* Pods_NerdQuestUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NerdQuestUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -336,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				1534818F1F2CFF2C00C7DB16 /* Sequence+Find.swift */,
+				15A84AEF1F2FFB7400849363 /* String+RangesAndRegex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				1515C5D61F2C2E80008BE426 /* ItemSaving.swift in Sources */,
 				1515C5D81F2C2E80008BE426 /* SanityChecking.swift in Sources */,
 				158A0CEA1F2C6B67004F317B /* Annotation.swift in Sources */,
+				15A84AF01F2FFB7400849363 /* String+RangesAndRegex.swift in Sources */,
 				1515C5AB1F2C2D3D008BE426 /* AppConstants.swift in Sources */,
 				1515C5D71F2C2E80008BE426 /* PointMining.swift in Sources */,
 				1549EA6B1F2DA5F80041795C /* Leaderboarding.swift in Sources */,

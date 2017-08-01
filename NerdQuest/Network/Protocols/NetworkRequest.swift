@@ -16,12 +16,15 @@ protocol NetworkRequest: class {
 extension NetworkRequest {
  func makeRequest(urlRequest: URLRequest, completion: @escaping (Model?) -> Void) {
     let configuration = URLSessionConfiguration.ephemeral
+    configuration.timeoutIntervalForResource = 1.0
     let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
     let task = session.dataTask(with: urlRequest, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
       guard let data = data else {
+        print("\(error) urlRequest.url")
         completion(nil)
         return
       }
+      print(urlRequest.url)
       completion(self.decode(data))
     })
     task.resume()

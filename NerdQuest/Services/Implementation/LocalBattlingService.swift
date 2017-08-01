@@ -36,8 +36,8 @@ class LocalBattlingService: Battling {
   private func battle(completion: @escaping (NerdBattlingResponse?) -> Void) {
     isBattlingRunning = true
     
-    if let queuedItem = dequeue() {
-      useItem(nameAndIDWithTarget: queuedItem, completion: completion)
+    if let queuedItem = itemBuffer.first {
+      useItem(nameAndIDWithTarget: queuedItem, inBuffer: true, completion: completion)
     } else {
       useRandomItem(completion: completion)
     }
@@ -90,12 +90,12 @@ class LocalBattlingService: Battling {
     }
     
     guard let target = getTarget(itemTypeToUse: itemTypeToUse) else {
-      completion(nil)
+      useRandomItem(completion: completion)
       return
     }
     
     let idWithTarget: NameAndIDWithTarget = (unwrappedRandomItem.item.name, unwrappedRandomItem.item.id, target)
-    useItem(nameAndIDWithTarget: idWithTarget, completion: { (nerdBattlingResponse) in
+    useItem(nameAndIDWithTarget: idWithTarget, inBuffer: false, completion: { (nerdBattlingResponse) in
       completion(nerdBattlingResponse)
     })
   }
@@ -127,14 +127,19 @@ class LocalBattlingService: Battling {
     return itemType == .weapon || itemType == .buff
   }
   
-  func useItem(nameAndIDWithTarget: NameAndIDWithTarget, completion: @escaping (NerdBattlingResponse?) -> Void) {
+  func useItem(nameAndIDWithTarget: NameAndIDWithTarget, inBuffer: Bool, completion: @escaping (NerdBattlingResponse?) -> Void) {
     let itemName = nameAndIDWithTarget.0
     let itemID = nameAndIDWithTarget.1
     let target = nameAndIDWithTarget.2
     
+    if itemName == AppConstants.kManualLaunchName {
+      print("MANUAL incoming")
+    }
+    
     guard !nerdService.itemSavingService.isItemUsed(itemID: itemID) || itemName == AppConstants.kManualLaunchName else {
       print("Item already used")
       completion(nil)
+      isBattlingRunning = false
       return
     }
     
@@ -153,16 +158,25 @@ class LocalBattlingService: Battling {
         completion(nil)
         return
       }
+      this.wait()
       if let nerdBattlingResponse = nerdBattlingResponse {
         this.nerdService.itemSavingService.useItem(itemID: itemID)
+        if inBuffer {
+          let _ = this.dequeue()
+        }
         completion(nerdBattlingResponse)
+      } else {
+        completion(nil)
       }
       this.startItemTimer()
-      let when = DispatchTime.now() + AppConstants.kBattlingInterval
-      DispatchQueue.main.asyncAfter(deadline: when, execute: {
-        this.isBattlingRunning = false
-        this.counter = 60
-      })
+    })
+  }
+  
+  private func wait() {
+    let when = DispatchTime.now() + AppConstants.kBattlingInterval
+    DispatchQueue.main.asyncAfter(deadline: when, execute: { [weak self] in
+      self?.isBattlingRunning = false
+      self?.counter = 60
     })
   }
   

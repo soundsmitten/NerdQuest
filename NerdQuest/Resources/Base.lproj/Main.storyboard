@@ -370,6 +370,21 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Battle" id="sCF-QT-hb4">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Battle" id="tvc-v8-Qwa">
+                                    <items>
+                                        <menuItem title="Add to Queue…" id="KC3-3D-zTF">
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                            <connections>
+                                                <action selector="addToQueueMenuItemChosenWithSender:" target="Ady-hI-5gd" id="uU8-Lt-nQF"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="Window" id="aUF-d1-5bR">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
@@ -416,7 +431,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="NerdQuest" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="-9" y="-347"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -1181,7 +1196,7 @@
             <objects>
                 <viewController id="3tb-6r-9Ht" customClass="ManualLaunchViewController" customModule="NerdQuest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="DIw-9x-Seo">
-                        <rect key="frame" x="0.0" y="0.0" width="248" height="123"/>
+                        <rect key="frame" x="0.0" y="0.0" width="248" height="155"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FP2-vF-3RC">
@@ -1213,27 +1228,40 @@ DQ
                                     <action selector="launchButtonTappedWithSender:" target="3tb-6r-9Ht" id="6fs-jG-pmO"/>
                                 </connections>
                             </button>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IxK-l7-xOH">
+                                <rect key="frame" x="20" y="113" width="208" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Item Name" drawsBackground="YES" id="I1G-9Y-9DM">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="FP2-vF-3RC" secondAttribute="trailing" constant="20" symbolic="YES" id="0ib-De-fmL"/>
+                            <constraint firstItem="Vc0-IM-ymc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DIw-9x-Seo" secondAttribute="leading" constant="20" symbolic="YES" id="0zS-26-OIz"/>
+                            <constraint firstItem="IxK-l7-xOH" firstAttribute="top" secondItem="DIw-9x-Seo" secondAttribute="top" constant="20" symbolic="YES" id="IcB-yx-FBc"/>
                             <constraint firstAttribute="trailing" secondItem="Vb1-Wp-WEb" secondAttribute="trailing" constant="20" symbolic="YES" id="TrU-49-CFu"/>
                             <constraint firstItem="Vb1-Wp-WEb" firstAttribute="top" secondItem="FP2-vF-3RC" secondAttribute="bottom" constant="10" symbolic="YES" id="WBd-lK-MuH"/>
                             <constraint firstItem="Vc0-IM-ymc" firstAttribute="top" secondItem="Vb1-Wp-WEb" secondAttribute="bottom" constant="8" symbolic="YES" id="Wsa-yY-alk"/>
-                            <constraint firstItem="FP2-vF-3RC" firstAttribute="top" secondItem="DIw-9x-Seo" secondAttribute="top" constant="20" symbolic="YES" id="XUm-yr-X0A"/>
+                            <constraint firstAttribute="trailing" secondItem="IxK-l7-xOH" secondAttribute="trailing" constant="20" symbolic="YES" id="dCN-bD-qnY"/>
                             <constraint firstItem="Vb1-Wp-WEb" firstAttribute="leading" secondItem="DIw-9x-Seo" secondAttribute="leading" constant="20" symbolic="YES" id="dXu-zY-UGc"/>
+                            <constraint firstItem="FP2-vF-3RC" firstAttribute="top" secondItem="IxK-l7-xOH" secondAttribute="bottom" constant="10" symbolic="YES" id="fie-Nd-G1p"/>
                             <constraint firstAttribute="trailing" secondItem="Vc0-IM-ymc" secondAttribute="trailing" constant="20" symbolic="YES" id="iPd-am-coo"/>
                             <constraint firstItem="FP2-vF-3RC" firstAttribute="leading" secondItem="DIw-9x-Seo" secondAttribute="leading" constant="20" symbolic="YES" id="n6S-Mj-pjh"/>
                             <constraint firstAttribute="bottom" secondItem="Vc0-IM-ymc" secondAttribute="bottom" constant="20" symbolic="YES" id="omk-8J-buD"/>
+                            <constraint firstItem="IxK-l7-xOH" firstAttribute="leading" secondItem="DIw-9x-Seo" secondAttribute="leading" constant="20" symbolic="YES" id="sd7-bM-yMy"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="itemIDField" destination="FP2-vF-3RC" id="dQI-u1-7tS"/>
+                        <outlet property="itemNameField" destination="IxK-l7-xOH" id="KBd-vw-aDb"/>
                         <outlet property="targetField" destination="Vb1-Wp-WEb" id="Gcg-nz-Tuk"/>
                     </connections>
                 </viewController>
                 <customObject id="qEG-bm-SV4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="689" y="1559"/>
+            <point key="canvasLocation" x="689" y="1585.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="VVe-L4-M5A">
@@ -1252,33 +1280,85 @@ DQ
         <scene sceneID="W05-HR-THc">
             <objects>
                 <windowController showSeguePresentationStyle="single" id="V6U-kN-Z8J" sceneMemberID="viewController">
-                    <window key="window" title="Manual Launch" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="utilityWindow" frameAutosaveName="" id="TwG-iC-KA4" customClass="NSPanel">
+                    <window key="window" title="Friend or Foe" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="utilityWindow" frameAutosaveName="" id="TwG-iC-KA4" customClass="NSPanel">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" HUD="YES"/>
                         <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="245" y="310" width="248" height="150"/>
+                        <rect key="contentRect" x="245" y="310" width="248" height="91"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <connections>
                             <outlet property="delegate" destination="V6U-kN-Z8J" id="IFs-iH-wP1"/>
                         </connections>
                     </window>
+                    <connections>
+                        <segue destination="TIe-jz-nCm" kind="relationship" relationship="window.shadowedContentViewController" id="uHw-6T-Q1j"/>
+                    </connections>
                 </windowController>
                 <customObject id="5nj-lb-pdi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1025" y="1302"/>
         </scene>
-        <!--View Controller-->
+        <!--Friend Or Foe View Controller-->
         <scene sceneID="ejz-8I-fJZ">
             <objects>
-                <viewController id="TIe-jz-nCm" sceneMemberID="viewController">
+                <viewController id="TIe-jz-nCm" customClass="FriendOrFoeViewController" customModule="NerdQuest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="fug-E8-9po">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="248" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3gD-7R-ep2">
+                                <rect key="frame" x="20" y="49" width="208" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Username" drawsBackground="YES" id="yFi-iB-xBr">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DjB-bX-ZAx">
+                                <rect key="frame" x="151" y="13" width="83" height="32"/>
+                                <buttonCell key="cell" type="push" title="Search" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="53f-08-e4a">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="queryButtonTappedWithSender:" target="TIe-jz-nCm" id="XVd-tf-D2G"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RsQ-yK-aRI">
+                                <rect key="frame" x="18" y="20" width="133" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="129" id="fhq-w1-1sZ"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="Xd2-tB-qwV">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="DjB-bX-ZAx" secondAttribute="bottom" constant="20" symbolic="YES" id="23T-NR-3Sb"/>
+                            <constraint firstItem="DjB-bX-ZAx" firstAttribute="top" secondItem="3gD-7R-ep2" secondAttribute="bottom" constant="8" symbolic="YES" id="Ncv-4c-Blq"/>
+                            <constraint firstAttribute="trailing" secondItem="3gD-7R-ep2" secondAttribute="trailing" constant="20" symbolic="YES" id="Qnt-Ec-Uwp"/>
+                            <constraint firstAttribute="trailing" secondItem="DjB-bX-ZAx" secondAttribute="trailing" constant="20" symbolic="YES" id="UqC-a6-n6m"/>
+                            <constraint firstItem="DjB-bX-ZAx" firstAttribute="leading" secondItem="RsQ-yK-aRI" secondAttribute="trailing" constant="8" id="Wd4-R2-S7H"/>
+                            <constraint firstItem="RsQ-yK-aRI" firstAttribute="leading" secondItem="fug-E8-9po" secondAttribute="leading" constant="20" symbolic="YES" id="abS-jI-B2W"/>
+                            <constraint firstAttribute="bottom" secondItem="RsQ-yK-aRI" secondAttribute="bottom" constant="20" symbolic="YES" id="hC9-8o-Qu3"/>
+                            <constraint firstItem="3gD-7R-ep2" firstAttribute="top" secondItem="fug-E8-9po" secondAttribute="top" constant="20" symbolic="YES" id="tK9-oE-WaJ"/>
+                            <constraint firstItem="3gD-7R-ep2" firstAttribute="leading" secondItem="fug-E8-9po" secondAttribute="leading" constant="20" symbolic="YES" id="z96-eI-6ZD"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="resultField" destination="RsQ-yK-aRI" id="P56-3h-Mob"/>
+                        <outlet property="textField" destination="3gD-7R-ep2" id="VE7-qm-UYc"/>
+                    </connections>
                 </viewController>
                 <customObject id="ftV-ZB-YfG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1016" y="1543"/>
+            <point key="canvasLocation" x="1025" y="1544.5"/>
         </scene>
     </scenes>
 </document>

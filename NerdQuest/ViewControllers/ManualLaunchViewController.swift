@@ -13,10 +13,12 @@ protocol ManualLaunchAddedToQueue {
 }
 
 class ManualLaunchViewController: NSViewController {
+  @IBOutlet weak var itemNameField: NSTextField!
   @IBOutlet weak var itemIDField: NSTextField!
   @IBOutlet weak var targetField: NSTextField!
   
   var battlingService: Battling!
+  var nerdService: NerdService!
   var delegate: ManualLaunchAddedToQueue?
   
   override func viewDidLoad() {
@@ -30,6 +32,8 @@ class ManualLaunchViewController: NSViewController {
       validateFields() else {
         return
     }
+    let nerdItem = NerdItem(name: itemNameField.stringValue, itemDescription: "Manually launched", id: itemIDField.stringValue, rarity: -1, dateAdded: Int(Date().timeIntervalSince1970), isUsed: false)
+    nerdService.itemSavingService.saveItem(nerdItem: nerdItem)
     battlingService.enqueue((AppConstants.kManualLaunchName, itemIDField.stringValue, targetField.stringValue))
     print("target \(targetField.stringValue)")
     print("id: \(itemIDField.stringValue)")
