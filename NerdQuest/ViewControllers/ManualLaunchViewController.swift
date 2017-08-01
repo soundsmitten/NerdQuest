@@ -34,12 +34,14 @@ class ManualLaunchViewController: NSViewController {
     }
     let nerdItem = NerdItem(name: itemNameField.stringValue, itemDescription: "Manually launched", id: itemIDField.stringValue, rarity: -1, dateAdded: Int(Date().timeIntervalSince1970), isUsed: false)
     nerdService.itemSavingService.saveItem(nerdItem: nerdItem)
-    battlingService.enqueue((AppConstants.kManualLaunchName, itemIDField.stringValue, targetField.stringValue))
+    battlingService.enqueue((itemNameField.stringValue, itemIDField.stringValue, targetField.stringValue))
     print("target \(targetField.stringValue)")
     print("id: \(itemIDField.stringValue)")
       
     itemIDField.stringValue = ""
     targetField.stringValue = ""
+    itemNameField.stringValue = ""
+    
     delegate?.manualLaunchAddedToQueue()
   }
   
