@@ -38,7 +38,6 @@ class LocalItemSavingService: ItemSaving {
   }
   
   func getAnnotatedItems() -> [AnnotatedItem] {
-    var nerdItems = [NerdItem]()
     var annotatedItems = [AnnotatedItem]()
     guard
       let database = database,
@@ -104,22 +103,43 @@ class LocalItemSavingService: ItemSaving {
     return isUsed
   }
   
-  func getItems(byType itemType: ItemType) -> AnnotatedItem? {
-    return nil
-  }
-  
   func getRandomItem(itemType: ItemType) -> AnnotatedItem? {
-    let annotatedItems = getAnnotatedItems()
-    let filteredItems = annotatedItems.filter {
-      $0.annotation?.itemType == itemType
+    var annotatedItem: AnnotatedItem?
+    guard
+      let database = database,
+      database.open() else {
+        print("Cannot open database to get annotated items")
+        return nil
     }
-    
-    guard filteredItems.count > 0 else {
+    let selectQuery = "select Item.id, Item.name, Item.rarity, Item.description, Item.isUsed, Item.dateAdded, Library.itemType, Library.duration, Library.effect from Item left join Library on Item.name = Library.name  where Item.isUsed = 0 and Library.itemType = ? order by random() limit 1"
+    do {
+      let resultSet = try database.executeQuery(selectQuery, values: [itemType.rawValue])
+      while resultSet.next() {
+        guard let id = resultSet.string(forColumn: "id"),
+          let name = resultSet.string(forColumn: "name") else {
+            continue
+        }
+        
+        let rarity = Int(resultSet.int(forColumn: "rarity"))
+        let description = resultSet.string(forColumn: "description") ?? ""
+        let isUsed = resultSet.bool(forColumn: "isUsed")
+        let dateAdded = Int(resultSet.int(forColumn: "dateAdded"))
+        
+        let itemType = ItemType(rawValue: Int(resultSet.int(forColumn: "itemType"))) ?? .unknown
+        let duration = resultSet.string(forColumn: "duration") ?? "??"
+        let effect = resultSet.string(forColumn: "effect") ?? "??"
+        
+        let nerdItem = NerdItem(name: name, itemDescription: description, id: id, rarity: rarity, dateAdded: dateAdded, isUsed: isUsed)
+        let annotation = Annotation(itemType: itemType, duration: duration, effect: effect)
+        annotatedItem = AnnotatedItem(item: nerdItem, annotation: annotation)
+      }
+      database.close()
+      return annotatedItem
+    } catch {
+      print("error \(error.localizedDescription)")
+      database.close()
       return nil
     }
-    
-    let index = Int(arc4random_uniform(UInt32(filteredItems.count)))
-    return filteredItems[index]
   }
   
   func useItem(itemID: String) {
