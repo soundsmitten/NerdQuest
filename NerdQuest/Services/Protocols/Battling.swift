@@ -21,7 +21,7 @@ protocol Battling {
   var delegate: BattlingActionDidOccurDelegate? {get set}
   
   init(nerdService: NerdService)
-  func setupBattling(completion: @escaping (NerdBattlingResponse?) -> Void)
+  func setupBattling(completion: @escaping (NerdBattlingResponse?, Error?) -> Void)
   func startBattling()
   func stopBattling()
   

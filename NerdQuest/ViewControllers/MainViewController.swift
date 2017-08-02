@@ -21,6 +21,7 @@ class MainViewController: NSViewController, Passable {
   var nerdService: NerdService!
   var battlingService: Battling!
   var isFirstLaunch = true
+  var nameAndIDToBuffer: NameAndID?
   
   @IBOutlet weak var messageTableView: NSTableView!
   @IBOutlet weak var itemsTableView: NSTableView!
@@ -28,9 +29,10 @@ class MainViewController: NSViewController, Passable {
   @IBOutlet weak var battlingMessageTableView: NSTableView!
   @IBOutlet weak var queueItemsTableView: NSTableView!
   
+  
   @IBOutlet weak var itemCountdownLabel: NSTextField!
   @IBOutlet weak var pointsLabel: NSTextField!
-
+  @IBOutlet weak var errorLabel: NSTextField!
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -96,7 +98,7 @@ class MainViewController: NSViewController, Passable {
   private func setupMining() {
     nerdService.pointMiningService.startMining()
     nerdService.sanityCheckingService.checkAPIKey(completion: { [weak self] in
-      nerdService.pointMiningService.setupMining(completion: { [weak self] nerdPoint in
+      nerdService.pointMiningService.setupMining(completion: { [weak self] nerdPoint, error in
         guard let nerdPoint = nerdPoint,
           let this = self else {
             return
@@ -127,7 +129,7 @@ class MainViewController: NSViewController, Passable {
   }
   
   private func setupLeaderboard(completion: @escaping ()->()) {
-    nerdService.leaderboardingService.setupLeaderboard(completion: { [weak self] players in
+    nerdService.leaderboardingService.setupLeaderboard(completion: { [weak self] players, error in
       guard let players = players,
         let this = self else {
         return
@@ -145,12 +147,17 @@ class MainViewController: NSViewController, Passable {
   private func setupBattling() {
     battlingService.startBattling()
     battlingService.buffPercentage = AppConstants.kBuffPercentage
-    battlingService.setupBattling { [weak self] nerdBattlingResponse in
+    battlingService.setupBattling { [weak self] nerdBattlingResponse, error in
       guard
         let this = self,
         let nerdBattlingResponse = nerdBattlingResponse else {
+          if let error = error {
+            self?.errorLabel.stringValue = "\(error.localizedDescription). Error using item. Get better internet."
+          }
           return
       }
+      
+      self?.errorLabel.stringValue = "No connection issues."
       
       let messages = nerdBattlingResponse.messages
       for message in messages {
@@ -187,6 +194,15 @@ class MainViewController: NSViewController, Passable {
       manualLaunchViewController.nerdService = nerdService
       manualLaunchViewController.delegate = self
       return
+    case NSStoryboardSegue.Identifier(rawValue: SegueIdentifiers.kMainToAddToQueueSegue):
+      guard
+        let destination = segue.destinationController as? NSWindowController,
+        let addToQueueViewController = destination.contentViewController as? AddToQueueViewController else {
+          return
+      }
+      addToQueueViewController.delegate = self
+      addToQueueViewController.nameAndID = nameAndIDToBuffer
+      addToQueueViewController.battlingService = battlingService
     default:
       return
     }
@@ -195,26 +211,9 @@ class MainViewController: NSViewController, Passable {
 
 extension MainViewController: ItemTappedDelegate {
   func addToItemBuffer(nameAndID: NameAndID) {
-    let name = nameAndID.0
-    let itemID = nameAndID.1
+    nameAndIDToBuffer = (nameAndID.0, nameAndID.1)
     
-    let alert = NSAlert()
-    let textField = NSTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 24))
-    textField.placeholderString = NSLocalizedString("Target", comment: "")
-    alert.accessoryView = textField
-    alert.window.initialFirstResponder = textField
-    alert.addButton(withTitle: NSLocalizedString("OK", comment: ""))
-    alert.addButton(withTitle: NSLocalizedString("Cancel", comment: ""))
-    alert.messageText = NSLocalizedString("Please enter your target.", comment: "")
-    alert.informativeText = NSLocalizedString("Be careful.", comment: "")
-    alert.alertStyle = .critical
-    let responseTag = alert.runModal()
-    if responseTag == .alertFirstButtonReturn {
-      let nameAndIDWithTarget = (name, itemID, textField.stringValue)
-      battlingService.enqueue(nameAndIDWithTarget)
-      queueItemsTableDataSource.queueItems = battlingService.itemBuffer
-      queueItemsTableView.reloadData()
-    }
+    performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: SegueIdentifiers.kMainToAddToQueueSegue), sender: nil)
   }
 }
 
@@ -240,8 +239,8 @@ extension MainViewController: BattlingActionDidOccurDelegate {
   }
 }
 
-extension MainViewController: ManualLaunchAddedToQueue {
-  func manualLaunchAddedToQueue() {
+extension MainViewController: AddedToQueue {
+  func addedToQueue() {
     queueItemsTableDataSource.queueItems = battlingService.itemBuffer
     queueItemsTableView.reloadData()
     refreshItemsTable()

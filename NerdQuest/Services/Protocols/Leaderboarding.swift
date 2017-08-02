@@ -9,6 +9,6 @@
 import Foundation
 
 protocol Leaderboarding {
-  func setupLeaderboard(completion: @escaping ([NerdPlayer]?) -> Void)
+  func setupLeaderboard(completion: @escaping ([NerdPlayer]?, Error?) -> Void)
   var leaderboard: [NerdPlayer]! {get set}
 }

@@ -28,6 +28,7 @@
 		1515C5D61F2C2E80008BE426 /* ItemSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5CD1F2C2E80008BE426 /* ItemSaving.swift */; };
 		1515C5D71F2C2E80008BE426 /* PointMining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5CE1F2C2E80008BE426 /* PointMining.swift */; };
 		1515C5D81F2C2E80008BE426 /* SanityChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5CF1F2C2E80008BE426 /* SanityChecking.swift */; };
+		15204F8C1F3164AF003F3995 /* AddToQueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15204F8B1F3164AF003F3995 /* AddToQueueViewController.swift */; };
 		1534818B1F2C806900C7DB16 /* MessagesTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1534818A1F2C806900C7DB16 /* MessagesTableDataSource.swift */; };
 		1534818D1F2C825200C7DB16 /* ItemsTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1534818C1F2C825200C7DB16 /* ItemsTableDataSource.swift */; };
 		153481901F2CFF2C00C7DB16 /* Sequence+Find.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1534818F1F2CFF2C00C7DB16 /* Sequence+Find.swift */; };
@@ -100,6 +101,7 @@
 		1515C5CD1F2C2E80008BE426 /* ItemSaving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSaving.swift; sourceTree = "<group>"; };
 		1515C5CE1F2C2E80008BE426 /* PointMining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointMining.swift; sourceTree = "<group>"; };
 		1515C5CF1F2C2E80008BE426 /* SanityChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SanityChecking.swift; sourceTree = "<group>"; };
+		15204F8B1F3164AF003F3995 /* AddToQueueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToQueueViewController.swift; sourceTree = "<group>"; };
 		1534818A1F2C806900C7DB16 /* MessagesTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableDataSource.swift; sourceTree = "<group>"; };
 		1534818C1F2C825200C7DB16 /* ItemsTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableDataSource.swift; sourceTree = "<group>"; };
 		1534818F1F2CFF2C00C7DB16 /* Sequence+Find.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Find.swift"; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				1515C5AC1F2C2D84008BE426 /* MainViewController.swift */,
 				156FDC561F2EA248007CF3AD /* ManualLaunchViewController.swift */,
 				15B8A36F1F2FA4A6004C557B /* FriendOrFoeViewController.swift */,
+				15204F8B1F3164AF003F3995 /* AddToQueueViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				153B43B81F2E4FDE003A333A /* NerdBattlingResource.swift in Sources */,
+				15204F8C1F3164AF003F3995 /* AddToQueueViewController.swift in Sources */,
 				1549EA6D1F2DA64D0041795C /* LocalLeaderboardingService.swift in Sources */,
 				153B43BA1F2E5079003A333A /* NerdBattlingResponse.swift in Sources */,
 				1515C5D51F2C2E80008BE426 /* Battling.swift in Sources */,

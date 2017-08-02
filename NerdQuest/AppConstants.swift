@@ -40,6 +40,7 @@ struct ViewControllerIdentifiers {
 struct AppConstants {
   static let kMiningInterval = 1.0
   static let kBattlingInterval = 60.0
+  static let kTimeOutInterval = 5.0
   static let hasDatabase = false
   static let kDatabasePath = "/Users/nlash/Code/Data/nerdQuest.db"
   static let kBuffPercentage = 80
@@ -89,4 +90,5 @@ enum ItemType: Int {
 
 struct SegueIdentifiers {
   static let kMainToManualSegue = "MainToManualSegue"
+  static let kMainToAddToQueueSegue = "MainToAddToQueueSegue"
 }

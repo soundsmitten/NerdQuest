@@ -8,10 +8,6 @@
 
 import Cocoa
 
-protocol ManualLaunchAddedToQueue {
-  func manualLaunchAddedToQueue()
-}
-
 class ManualLaunchViewController: NSViewController {
   @IBOutlet weak var itemNameField: NSTextField!
   @IBOutlet weak var itemIDField: NSTextField!
@@ -19,7 +15,7 @@ class ManualLaunchViewController: NSViewController {
   
   var battlingService: Battling!
   var nerdService: NerdService!
-  var delegate: ManualLaunchAddedToQueue?
+  var delegate: AddedToQueue?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -42,7 +38,7 @@ class ManualLaunchViewController: NSViewController {
     targetField.stringValue = ""
     itemNameField.stringValue = ""
     
-    delegate?.manualLaunchAddedToQueue()
+    delegate?.addedToQueue()
   }
   
   func validateFields() -> Bool {

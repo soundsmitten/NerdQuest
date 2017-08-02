@@ -12,7 +12,7 @@ class LocalPointMiningService: PointMining {
   var isMining = false
   private var isMiningRunning = false
   
-  func setupMining(completion: @escaping (NerdPoint?) -> Void) {    
+  func setupMining(completion: @escaping (NerdPoint?, Error?) -> Void) {    
     Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] timer in
       guard let this = self else {
         return
@@ -34,7 +34,7 @@ class LocalPointMiningService: PointMining {
     isMining = false
   }
   
-  private func mine(completion: @escaping (NerdPoint?) -> Void) {
+  private func mine(completion: @escaping (NerdPoint?, Error?) -> Void) {
     isMiningRunning = true
     let resource = NerdPointResource()
     let request = NerdNetworkRequest(resource: resource)
@@ -43,15 +43,15 @@ class LocalPointMiningService: PointMining {
     urlRequest.httpMethod = resource.httpMethod.rawValue
     urlRequest.addValue(UserDefaults.standard.string(forKey: UserDefaultsKey.kAPIKey)!, forHTTPHeaderField: HTTPHeaderKey.kAPIKey)
     
-    request.makeRequest(urlRequest: urlRequest, completion: { nerdPoint in
+    request.makeRequest(urlRequest: urlRequest, completion: { nerdPoint, error in
       let when = DispatchTime.now() + AppConstants.kMiningInterval
       DispatchQueue.main.asyncAfter(deadline: when, execute: {
         self.isMiningRunning = false
         if let nerdPoint = nerdPoint {
           print("pointsMessage = \(String(describing: nerdPoint?.messages.joined()))")
-          completion(nerdPoint)
+          completion(nerdPoint, error)
         } else {
-          completion(nil)
+          completion(nil, error)
         }
       })
     })

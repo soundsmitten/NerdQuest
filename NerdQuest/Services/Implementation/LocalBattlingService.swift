@@ -22,7 +22,7 @@ class LocalBattlingService: Battling {
     self.nerdService = nerdService
   }
   
-  func setupBattling(completion: @escaping (NerdBattlingResponse?) -> Void) {
+  func setupBattling(completion: @escaping (NerdBattlingResponse?, Error?) -> Void) {
     Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] timer in
       guard let this = self else {
         return
@@ -33,7 +33,7 @@ class LocalBattlingService: Battling {
     }.fire()
   }
   
-  private func battle(completion: @escaping (NerdBattlingResponse?) -> Void) {
+  private func battle(completion: @escaping (NerdBattlingResponse?, Error?) -> Void) {
     isBattlingRunning = true
     
     if let queuedItem = itemBuffer.first {
@@ -75,7 +75,7 @@ class LocalBattlingService: Battling {
     return itemBuffer.count == 0
   }
   
-  func useRandomItem(completion: @escaping (NerdBattlingResponse?) -> Void) {
+  func useRandomItem(completion: @escaping (NerdBattlingResponse?, Error?) -> Void) {
     let randomNumber = arc4random_uniform(UInt32(100))
     var itemTypeToUse: ItemType = randomNumber <= buffPercentage ? .buff : .weapon
     var randomItem = nerdService.itemSavingService.getRandomItem(itemType: itemTypeToUse)
@@ -86,7 +86,7 @@ class LocalBattlingService: Battling {
     }
     
     guard let unwrappedRandomItem = randomItem else {
-      completion(nil)
+      completion(nil, nil)
       return
     }
     
@@ -96,8 +96,8 @@ class LocalBattlingService: Battling {
     }
     
     let idWithTarget: NameAndIDWithTarget = (unwrappedRandomItem.item.name, unwrappedRandomItem.item.id, target)
-    useItem(nameAndIDWithTarget: idWithTarget, inBuffer: false, completion: { (nerdBattlingResponse) in
-      completion(nerdBattlingResponse)
+    useItem(nameAndIDWithTarget: idWithTarget, inBuffer: false, completion: { nerdBattlingResponse, error in
+      completion(nerdBattlingResponse, error)
     })
   }
   
@@ -128,7 +128,7 @@ class LocalBattlingService: Battling {
     return itemType == .weapon || itemType == .buff
   }
   
-  func useItem(nameAndIDWithTarget: NameAndIDWithTarget, inBuffer: Bool, completion: @escaping (NerdBattlingResponse?) -> Void) {
+  func useItem(nameAndIDWithTarget: NameAndIDWithTarget, inBuffer: Bool, completion: @escaping (NerdBattlingResponse?, _ error: Error?) -> Void) {
     let itemName = nameAndIDWithTarget.0
     let itemID = nameAndIDWithTarget.1
     let target = nameAndIDWithTarget.2
@@ -139,7 +139,7 @@ class LocalBattlingService: Battling {
     
     guard !nerdService.itemSavingService.isItemUsed(itemID: itemID) || itemName == AppConstants.kManualLaunchName else {
       print("Item already used")
-      completion(nil)
+      completion(nil, nil)
       if inBuffer {
         dequeue()
       }
@@ -157,9 +157,9 @@ class LocalBattlingService: Battling {
     urlRequest.httpMethod = resource.httpMethod.rawValue
     urlRequest.addValue(UserDefaults.standard.string(forKey: UserDefaultsKey.kAPIKey)!, forHTTPHeaderField: HTTPHeaderKey.kAPIKey)
     urlRequest.addValue(target, forHTTPHeaderField: HTTPHeaderKey.kTarget)
-    request.makeRequest(urlRequest: urlRequest, completion: { [weak self] nerdBattlingResponse in
+    request.makeRequest(urlRequest: urlRequest, completion: { [weak self] nerdBattlingResponse, error in
       guard let this = self else {
-        completion(nil)
+        completion(nil, error)
         return
       }
       this.wait()
@@ -168,9 +168,9 @@ class LocalBattlingService: Battling {
         if inBuffer {
           this.dequeue()
         }
-        completion(nerdBattlingResponse)
+        completion(nerdBattlingResponse, error)
       } else {
-        completion(nil)
+        completion(nil, error)
       }
       this.startItemTimer()
     })

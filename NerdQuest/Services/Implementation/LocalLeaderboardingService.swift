@@ -12,7 +12,7 @@ class LocalLeaderboardingService: Leaderboarding {
   var leaderboard: [NerdPlayer]! = [NerdPlayer]()
   private var isLeaderboardRunning = false
   
-  func setupLeaderboard(completion: @escaping ([NerdPlayer]?) -> Void) {
+  func setupLeaderboard(completion: @escaping ([NerdPlayer]?, Error?) -> Void) {
     Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] (timer) in
       guard let this = self else {
         return
@@ -23,7 +23,7 @@ class LocalLeaderboardingService: Leaderboarding {
     }.fire()
   }
   
-  private func getLeaderboard(completion: @escaping ([NerdPlayer]?) -> Void) {
+  private func getLeaderboard(completion: @escaping ([NerdPlayer]?, Error?) -> Void) {
     isLeaderboardRunning = true
     let resource = NerdLeaderboardResource()
     let request = NerdNetworkRequest(resource: resource)
@@ -31,16 +31,16 @@ class LocalLeaderboardingService: Leaderboarding {
     urlRequest.httpMethod = resource.httpMethod.rawValue
     urlRequest.addValue(UserDefaults.standard.string(forKey: "apikey")!, forHTTPHeaderField: "apikey")
     
-    request.makeRequest(urlRequest: urlRequest, completion: { players in
+    request.makeRequest(urlRequest: urlRequest, completion: { players, error in
       let when = DispatchTime.now() + AppConstants.kMiningInterval
       DispatchQueue.main.asyncAfter(deadline: when, execute: {
         self.isLeaderboardRunning = false
         if let players = players {
           self.leaderboard = players ?? []
-          completion(players)
+          completion(players, error)
         } else {
           self.leaderboard = []
-          completion(nil)
+          completion(nil, error)
         }
       })
     })

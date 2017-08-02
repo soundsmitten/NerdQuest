@@ -14,18 +14,22 @@ protocol NetworkRequest: class {
 }
 
 extension NetworkRequest {
- func makeRequest(urlRequest: URLRequest, completion: @escaping (Model?) -> Void) {
+  func makeRequest(urlRequest: URLRequest, completion: @escaping (Model?, Error?) -> Void) {
     let configuration = URLSessionConfiguration.ephemeral
-    configuration.timeoutIntervalForResource = 1.0
+    configuration.timeoutIntervalForResource = AppConstants.kTimeOutInterval
     let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
     let task = session.dataTask(with: urlRequest, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
       guard let data = data else {
         print("\(String(describing: error)) urlRequest.url")
-        completion(nil)
+        completion(nil, error)
         return
       }
       print(urlRequest.url ?? "unknown url")
-      completion(self.decode(data))
+      guard let model = self.decode(data) else {
+        print("Error decoding data: \(String(describing: (response as? HTTPURLResponse)?.statusCode))")
+        return
+      }
+      completion(model, error)
     })
     task.resume()
   }

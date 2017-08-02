@@ -41,6 +41,7 @@ extension LeaderboardTableDataSource: NSTableViewDelegate {
     }
     
     let player = players[row]
+    
     var cellText = ""
     
     switch columnIdentifier {
@@ -50,7 +51,15 @@ extension LeaderboardTableDataSource: NSTableViewDelegate {
       cellText = "\(player.points)"
     }
     
-    cell.textField?.stringValue = cellText
+    var textColor = NSColor.red
+    if Nerds.kWhiteList.contains(player.name) {
+      textColor = NSColor.green
+    }
+    let range = cellText.nsrange
+    var attributedString = NSMutableAttributedString(string: cellText)
+    attributedString.addAttributes([.foregroundColor: textColor], range: range)
+    cell.textField?.attributedStringValue = attributedString
+    
     return cell
   }
 }
