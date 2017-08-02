@@ -39,7 +39,10 @@ class LocalBattlingService: Battling {
     if let queuedItem = itemBuffer.first {
       useItem(nameAndIDWithTarget: queuedItem, inBuffer: true, completion: completion)
     } else {
-      useRandomItem(completion: completion)
+      let itemTypeToUse = getRandomItemType()
+      useRandomItem(itemType: itemTypeToUse) { resp, error in
+        completion(resp, error)
+      }
     }
   }
   
@@ -75,30 +78,31 @@ class LocalBattlingService: Battling {
     return itemBuffer.count == 0
   }
   
-  func useRandomItem(completion: @escaping (NerdBattlingResponse?, Error?) -> Void) {
+  func useRandomItem(itemType: ItemType, completion: @escaping (NerdBattlingResponse?, Error?) -> Void) {
+    nerdService.itemSavingService.getRandomItem(itemType: itemType) { [weak self] randomItem in
+      guard
+        let this = self,
+        let randomItem = randomItem else {
+        completion(nil,nil)
+        return
+      }
+      
+      guard let target = this.getTarget(itemTypeToUse: itemType) else {
+        completion(nil,nil)
+        return
+      }
+      
+      let idWithTarget: NameAndIDWithTarget = (randomItem.item.name, randomItem.item.id, target)
+      this.useItem(nameAndIDWithTarget: idWithTarget, inBuffer: false, completion: { nerdBattlingResponse, error in
+        completion(nerdBattlingResponse, error)
+      })
+    }
+  }
+
+  func getRandomItemType() -> ItemType {
     let randomNumber = arc4random_uniform(UInt32(100))
-    var itemTypeToUse: ItemType = randomNumber <= buffPercentage ? .buff : .weapon
-    var randomItem = nerdService.itemSavingService.getRandomItem(itemType: itemTypeToUse)
-    
-    if randomItem == nil {
-      itemTypeToUse = itemTypeToUse == .buff ? .weapon : .buff
-      randomItem = nerdService.itemSavingService.getRandomItem(itemType: itemTypeToUse)
-    }
-    
-    guard let unwrappedRandomItem = randomItem else {
-      completion(nil, nil)
-      return
-    }
-    
-    guard let target = getTarget(itemTypeToUse: itemTypeToUse) else {
-      useRandomItem(completion: completion)
-      return
-    }
-    
-    let idWithTarget: NameAndIDWithTarget = (unwrappedRandomItem.item.name, unwrappedRandomItem.item.id, target)
-    useItem(nameAndIDWithTarget: idWithTarget, inBuffer: false, completion: { nerdBattlingResponse, error in
-      completion(nerdBattlingResponse, error)
-    })
+    let itemTypeToUse: ItemType = randomNumber <= buffPercentage ? .buff : .weapon
+    return itemTypeToUse
   }
   
   func getTarget(itemTypeToUse: ItemType) -> String? {
@@ -133,47 +137,52 @@ class LocalBattlingService: Battling {
     let itemID = nameAndIDWithTarget.1
     let target = nameAndIDWithTarget.2
     
-    if itemName == AppConstants.kManualLaunchName {
-      print("MANUAL incoming")
-    }
-    
-    guard !nerdService.itemSavingService.isItemUsed(itemID: itemID) || itemName == AppConstants.kManualLaunchName else {
-      print("Item already used")
-      completion(nil, nil)
-      if inBuffer {
-        dequeue()
-      }
-      isBattlingRunning = false
-      return
-    }
-    
-    let resource = NerdBattlingResource()
-    let request = NerdNetworkRequest(resource: resource)
-    var url = resource.url.appendingPathComponent(itemID)
-    let urlString = url.absoluteString + "?target=\(target)"
-    url = URL(string: urlString)!
-    
-    var urlRequest = URLRequest(url: url)
-    urlRequest.httpMethod = resource.httpMethod.rawValue
-    urlRequest.addValue(UserDefaults.standard.string(forKey: UserDefaultsKey.kAPIKey)!, forHTTPHeaderField: HTTPHeaderKey.kAPIKey)
-    urlRequest.addValue(target, forHTTPHeaderField: HTTPHeaderKey.kTarget)
-    request.makeRequest(urlRequest: urlRequest, completion: { [weak self] nerdBattlingResponse, error in
+    nerdService.itemSavingService.isItemUsed(itemID: itemID) { [weak self] isUsed in
       guard let this = self else {
-        completion(nil, error)
+        completion(nil, nil)
         return
       }
-      this.wait()
-      if let nerdBattlingResponse = nerdBattlingResponse {
-        this.nerdService.itemSavingService.useItem(itemID: itemID)
+      
+      guard !isUsed else {
+        print("Item already used")
+        completion(nil, nil)
         if inBuffer {
           this.dequeue()
         }
-        completion(nerdBattlingResponse, error)
-      } else {
-        completion(nil, error)
+        this.isBattlingRunning = false
+        return
       }
-      this.startItemTimer()
-    })
+        
+      let resource = NerdBattlingResource()
+      let request = NerdNetworkRequest(resource: resource)
+      var url = resource.url.appendingPathComponent(itemID)
+      let urlString = url.absoluteString + "?target=\(target)"
+      url = URL(string: urlString)!
+      
+      var urlRequest = URLRequest(url: url)
+      urlRequest.httpMethod = resource.httpMethod.rawValue
+      urlRequest.addValue(UserDefaults.standard.string(forKey: UserDefaultsKey.kAPIKey)!, forHTTPHeaderField: HTTPHeaderKey.kAPIKey)
+      urlRequest.addValue(target, forHTTPHeaderField: HTTPHeaderKey.kTarget)
+      request.makeRequest(urlRequest: urlRequest, completion: {nerdBattlingResponse, error in
+        this.wait()
+        if let nerdBattlingResponse = nerdBattlingResponse {
+          DispatchQueue.main.async {
+            this.nerdService.itemSavingService.useItem(itemID: itemID) { success in
+              guard success else {
+                completion(nerdBattlingResponse, error)
+                return
+              }
+              
+              if inBuffer {
+                this.dequeue()
+              }
+              this.startItemTimer()
+              completion(nerdBattlingResponse, error)
+            }
+          }
+        }
+      })
+    }
   }
   
   private func wait() {

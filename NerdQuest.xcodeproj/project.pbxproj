@@ -29,6 +29,8 @@
 		1515C5D71F2C2E80008BE426 /* PointMining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5CE1F2C2E80008BE426 /* PointMining.swift */; };
 		1515C5D81F2C2E80008BE426 /* SanityChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515C5CF1F2C2E80008BE426 /* SanityChecking.swift */; };
 		15204F8C1F3164AF003F3995 /* AddToQueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15204F8B1F3164AF003F3995 /* AddToQueueViewController.swift */; };
+		15204F941F32269D003F3995 /* LocalItemSavingServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15204F931F32269D003F3995 /* LocalItemSavingServiceTests.swift */; };
+		15204F961F3226E2003F3995 /* TestAppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15204F951F3226E2003F3995 /* TestAppConstants.swift */; };
 		1534818B1F2C806900C7DB16 /* MessagesTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1534818A1F2C806900C7DB16 /* MessagesTableDataSource.swift */; };
 		1534818D1F2C825200C7DB16 /* ItemsTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1534818C1F2C825200C7DB16 /* ItemsTableDataSource.swift */; };
 		153481901F2CFF2C00C7DB16 /* Sequence+Find.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1534818F1F2CFF2C00C7DB16 /* Sequence+Find.swift */; };
@@ -102,6 +104,8 @@
 		1515C5CE1F2C2E80008BE426 /* PointMining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointMining.swift; sourceTree = "<group>"; };
 		1515C5CF1F2C2E80008BE426 /* SanityChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SanityChecking.swift; sourceTree = "<group>"; };
 		15204F8B1F3164AF003F3995 /* AddToQueueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToQueueViewController.swift; sourceTree = "<group>"; };
+		15204F931F32269D003F3995 /* LocalItemSavingServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalItemSavingServiceTests.swift; sourceTree = "<group>"; };
+		15204F951F3226E2003F3995 /* TestAppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppConstants.swift; sourceTree = "<group>"; };
 		1534818A1F2C806900C7DB16 /* MessagesTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableDataSource.swift; sourceTree = "<group>"; };
 		1534818C1F2C825200C7DB16 /* ItemsTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableDataSource.swift; sourceTree = "<group>"; };
 		1534818F1F2CFF2C00C7DB16 /* Sequence+Find.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Find.swift"; sourceTree = "<group>"; };
@@ -122,6 +126,8 @@
 		158A0CE71F2C6B67004F317B /* NerdPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdPoint.swift; sourceTree = "<group>"; };
 		158A0CE81F2C6B67004F317B /* AnnotatedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotatedItem.swift; sourceTree = "<group>"; };
 		158A0CEE1F2C6BAB004F317B /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		15A10CC51F327BA200CF33E6 /* schema.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = schema.sql; sourceTree = "<group>"; };
+		15A10CC61F327BA200CF33E6 /* libaryData.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = libaryData.sql; sourceTree = "<group>"; };
 		15A84AEF1F2FFB7400849363 /* String+RangesAndRegex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RangesAndRegex.swift"; sourceTree = "<group>"; };
 		15B8A36F1F2FA4A6004C557B /* FriendOrFoeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendOrFoeViewController.swift; sourceTree = "<group>"; };
 		2C57399190113E06EB7898CC /* Pods_NerdQuest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NerdQuest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +213,8 @@
 			children = (
 				1515C5911F2C2CF2008BE426 /* NerdQuestTests.swift */,
 				1515C5931F2C2CF2008BE426 /* Info.plist */,
+				15204F931F32269D003F3995 /* LocalItemSavingServiceTests.swift */,
+				15204F951F3226E2003F3995 /* TestAppConstants.swift */,
 			);
 			path = NerdQuestTests;
 			sourceTree = "<group>";
@@ -321,6 +329,7 @@
 		152A2DBE1F2C30EB00A0F1E3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				15A10CC41F327B8B00CF33E6 /* Database Schema */,
 				1515C5831F2C2CF2008BE426 /* Assets.xcassets */,
 				1515C5851F2C2CF2008BE426 /* Main.storyboard */,
 			);
@@ -347,6 +356,15 @@
 				158604A61F30CAAD0060DDB8 /* NSTableView+Bounds.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		15A10CC41F327B8B00CF33E6 /* Database Schema */ = {
+			isa = PBXGroup;
+			children = (
+				15A10CC61F327BA200CF33E6 /* libaryData.sql */,
+				15A10CC51F327BA200CF33E6 /* schema.sql */,
+			);
+			path = "Database Schema";
 			sourceTree = "<group>";
 		};
 		4C350AD9CC7D7961588BB9DD /* Frameworks */ = {
@@ -705,7 +723,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15204F941F32269D003F3995 /* LocalItemSavingServiceTests.swift in Sources */,
 				1515C5921F2C2CF2008BE426 /* NerdQuestTests.swift in Sources */,
+				15204F961F3226E2003F3995 /* TestAppConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

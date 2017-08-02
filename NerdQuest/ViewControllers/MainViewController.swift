@@ -60,8 +60,10 @@ class MainViewController: NSViewController, Passable {
   }
   
   func refreshItemsTable() {
-    itemsTableDataSource.annotatedItems = nerdService.itemSavingService.getAnnotatedItems()
-    itemsTableView.reloadData()
+    nerdService.itemSavingService.getAnnotatedItems { [weak self] annotatedItems in
+      self?.itemsTableDataSource.annotatedItems = annotatedItems
+      self?.itemsTableView.reloadData()
+    }
   }
   
   @IBAction func toggleMining(_ sender: NSButton) {
@@ -114,8 +116,11 @@ class MainViewController: NSViewController, Passable {
         this.messageTableView.reloadData()
         
         if let item = nerdPoint.item {
-          this.nerdService.itemSavingService.saveItem(nerdItem: item)
-          this.refreshItemsTable()
+          this.nerdService.itemSavingService.saveItem(nerdItem: item) { success in
+            if success {
+              this.refreshItemsTable()
+            }
+          }
         }
       })
     })
@@ -124,7 +129,11 @@ class MainViewController: NSViewController, Passable {
   private func saveItemFromMessage(message: String) {
     let idAndName = getIDAndName(text: message, pattern: AppConstants.kMessageParsingRegex)
     if idAndName.count == 2 {
-      nerdService.itemSavingService.saveItem(nerdItem: NerdItem(name: idAndName.last!, itemDescription: "Bonus Item", id: idAndName.first!, rarity: -1, dateAdded: Int(Date().timeIntervalSince1970), isUsed: false))
+      nerdService.itemSavingService.saveItem(nerdItem: NerdItem(name: idAndName.last!, itemDescription: "Bonus Item", id: idAndName.first!, rarity: -1, dateAdded: Int(Date().timeIntervalSince1970), isUsed: false)) { success in
+        if !success {
+          print("can't save item from message")
+        }
+      }
     }
   }
   

@@ -29,16 +29,20 @@ class ManualLaunchViewController: NSViewController {
         return
     }
     let nerdItem = NerdItem(name: itemNameField.stringValue, itemDescription: "Manually launched", id: itemIDField.stringValue, rarity: -1, dateAdded: Int(Date().timeIntervalSince1970), isUsed: false)
-    nerdService.itemSavingService.saveItem(nerdItem: nerdItem)
-    battlingService.enqueue((itemNameField.stringValue, itemIDField.stringValue, targetField.stringValue))
-    print("target \(targetField.stringValue)")
-    print("id: \(itemIDField.stringValue)")
+    nerdService.itemSavingService.saveItem(nerdItem: nerdItem, completion: { [weak self] success in
+      guard let this = self else {
+        return ()
+      }
+      this.battlingService.enqueue((this.itemNameField.stringValue, this.itemIDField.stringValue, this.targetField.stringValue))
+      print("target \(this.targetField.stringValue)")
+      print("id: \(this.itemIDField.stringValue)")
       
-    itemIDField.stringValue = ""
-    targetField.stringValue = ""
-    itemNameField.stringValue = ""
-    
-    delegate?.addedToQueue()
+      this.itemIDField.stringValue = ""
+      this.targetField.stringValue = ""
+      this.itemNameField.stringValue = ""
+      
+      this.delegate?.addedToQueue()
+    })
   }
   
   func validateFields() -> Bool {
