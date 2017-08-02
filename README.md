@@ -10,6 +10,6 @@ I'd like to think this code is elegant, but who knows what elegance is anymore?
 
 "Database corruption? I’ll keep you in suspense, OK?"
 
-"If NerdQuest Cocoa is hurting people, & it is, why shouldn't it hurt soundsmitten's reputation companies & why should Congress not be paying what public pays?"
+"If NerdQuest Cocoa is hurting people, & it is, why shouldn't it hurt soundsmitten's reputation & why should Congress not be paying what public pays?"
 
 "Only NerdQuest Cocoa's race conditions want me to stop using Social Media (110 million people). Only way for me to get the truth out!"
