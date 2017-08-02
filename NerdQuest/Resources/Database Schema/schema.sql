@@ -1,4 +1,3 @@
-BEGIN TRANSACTION;
 CREATE TABLE "Library" (
 	`name`	TEXT NOT NULL,
 	`duration`	TEXT,
@@ -16,4 +15,3 @@ CREATE TABLE "Item" (
 	`dateAdded`	INTEGER,
 	PRIMARY KEY(`id`)
 );
-COMMIT;

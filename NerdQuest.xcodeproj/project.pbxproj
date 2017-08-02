@@ -51,6 +51,10 @@
 		158A0CEC1F2C6B67004F317B /* NerdPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE71F2C6B67004F317B /* NerdPoint.swift */; };
 		158A0CED1F2C6B67004F317B /* AnnotatedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CE81F2C6B67004F317B /* AnnotatedItem.swift */; };
 		158A0CEF1F2C6BAB004F317B /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158A0CEE1F2C6BAB004F317B /* MainWindowController.swift */; };
+		15A10CCE1F32836B00CF33E6 /* libraryData.sql in Resources */ = {isa = PBXBuildFile; fileRef = 15A10CCC1F32836B00CF33E6 /* libraryData.sql */; };
+		15A10CCF1F32836B00CF33E6 /* schema.sql in Resources */ = {isa = PBXBuildFile; fileRef = 15A10CCD1F32836B00CF33E6 /* schema.sql */; };
+		15A10CD01F32836F00CF33E6 /* libraryData.sql in Resources */ = {isa = PBXBuildFile; fileRef = 15A10CCC1F32836B00CF33E6 /* libraryData.sql */; };
+		15A10CD11F32837100CF33E6 /* schema.sql in Resources */ = {isa = PBXBuildFile; fileRef = 15A10CCD1F32836B00CF33E6 /* schema.sql */; };
 		15A84AF01F2FFB7400849363 /* String+RangesAndRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A84AEF1F2FFB7400849363 /* String+RangesAndRegex.swift */; };
 		15B8A3701F2FA4A6004C557B /* FriendOrFoeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B8A36F1F2FA4A6004C557B /* FriendOrFoeViewController.swift */; };
 		3161C45E6D49C9019978F767 /* Pods_NerdQuestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 793E9065835A09DC47AC7EA7 /* Pods_NerdQuestTests.framework */; };
@@ -126,8 +130,8 @@
 		158A0CE71F2C6B67004F317B /* NerdPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerdPoint.swift; sourceTree = "<group>"; };
 		158A0CE81F2C6B67004F317B /* AnnotatedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotatedItem.swift; sourceTree = "<group>"; };
 		158A0CEE1F2C6BAB004F317B /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
-		15A10CC51F327BA200CF33E6 /* schema.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = schema.sql; sourceTree = "<group>"; };
-		15A10CC61F327BA200CF33E6 /* libaryData.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = libaryData.sql; sourceTree = "<group>"; };
+		15A10CCC1F32836B00CF33E6 /* libraryData.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libraryData.sql; sourceTree = "<group>"; };
+		15A10CCD1F32836B00CF33E6 /* schema.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = schema.sql; sourceTree = "<group>"; };
 		15A84AEF1F2FFB7400849363 /* String+RangesAndRegex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RangesAndRegex.swift"; sourceTree = "<group>"; };
 		15B8A36F1F2FA4A6004C557B /* FriendOrFoeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendOrFoeViewController.swift; sourceTree = "<group>"; };
 		2C57399190113E06EB7898CC /* Pods_NerdQuest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NerdQuest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -361,8 +365,8 @@
 		15A10CC41F327B8B00CF33E6 /* Database Schema */ = {
 			isa = PBXGroup;
 			children = (
-				15A10CC61F327BA200CF33E6 /* libaryData.sql */,
-				15A10CC51F327BA200CF33E6 /* schema.sql */,
+				15A10CCC1F32836B00CF33E6 /* libraryData.sql */,
+				15A10CCD1F32836B00CF33E6 /* schema.sql */,
 			);
 			path = "Database Schema";
 			sourceTree = "<group>";
@@ -513,6 +517,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1515C5841F2C2CF2008BE426 /* Assets.xcassets in Resources */,
+				15A10CCF1F32836B00CF33E6 /* schema.sql in Resources */,
+				15A10CCE1F32836B00CF33E6 /* libraryData.sql in Resources */,
 				1515C5871F2C2CF2008BE426 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,6 +527,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15A10CD01F32836F00CF33E6 /* libraryData.sql in Resources */,
+				15A10CD11F32837100CF33E6 /* schema.sql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
