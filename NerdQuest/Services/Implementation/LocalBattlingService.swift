@@ -40,7 +40,11 @@ class LocalBattlingService: Battling {
       useItem(nameAndIDWithTarget: queuedItem, inBuffer: true, completion: completion)
     } else {
       let itemTypeToUse = getRandomItemType()
-      useRandomItem(itemType: itemTypeToUse) { resp, error in
+      useRandomItem(itemType: itemTypeToUse) { [weak self] resp, error in
+        guard let resp = resp else {
+          completion(nil, error)
+          return
+        }
         completion(resp, error)
       }
     }
@@ -88,7 +92,7 @@ class LocalBattlingService: Battling {
       }
       
       guard let target = this.getTarget(itemTypeToUse: itemType) else {
-        completion(nil,nil)
+        completion(nil, nil)
         return
       }
       

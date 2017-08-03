@@ -36,7 +36,7 @@ class NerdService {
 
 extension NerdService {
   func startServices() {
-    itemSavingService.getAnnotatedItems { [weak self] annotatedItems in
+    itemSavingService.getAnnotatedItems(itemState: .notUsed) { [weak self] annotatedItems in
       guard let this = self else {
         return
       }
@@ -66,7 +66,7 @@ extension NerdService {
         if let item = nerdPoint.item {
           this.itemSavingService.saveItem(nerdItem: item) { success in
             if success {
-              this.itemSavingService.getAnnotatedItems { annotatedItems in
+              this.itemSavingService.getAnnotatedItems(itemState: .notUsed) { annotatedItems in
                 this.updateDelegate?.itemSavingDidUpdate(annotatedItems: annotatedItems)
               }
             }

@@ -88,6 +88,12 @@ enum ItemType: Int {
   }
 }
 
+enum ItemState: Int {
+  case notUsed = 0
+  case isUsed = 1
+  case all = 2
+}
+
 struct SegueIdentifiers {
   static let kMainToManualSegue = "MainToManualSegue"
   static let kMainToAddToQueueSegue = "MainToAddToQueueSegue"

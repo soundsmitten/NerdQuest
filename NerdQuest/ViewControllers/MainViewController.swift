@@ -51,7 +51,6 @@ class MainViewController: NSViewController, Passable {
     
     nerdService.startServices()
     startItemCounter()
-   
   }
   
   private func startItemCounter() {

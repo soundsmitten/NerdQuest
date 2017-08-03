@@ -30,7 +30,7 @@ class LocalItemSavingService: ItemSaving {
                                                          nerdItem.name,
                                                          nerdItem.rarity,
                                                          nerdItem.itemDescription,
-                                                         0,
+                                                         nerdItem.isUsed,
                                                          nerdItem.dateAdded])
       } catch {
         print("error \(error.localizedDescription)")
@@ -51,10 +51,24 @@ class LocalItemSavingService: ItemSaving {
     }
   }
     
-  func getAnnotatedItems(completion: @escaping ([AnnotatedItem])->Void) {
+  func getAnnotatedItems(itemState: ItemState, completion: @escaping ([AnnotatedItem])->Void) {
     
     var annotatedItems = [AnnotatedItem]()
-    let selectQuery = "select Item.id, Item.name, Item.rarity, Item.description, Item.isUsed, Item.dateAdded, Library.itemType, Library.duration, Library.effect from Item left join Library on Item.name = Library.name  where Item.isUsed = 0 order by Item.name asc"
+    var stateQueryItem = ""
+    
+    switch itemState {
+    case .all:
+      stateQueryItem = ""
+      break
+    case .isUsed:
+      stateQueryItem = "where Item.isUsed = 1"
+      break
+    case .notUsed:
+      stateQueryItem = "where Item.isUsed = 0"
+      break
+    }
+    
+    let selectQuery = "select Item.id, Item.name, Item.rarity, Item.description, Item.isUsed, Item.dateAdded, Library.itemType, Library.duration, Library.effect from Item left join Library on Item.name = Library.name \(stateQueryItem) order by Item.name asc"
     guard let databaseQueue = databaseQueue else {
       print("cannot create db queue")
       completion([])
@@ -95,6 +109,53 @@ class LocalItemSavingService: ItemSaving {
       }
     }
     completion(annotatedItems)
+  }
+  
+  func getItem(itemName: String, completion: @escaping (AnnotatedItem?)->Void) {
+    
+    var annotatedItem: AnnotatedItem?
+    
+    let selectQuery = "select Item.id, Item.name, Item.rarity, Item.description, Item.isUsed, Item.dateAdded, Library.itemType, Library.duration, Library.effect from Item left join Library on Item.name = Library.name where Item.isUsed = 0 and Item.name = ? limit 1"
+    guard let databaseQueue = databaseQueue else {
+      print("cannot create db queue")
+      completion(nil)
+      return
+    }
+    
+    databaseQueue.inTransaction { database, rollback in
+      guard
+        let database = database else {
+          return
+      }
+      do {
+        let resultSet = try database.executeQuery(selectQuery, values: [itemName])
+        while resultSet.next() {
+          guard let id = resultSet.string(forColumn: "id"),
+            let name = resultSet.string(forColumn: "name") else {
+              continue
+          }
+          
+          let rarity = Int(resultSet.int(forColumn: "rarity"))
+          let description = resultSet.string(forColumn: "description") ?? ""
+          let isUsed = resultSet.bool(forColumn: "isUsed")
+          let dateAdded = Int(resultSet.int(forColumn: "dateAdded"))
+          
+          let itemType = ItemType(rawValue: Int(resultSet.int(forColumn: "itemType"))) ?? .unknown
+          let duration = resultSet.string(forColumn: "duration") ?? "??"
+          let effect = resultSet.string(forColumn: "effect") ?? "??"
+          
+          let nerdItem = NerdItem(name: name, itemDescription: description, id: id, rarity: rarity, dateAdded: dateAdded, isUsed: isUsed)
+          let annotation = Annotation(itemType: itemType, duration: duration, effect: effect)
+          
+          annotatedItem = AnnotatedItem(item: nerdItem, annotation: annotation)
+        }
+      } catch {
+        print("error \(error.localizedDescription)")
+        rollback?.pointee = true
+        return
+      }
+    }
+    completion(annotatedItem)
   }
   
   func isItemUsed(itemID: String, completion: @escaping (Bool)->Void) {
