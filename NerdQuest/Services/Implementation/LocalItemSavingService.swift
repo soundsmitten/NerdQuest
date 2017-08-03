@@ -39,6 +39,17 @@ class LocalItemSavingService: ItemSaving {
     }
     completion(true)
   }
+  
+  func saveItemFromMessage(message: String) {
+    let idAndName = getIDAndName(text: message, pattern: AppConstants.kMessageParsingRegex)
+    if idAndName.count == 2 {
+      saveItem(nerdItem: NerdItem(name: idAndName.last!, itemDescription: "Bonus Item", id: idAndName.first!, rarity: -1, dateAdded: Int(Date().timeIntervalSince1970), isUsed: false)) { success in
+        if !success {
+          print("can't save item from message")
+        }
+      }
+    }
+  }
     
   func getAnnotatedItems(completion: @escaping ([AnnotatedItem])->Void) {
     

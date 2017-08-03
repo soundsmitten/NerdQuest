@@ -19,7 +19,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                   pointMiningService: LocalPointMiningService(),
                                   itemSavingService: LocalItemSavingService(),
                                   leaderboardingService: LocalLeaderboardingService())
+    
     let battlingService = LocalBattlingService(nerdService: nerdService)
+    nerdService.battlingService = battlingService
     
     let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: StoryboardNames.kMain), bundle: nil)
     guard

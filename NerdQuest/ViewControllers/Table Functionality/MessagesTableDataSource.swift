@@ -10,6 +10,14 @@ import Cocoa
 
 class MessagesTableDataSource: NSObject {
   var messages = [String]()
+  var tableView: NSTableView!
+  
+  init(tableView: NSTableView) {
+    super.init()
+    self.tableView = tableView
+    self.tableView.dataSource = self
+    self.tableView.delegate = self
+  }
 }
 
 extension MessagesTableDataSource: NSTableViewDelegate {

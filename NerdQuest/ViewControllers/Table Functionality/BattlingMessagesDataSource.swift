@@ -10,6 +10,15 @@ import Cocoa
 
 class BattlingMessagesTableDataSource: NSObject {
   var messages = [String]()
+  
+  var tableView: NSTableView!
+  
+  init(tableView: NSTableView) {
+    super.init()
+    self.tableView = tableView
+    self.tableView.dataSource = self
+    self.tableView.delegate = self
+  }
 }
 
 extension BattlingMessagesTableDataSource: NSTableViewDelegate {
